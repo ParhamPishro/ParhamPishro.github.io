@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth" dir="ltr" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Projects | Amir Ali Satvati</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Statistical and data analysis projects by Amir Ali Satvati. Machine Learning, Statistical Modeling, and Data Visualization.">
+    <meta name="keywords" content="Amir Ali Satvati, Data Science, Machine Learning, Statistical Analysis, R Programming, Python">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Vazirmatn:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0a0e27',
+                        darker: '#050714',
+                        accent: '#06b6d4',
+                        accentSec: '#8b5cf6',
+                        accentTer: '#10b981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Vazirmatn', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #0a0e27 0%, #050714 100%);
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        [dir="rtl"] {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .glass-strong {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .animate-gradient {
+            background-size: 200% 200%;
+            animation: gradient-shift 15s ease infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.05; }
+            50% { transform: translateY(-15px) rotate(3deg); opacity: 0.15; }
+        }
+        
+        .math-float {
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .math-float-delayed {
+            animation: float 10s ease-in-out infinite 3s;
+        }
+
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.2);
+        }
+
+        .filter-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-color: transparent;
+            box-shadow: 0 4px 15px -3px rgba(59, 130, 246, 0.4);
+        }
+
+        .badge-ml { background: rgba(124, 58, 237, 0.2); color: #a78bfa; border: 1px solid rgba(124, 58, 237, 0.3); }
+        .badge-stats { background: rgba(37, 99, 235, 0.2); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.3); }
+        .badge-viz { background: rgba(5, 150, 105, 0.2); color: #34d399; border: 1px solid rgba(5, 150, 105, 0.3); }
+        .badge-code { background: rgba(234, 179, 8, 0.2); color: #facc15; border: 1px solid rgba(234, 179, 8, 0.3); }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 50%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #0a0e27; }
+        ::-webkit-scrollbar-thumb { 
+            background: linear-gradient(180deg, #06b6d4, #8b5cf6); 
+            border-radius: 10px; 
+        }
+        ::-webkit-scrollbar-thumb:hover { background: #06b6d4; }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans relative selection:bg-accent/30 selection:text-white">
+
+    <!-- Particle Background -->
+    <canvas id="particles"></canvas>
+
+    <!-- Background Math Symbols -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0 select-none">
+        <div class="absolute top-20 left-10 text-6xl text-blue-500/10 math-float font-mono">Σ</div>
+        <div class="absolute top-40 right-20 text-5xl text-purple-500/10 math-float-delayed font-mono">σ²</div>
+        <div class="absolute bottom-32 left-1/4 text-7xl text-cyan-500/10 math-float font-mono">∫</div>
+        <div class="absolute top-1/3 right-10 text-4xl text-pink-500/10 math-float-delayed font-mono">μ</div>
+        <div class="absolute bottom-20 right-1/3 text-6xl text-emerald-500/10 math-float font-mono">π</div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-strong">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="/" class="flex items-center gap-3 group cursor-pointer">
+                    <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center text-xl font-bold text-white shadow-lg group-hover:shadow-blue-500/30 transition-shadow">
+                        A
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-lg font-bold text-slate-100">Amir Ali Satvati</span>
+                        <span class="text-xs text-slate-400 font-mono" data-i18n="nav_subtitle">Data Scientist</span>
+                    </div>
+                </a>
+                
+                <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="/#about" class="text-slate-300 hover:text-blue-400 transition-colors" data-i18n="nav_about">About</a>
+                    <a href="/#skills" class="text-slate-300 hover:text-blue-400 transition-colors" data-i18n="nav_skills">Skills</a>
+                    <a href="/projects.html" class="text-blue-400" data-i18n="nav_projects">Projects</a>
+                    <a href="/#contact" class="text-slate-300 hover:text-blue-400 transition-colors" data-i18n="nav_contact">Contact</a>
+                    <button onclick="toggleLanguage()" class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-700 hover:border-accent text-xs font-bold text-slate-300 transition-all hover:bg-accent/10">
+                        <i class="fas fa-globe"></i> <span id="lang-text">FA</span>
+                    </button>
+                </div>
+
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <i class="fas fa-bars text-slate-300 text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4">
+                <a href="/#about" class="text-slate-300 hover:text-blue-400 py-2" data-i18n="nav_about">About</a>
+                <a href="/#skills" class="text-slate-300 hover:text-blue-400 py-2" data-i18n="nav_skills">Skills</a>
+                <a href="/projects.html" class="text-blue-400 py-2" data-i18n="nav_projects">Projects</a>
+                <a href="/#contact" class="text-slate-300 hover:text-blue-400 py-2" data-i18n="nav_contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[70vh] flex items-center justify-center pt-24 pb-12 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-slate-900 animate-gradient"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full glass border border-blue-500/30 text-blue-300 text-sm font-mono">
+                <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                <span id="projects-condition">portfolio.projects.length > 0</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                <span class="block text-slate-100 mb-2" data-i18n="hero_title1">Statistical & Data Analysis</span>
+                <span class="gradient-text" data-i18n="hero_title2">Projects</span>
+            </h1>
+            
+            <p class="text-slate-400 max-w-2xl mx-auto mb-12 leading-relaxed text-lg" data-i18n="hero_desc">
+                A living list of GitHub repositories—automatically updated, filterable, and presented as a portfolio.
+            </p>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button onclick="filterProjects('all')" class="filter-btn active px-6 py-2.5 rounded-full border border-slate-600 text-sm font-medium hover:border-slate-400" data-filter="all" data-i18n="filter_all">
+                    All Projects
+                </button>
+                <button onclick="filterProjects('ml')" class="filter-btn px-6 py-2.5 rounded-full border border-slate-600 text-sm font-medium hover:border-slate-400" data-filter="ml" data-i18n="filter_ml">
+                    🤖 Machine Learning
+                </button>
+                <button onclick="filterProjects('stats')" class="filter-btn px-6 py-2.5 rounded-full border border-slate-600 text-sm font-medium hover:border-slate-400" data-filter="stats" data-i18n="filter_stats">
+                    📊 Statistics
+                </button>
+                <button onclick="filterProjects('viz')" class="filter-btn px-6 py-2.5 rounded-full border border-slate-600 text-sm font-medium hover:border-slate-400" data-filter="viz" data-i18n="filter_viz">
+                    📈 Visualization
+                </button>
+            </div>
+
+            <div id="lang-badges" class="flex justify-center gap-4 text-sm text-slate-500 font-mono">
+                <span class="flex items-center gap-1"><i class="fas fa-check-circle text-emerald-400"></i> Python</span>
+                <span class="flex items-center gap-1"><i class="fas fa-check-circle text-emerald-400"></i> R</span>
+                <span class="flex items-center gap-1"><i class="fas fa-check-circle text-emerald-400"></i> SQL</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="relative z-10 pb-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div id="projects-loading" class="glass rounded-2xl p-8 border border-slate-700/60 text-center text-slate-400">
+                <div class="inline-flex items-center gap-2 font-mono">
+                    <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                    <span data-i18n="loading">Loading projects from GitHub…</span>
+                </div>
+            </div>
+
+            <div id="projects-empty" class="hidden glass rounded-2xl p-8 border border-slate-700/60 text-center text-slate-400">
+                <p class="font-mono" data-i18n="empty">No public repositories found.</p>
+            </div>
+
+            <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6"></div>
+        </div>
+    </section>
+
+    <!-- All HTML Files Section -->
+    <section id="all-html-projects" class="relative z-10 pb-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div id="all-projects-container"></div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-20 border-t border-slate-800 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/10 to-purple-900/10"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-slate-100" data-i18n="stats_title">GitHub Snapshot</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="glass rounded-2xl p-8 text-center hover:border-blue-500/30 transition-colors border border-transparent">
+                    <div id="stat-repos" class="text-4xl font-bold text-blue-400 mb-2 font-mono">0</div>
+                    <div class="text-slate-400 text-sm" data-i18n="stat1">Public repositories</div>
+                </div>
+                <div class="glass rounded-2xl p-8 text-center hover:border-purple-500/30 transition-colors border border-transparent">
+                    <div id="stat-stars" class="text-4xl font-bold text-purple-400 mb-2 font-mono">0</div>
+                    <div class="text-slate-400 text-sm" data-i18n="stat2">Total stars</div>
+                </div>
+                <div class="glass rounded-2xl p-8 text-center hover:border-cyan-500/30 transition-colors border border-transparent">
+                    <div id="stat-langs" class="text-4xl font-bold text-cyan-400 mb-2 font-mono">0</div>
+                    <div class="text-slate-400 text-sm" data-i18n="stat3">Primary languages</div>
+                </div>
+                <div class="glass rounded-2xl p-8 text-center hover:border-emerald-500/30 transition-colors border border-transparent">
+                    <div id="stat-recent" class="text-4xl font-bold text-emerald-400 mb-2 font-mono">0</div>
+                    <div class="text-slate-400 text-sm" data-i18n="stat4">Updated (last 90 days)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 px-6 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="glass rounded-3xl p-12 border border-slate-700 relative overflow-hidden text-center">
+                <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10"></div>
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-bold mb-4 text-slate-100" data-i18n="cta_title">Have a Project in Mind?</h2>
+                    <p class="text-slate-400 mb-8 max-w-lg mx-auto" data-i18n="cta_desc">
+                        Ready to collaborate on data analysis projects, statistical consulting, and academic campaign design.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="mailto:amirali.satvati@gmail.com" class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full font-bold hover:shadow-lg hover:shadow-blue-500/25 transition-all hover:scale-105 text-white">
+                            <i class="fas fa-envelope"></i>
+                            <span data-i18n="cta_email">Send Email</span>
+                        </a>
+                        <a href="https://github.com/amiralisatvati" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-3 glass rounded-full font-bold hover:bg-white/10 transition-all border border-slate-600 text-slate-300">
+                            <i class="fab fa-github"></i>
+                            <span data-i18n="cta_github">GitHub</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 border-t border-slate-800/50 bg-darker/95 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <i class="fas fa-chart-line text-accent"></i>
+                <span class="font-mono font-bold text-lg">&lt;AmirAli/&gt;</span>
+            </div>
+            <p class="text-slate-500 text-sm">
+                &copy; <span id="year"></span> Amir Ali Satvati. <span data-i18n="footer_rights">All rights reserved.</span>
+            </p>
+            <p class="text-slate-600 text-xs mt-2">
+                <span data-i18n="footer_tagline">Built with data-driven precision 📊</span>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Filter Projects
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => {
+                if (btn.dataset.filter === category) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            
+            cards.forEach((card, index) => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 25);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 250);
+                }
+            });
+        }
+
+        // GitHub-driven Projects
+        const GH_USER = 'amiralisatvati';
+        const EXCLUDE_REPOS = new Set(['amiralisatvati.github.io']);
+        
+        // BEST PROJECTS FIRST - Updated order!
+        const PINNED = [
+            '-university-codes',
+            'quantile-regression-presentation-v2',
+            'quantile-regression-presentation',
+            'ml-course-maktabkhooneh',
+            'Data-Analysis-Project',
+            'university-simulation-project',
+            '-python-R'
+        ];
+
+        // HTML ranking (for "All HTML Files" section)
+        // TOP 6 BEST HTML OUTPUTS - Only files inside -university-codes
+        const HTML_PINNED_FILES = [
+            { repo: '-university-codes', path: 'medical-thyroid-analysis.html' },
+            { repo: '-university-codes', path: 'medical-diabetes-analysis.html' },
+            { repo: '-university-codes', path: 'ml-knn-algorithm.html' },
+            { repo: '-university-codes', path: 'ml-graph-neural-networks-karate-club.html' },
+            { repo: '-university-codes', path: 'simulation-transform-methods-inverse-boxmuller.html' },
+            { repo: '-university-codes', path: 'lab-exercise-20.html' }
+        ];
+
+        function pinnedRepoIndex(repoName) {
+            const i = PINNED.indexOf(repoName);
+            return i === -1 ? 9999 : i;
+        }
+
+        function pinnedHtmlFileIndex(repoName, filePath) {
+            const key = `${repoName}/${filePath}`.toLowerCase();
+            for (let i = 0; i < HTML_PINNED_FILES.length; i++) {
+                const item = HTML_PINNED_FILES[i];
+                const k2 = `${item.repo}/${item.path}`.toLowerCase();
+                if (k2 === key) return i;
+            }
+            return 9999;
+        }
+
+        function htmlFileScore(repoName, filePath) {
+            const p = (filePath || '').toLowerCase();
+            const pinnedIdx = pinnedHtmlFileIndex(repoName, filePath);
+            if (pinnedIdx !== 9999) return 100000 - pinnedIdx;
+
+            let score = 0;
+            if (p === 'index.html' || p.endsWith('/index.html')) score += 1000;
+            if (p.includes('presentation') || p.includes('slide')) score += 250;
+            if (p.includes('analysis')) score += 200;
+            if (p.includes('regression')) score += 150;
+            if (p.includes('medical')) score += 140;
+            if (p.includes('simulation')) score += 120;
+            if (p.includes('exercise') || p.includes('lab')) score += 100;
+            if (p.includes('discrete')) score += 80;
+            return score;
+        }
+
+        // Specific LIVE URLs for known projects
+        const LIVE_URLS = {
+            'quantile-regression-presentation': 'https://amiralisatvati.github.io/quantile-regression-presentation/',
+            'quantile-regression-presentation-v2': 'https://amiralisatvati.github.io/quantile-regression-presentation-v2/',
+            'Data-Analysis-Project': 'https://amiralisatvati.github.io/Data-Analysis-Project/',
+            '-university-codes': 'https://amiralisatvati.github.io/-university-codes/'
+        };
+
+        async function fetchUniversityCodes() {
+            try {
+                const res = await fetch('https://api.github.com/repos/amiralisatvati/-university-codes/git/trees/main?recursive=1');
+                if (!res.ok) return [];
+                const data = await res.json();
+                
+                const files = data.tree.filter(f => 
+                    f.path.endsWith('.html') && 
+                    !f.path.includes('index.html') && 
+                    (f.path.includes('Regression_Analysis') || 
+                     f.path.includes('Exam_and_Labs') || 
+                     f.path.includes('Probability_Process') || 
+                     f.path.includes('Data_Mining_Projects'))
+                );
+
+                return files.map(f => {
+                    const nameParts = f.path.split('/');
+                    const fileName = nameParts[nameParts.length - 1].replace('.html', '').replace(/_/g, ' ');
+                    const folderName = nameParts.length > 1 ? nameParts[0].replace(/_/g, ' ') : 'University Code';
+
+                    return {
+                        name: fileName,
+                        full_name: f.path, 
+                        description: `${folderName} - Interactive Output`,
+                        language: 'HTML',
+                        html_url: `https://github.com/amiralisatvati/-university-codes/blob/main/${f.path}`,
+                        pushed_at: null, 
+                        stargazers_count: 0,
+                        is_subproject: true,
+                        homepage: `https://amiralisatvati.github.io/-university-codes/${f.path}`,
+                        type: 'file'
+                    };
+                });
+            } catch (e) {
+                console.error('Failed to fetch university codes', e);
+                return [];
+            }
+        }
+
+        function categoryOf(repo) {
+            const text = `${repo.name} ${(repo.description || '')}`.toLowerCase();
+            
+            if (repo.is_subproject) {
+                if (text.includes('mining') || text.includes('ml') || text.includes('classification')) return 'ml';
+                if (text.includes('regression') || text.includes('anova') || text.includes('stat') || text.includes('probability') || text.includes('process')) return 'stats';
+                if (text.includes('viz') || text.includes('shiny')) return 'viz';
+                return 'stats';
+            }
+
+            if (text.includes('ml') || text.includes('machine learning') || text.includes('scikit') || text.includes('notebook') || text.includes('classification') || text.includes('regression')) return 'ml';
+            if (text.includes('viz') || text.includes('visual') || text.includes('dashboard') || text.includes('plot') || text.includes('tableau') || text.includes('ggplot')) return 'viz';
+            if (text.includes('stats') || text.includes('statistics') || text.includes('quantile') || text.includes('anova') || text.includes('manova') || text.includes('simulation')) return 'stats';
+            if ((repo.language || '').toLowerCase() === 'r') return 'stats';
+            return 'stats';
+        }
+
+        function iconOf(cat, isSub) {
+            if (isSub) {
+                return { icon: 'fa-file-code', color: 'text-yellow-400', border: 'border-yellow-500/30', bg: 'from-yellow-500/20 to-orange-600/20' };
+            }
+            if (cat === 'ml') return { icon: 'fa-brain', color: 'text-blue-400', border: 'border-blue-500/30', bg: 'from-blue-500/20 to-purple-600/20' };
+            if (cat === 'viz') return { icon: 'fa-chart-pie', color: 'text-emerald-400', border: 'border-emerald-500/30', bg: 'from-emerald-500/20 to-cyan-600/20' };
+            return { icon: 'fa-chart-line', color: 'text-cyan-400', border: 'border-cyan-500/30', bg: 'from-cyan-500/20 to-blue-600/20' };
+        }
+
+        function badgeClass(cat, isSub) {
+            if (isSub) return 'badge-code';
+            if (cat === 'ml') return 'badge-ml';
+            if (cat === 'viz') return 'badge-viz';
+            return 'badge-stats';
+        }
+
+        function categoryLabel(cat, isSub) {
+            if (isSub) return (currentLang === 'fa' ? 'کد درسی' : 'Course Code');
+            const map = {
+                en: { ml: 'ML', stats: 'Stats', viz: 'Viz' },
+                fa: { ml: 'یادگیری ماشین', stats: 'آمار', viz: 'تجسم‌سازی' }
+            };
+            return (map[currentLang] && map[currentLang][cat]) ? map[currentLang][cat] : cat;
+        }
+
+        function safeText(str) {
+            if (!str) return '';
+            return String(str)
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+        function formatDate(iso) {
+            if (!iso) return '';
+            const d = new Date(iso);
+            const locale = currentLang === 'fa' ? 'fa-IR' : 'en-US';
+            return d.toLocaleDateString(locale, { year: 'numeric', month: 'short' });
+        }
+
+        function isValidUrl(value) {
+            try { new URL(value); return true; } catch (e) { return false; }
+        }
+
+        function renderCard(repo) {
+            const cat = categoryOf(repo);
+            const isSub = !!repo.is_subproject;
+            const meta = iconOf(cat, isSub);
+            const desc = repo.description ? safeText(repo.description) : (currentLang === 'fa' ? 'بدون توضیح.' : 'No description provided.');
+            const lang = repo.language ? safeText(repo.language) : (currentLang === 'fa' ? 'نامشخص' : 'N/A');
+            const updated = repo.pushed_at ? formatDate(repo.pushed_at) : (currentLang === 'fa' ? 'آرشیو' : 'Archived');
+            const stars = typeof repo.stargazers_count === 'number' ? repo.stargazers_count : 0;
+
+            let liveUrl = repo.homepage;
+
+            if ((!liveUrl || !isValidUrl(liveUrl)) && repo.has_pages) {
+                liveUrl = `https://${GH_USER}.github.io/${repo.name}/`;
+            }
+
+            if (LIVE_URLS[repo.name]) {
+                liveUrl = LIVE_URLS[repo.name];
+            }
+
+            if (liveUrl && !isValidUrl(liveUrl)) {
+                liveUrl = null;
+            }
+
+            const viewRepoLabel = (translations[currentLang] && translations[currentLang].view_repo) ? translations[currentLang].view_repo : 'Source Code';
+            const liveLabel = (translations[currentLang] && translations[currentLang].live_demo) ? translations[currentLang].live_demo : 'View Project';
+            const updatedLabel = (translations[currentLang] && translations[currentLang].updated) ? translations[currentLang].updated : 'Updated';
+            
+            const buttonLabel = isSub ? (currentLang === 'fa' ? 'مشاهده فایل' : 'View File') : viewRepoLabel;
+
+            return `
+                <div class="project-card group relative glass rounded-2xl overflow-hidden" data-category="${cat}">
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${meta.bg} flex items-center justify-center border ${meta.border}">
+                                    <i class="fas ${meta.icon} text-2xl ${meta.color}"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-100 group-hover:text-blue-400 transition-colors line-clamp-1" title="${safeText(repo.name)}">${safeText(repo.name)}</h3>
+                                    <div class="text-xs text-slate-400 flex items-center gap-2">
+                                        <span class="font-mono">${updatedLabel}: ${updated}</span>
+                                        ${!isSub ? `<span class="text-slate-600">•</span><span class="font-mono"><i class="fas fa-star text-yellow-400/80"></i> ${stars}</span>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="${badgeClass(cat, isSub)} px-3 py-1 rounded-full text-xs font-medium">${categoryLabel(cat, isSub)}</span>
+                        </div>
+                        
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed line-clamp-2">${desc}</p>
+                        
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-xs px-2.5 py-1 bg-slate-800 rounded-md text-slate-300 font-mono border border-slate-700">${lang}</span>
+                            ${repo.license && repo.license.spdx_id ? `<span class="text-xs px-2.5 py-1 bg-slate-800 rounded-md text-slate-300 font-mono border border-slate-700">${safeText(repo.license.spdx_id)}</span>` : ''}
+                            ${isSub ? `<span class="text-xs px-2.5 py-1 bg-slate-800 rounded-md text-slate-300 font-mono border border-slate-700">${repo.type === 'dir' ? 'Folder' : 'File'}</span>` : ''}
+                        </div>
+                        
+                        <div class="flex justify-between items-center pt-4 border-t border-slate-700/50">
+                            <div class="flex gap-4 flex-wrap w-full">
+                                ${liveUrl ? `
+                                <a href="${liveUrl}" target="_blank" rel="noopener" class="flex-1 inline-flex justify-center items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg text-sm font-medium transition-colors">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>${liveLabel}</span>
+                                </a>` : ''}
+                                
+                                <a href="${repo.html_url}" target="_blank" rel="noopener" class="flex-1 inline-flex justify-center items-center gap-2 px-4 py-2 glass hover:bg-white/10 text-slate-300 rounded-lg text-sm font-medium transition-colors border border-slate-600/50">
+                                    <i class="${isSub ? 'fas fa-file-code' : 'fab fa-github'}"></i>
+                                    <span>${buttonLabel}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateSnapshot(repos) {
+            const realRepos = repos.filter(r => !r.is_subproject);
+            
+            const publicRepos = realRepos.length;
+            const stars = realRepos.reduce((acc, r) => acc + (r.stargazers_count || 0), 0);
+            const langs = new Set(realRepos.map(r => r.language).filter(Boolean));
+
+            const now = Date.now();
+            const days90 = 90 * 24 * 60 * 60 * 1000;
+            const recent = realRepos.filter(r => r.pushed_at && (now - new Date(r.pushed_at).getTime()) <= days90).length;
+
+            const elRepos = document.getElementById('stat-repos');
+            const elStars = document.getElementById('stat-stars');
+            const elLangs = document.getElementById('stat-langs');
+            const elRecent = document.getElementById('stat-recent');
+
+            if (elRepos) elRepos.textContent = publicRepos;
+            if (elStars) elStars.textContent = stars;
+            if (elLangs) elLangs.textContent = langs.size;
+            if (elRecent) elRecent.textContent = recent;
+        }
+
+        function updateHeroLine(count) {
+            const el = document.getElementById('projects-condition');
+            if (el) el.textContent = `portfolio.projects.length = ${count}`;
+        }
+
+        function updateLanguageBadges(repos) {
+            const el = document.getElementById('lang-badges');
+            if (!el) return;
+
+            const counts = new Map();
+            repos.filter(r => !r.is_subproject).forEach(r => {
+                if (!r.language) return;
+                counts.set(r.language, (counts.get(r.language) || 0) + 1);
+            });
+
+            const top = Array.from(counts.entries())
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 3)
+                .map(([lang]) => lang);
+
+            if (top.length === 0) return;
+
+            el.innerHTML = top.map(lang => `
+                <span class="flex items-center gap-1"><i class="fas fa-check-circle text-emerald-400"></i> ${safeText(lang)}</span>
+            `).join('');
+        }
+
+        async function loadRepos() {
+            const loading = document.getElementById('projects-loading');
+            const empty = document.getElementById('projects-empty');
+            const grid = document.getElementById('projects-grid');
+
+            try {
+                const url = `https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated`;
+                const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github+json' } });
+
+                if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
+
+                const data = await res.json();
+
+                let repos = data
+                    .filter(r => r && !r.fork && !r.archived)
+                    .filter(r => !EXCLUDE_REPOS.has(r.name))
+                    .filter(r => (r.size || 0) > 0);
+
+                const uniCodes = await fetchUniversityCodes();
+                
+                let allItems = [...repos, ...uniCodes];
+
+                const pinnedOrder = new Map(PINNED.map((name, idx) => [name, idx]));
+                allItems = allItems.sort((a, b) => {
+                    const ap = pinnedOrder.has(a.name) ? pinnedOrder.get(a.name) : 9999;
+                    const bp = pinnedOrder.has(b.name) ? pinnedOrder.get(b.name) : 9999;
+                    if (ap !== bp) return ap - bp;
+                    
+                    if (a.is_subproject && !b.is_subproject) return 1;
+                    if (!a.is_subproject && b.is_subproject) return -1;
+
+                    return new Date(b.pushed_at || 0) - new Date(a.pushed_at || 0);
+                });
+
+                if (loading) loading.classList.add('hidden');
+
+                if (!allItems.length) {
+                    if (empty) empty.classList.remove('hidden');
+                    updateSnapshot([]);
+                    updateHeroLine(0);
+                    return;
+                }
+
+                if (grid) {
+                    grid.innerHTML = allItems.map(renderCard).join('');
+                }
+
+                updateSnapshot(repos);
+                updateHeroLine(allItems.length);
+                updateLanguageBadges(repos);
+
+                const cards = document.querySelectorAll('.project-card');
+                cards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.classList.add('fade-in-up');
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 60);
+                });
+
+            } catch (err) {
+                console.error(err);
+                if (loading) loading.classList.add('hidden');
+                if (empty) {
+                    empty.classList.remove('hidden');
+                    empty.querySelector('p').textContent = (currentLang === 'fa')
+                        ? 'مشکل در دریافت پروژه‌ها از GitHub.'
+                        : 'Failed to load repositories from GitHub.';
+                }
+            }
+        }
+
+        async function fetchAllHtmlFiles() {
+            const projectsContainer = document.getElementById('all-projects-container');
+            projectsContainer.innerHTML = '<div style="text-align: center; color: #94a3b8; font-size: 1.1em; padding: 50px;">در حال بارگذاری تمام فایل‌های HTML... ⏳</div>';
+
+            try {
+                const response = await fetch(`https://api.github.com/users/${GH_USER}/repos?per_page=100&sort=updated`);
+                const repos = await response.json();
+                
+                let allHtmlFiles = [];
+                
+                for (const repo of repos) {
+                    // Skip website repositories (ending with .github.io)
+                    if (repo.name.endsWith('.github.io')) continue;
+                    if (repo.fork || repo.archived) continue;
+                    
+                    const htmlFiles = await fetchHtmlFilesFromRepo(repo.name, repo.default_branch);
+                    if (htmlFiles.length > 0) {
+                        allHtmlFiles.push({
+                            repoName: repo.name,
+                            repoUrl: repo.html_url,
+                            files: htmlFiles,
+                            description: repo.description || 'بدون توضیحات',
+                            stars: repo.stargazers_count || 0,
+                            pushed_at: repo.pushed_at || null
+                        });
+                    }
+                }
+                
+                displayAllHtmlProjects(allHtmlFiles);
+            } catch (error) {
+                projectsContainer.innerHTML = '<div style="text-align: center; color: #94a3b8; padding: 50px;">❌ خطا در بارگذاری پروژه‌ها</div>';
+                console.error('Error:', error);
+            }
+        }
+
+        async function fetchHtmlFilesFromRepo(repoName, branch = 'main') {
+            try {
+                const response = await fetch(`https://api.github.com/repos/${GH_USER}/${repoName}/git/trees/${branch}?recursive=1`);
+                const data = await response.json();
+                
+                if (!data.tree) return [];
+                
+                return data.tree
+                    .filter(item => item.type === 'blob' && item.path.endsWith('.html') && !item.path.includes('node_modules'))
+                    .map(item => ({
+                        name: item.path,
+                        url: `https://${GH_USER}.github.io/${repoName}/${item.path}`,
+                        githubUrl: `https://github.com/${GH_USER}/${repoName}/blob/${branch}/${item.path}`,
+                        rmdUrl: item.path.replace('.html', '.Rmd'),
+                        branch
+                    }));
+            } catch (error) {
+                console.error(`Error fetching ${repoName}:`, error);
+                return [];
+            }
+        }
+
+        function displayAllHtmlProjects(projects) {
+            const projectsContainer = document.getElementById('all-projects-container');
+            
+            if (projects.length === 0) {
+                projectsContainer.innerHTML = '<div style="text-align: center; color: #94a3b8; padding: 50px;">هیچ فایل HTML پیدا نشد</div>';
+                return;
+            }
+
+            // Rank repositories (best repos first)
+            projects = [...projects].sort((a, b) => {
+                const ap = pinnedRepoIndex(a.repoName);
+                const bp = pinnedRepoIndex(b.repoName);
+                if (ap !== bp) return ap - bp;
+
+                const as = a.stars || 0;
+                const bs = b.stars || 0;
+                if (as !== bs) return bs - as;
+
+                const ad = new Date(a.pushed_at || 0).getTime();
+                const bd = new Date(b.pushed_at || 0).getTime();
+                if (ad !== bd) return bd - ad;
+
+                if ((a.files || []).length !== (b.files || []).length) return (b.files || []).length - (a.files || []).length;
+
+                return (a.repoName || '').localeCompare(b.repoName || '');
+            });
+            
+            let totalFiles = projects.reduce((sum, p) => sum + p.files.length, 0);
+            
+            let html = `
+                <div style="text-align: center; margin: 50px 0 30px 0;">
+                    <div class="glass inline-block rounded-2xl px-8 py-6 border border-slate-700">
+                        <h2 style="font-size: 2rem; font-weight: bold; margin-bottom: 15px; color: #f1f5f9;">📚 تمام فایل‌های HTML</h2>
+                        <p style="font-size: 1.2em; color: #94a3b8;"><strong>${totalFiles}</strong> فایل HTML از <strong>${projects.length}</strong> repository</p>
+                    </div>
+                </div>
+            `;
+            
+            projects.forEach(project => {
+                const filesSorted = [...project.files].sort((fa, fb) => {
+                    const sa = htmlFileScore(project.repoName, fa.name);
+                    const sb = htmlFileScore(project.repoName, fb.name);
+                    if (sa !== sb) return sb - sa;
+                    return (fa.name || '').localeCompare(fb.name || '');
+                });
+
+                html += `
+                    <div class="glass rounded-2xl p-6 mb-6 border border-slate-700/60 hover:border-slate-600 transition-all">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <h2 style="font-size: 1.5rem; font-weight: bold; color: #f1f5f9; margin: 0;">
+                                <a href="${project.repoUrl}" target="_blank" style="color: #60a5fa; text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='#93c5fd'" onmouseout="this.style.color='#60a5fa'">
+                                    📁 ${safeText(project.repoName)}
+                                </a>
+                            </h2>
+                            <span class="badge-stats" style="padding: 6px 16px; border-radius: 20px; font-size: 0.9em;">
+                                ${filesSorted.length} فایل
+                            </span>
+                        </div>
+                        <p style="color: #94a3b8; margin-bottom: 20px; font-size: 0.95rem;">${safeText(project.description)}</p>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+                `;
+                
+                filesSorted.forEach(file => {
+                    const fileName = file.name.split('/').pop().replace('.html', '');
+                    const branch = file.branch || 'main';
+                    html += `
+                        <div class="glass rounded-xl p-4 border border-slate-700/40 hover:border-blue-500/40 transition-all" style="cursor: pointer;">
+                            <div style="font-weight: 600; color: #f1f5f9; margin-bottom: 12px; font-size: 0.95em;">
+                                ${safeText(fileName)}
+                            </div>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <a href="${file.url}" target="_blank" 
+                                   style="background: #3b82f6; color: white; padding: 7px 14px; border-radius: 6px; text-decoration: none; font-size: 0.85em; transition: all 0.3s; display: inline-flex; align-items: center; gap: 5px;"
+                                   onmouseover="this.style.background='#2563eb'" 
+                                   onmouseout="this.style.background='#3b82f6'">
+                                    👁️ مشاهده
+                                </a>
+                                <a href="${file.githubUrl}" target="_blank" 
+                                   style="background: rgba(30, 41, 59, 0.7); color: #cbd5e1; padding: 7px 14px; border-radius: 6px; text-decoration: none; font-size: 0.85em; transition: all 0.3s; border: 1px solid rgba(255, 255, 255, 0.1); display: inline-flex; align-items: center; gap: 5px;"
+                                   onmouseover="this.style.background='rgba(51, 65, 85, 0.8)'" 
+                                   onmouseout="this.style.background='rgba(30, 41, 59, 0.7)'">
+                                    📄 HTML
+                                </a>
+                                <a href="https://github.com/${GH_USER}/${project.repoName}/blob/${branch}/${file.rmdUrl}" target="_blank" 
+                                   style="background: rgba(30, 41, 59, 0.7); color: #cbd5e1; padding: 7px 14px; border-radius: 6px; text-decoration: none; font-size: 0.85em; transition: all 0.3s; border: 1px solid rgba(255, 255, 255, 0.1); display: inline-flex; align-items: center; gap: 5px;"
+                                   onmouseover="this.style.background='rgba(51, 65, 85, 0.8)'" 
+                                   onmouseout="this.style.background='rgba(30, 41, 59, 0.7)'">
+                                    📝 Rmd
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += `
+                        </div>
+                    </div>
+                `;
+            });
+            
+            projectsContainer.innerHTML = html;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadRepos();
+            fetchAllHtmlFiles();
+        });
+
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            
+            draw() {
+                ctx.fillStyle = `rgba(59, 130, 246, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function initParticles() {
+            particles = [];
+            const particleCount = Math.min(window.innerWidth / 10, 100);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            particles.forEach((a, index) => {
+                particles.slice(index + 1).forEach(b => {
+                    const dx = a.x - b.x;
+                    const dy = a.y - b.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (distance < 100) {
+                        ctx.strokeStyle = `rgba(59, 130, 246, ${0.1 * (1 - distance/100)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.beginPath();
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                });
+            });
+            
+            requestAnimationFrame(animateParticles);
+        }
+        
+        initParticles();
+        animateParticles();
+
+        const translations = {
+            en: {
+                nav_subtitle: "Data Scientist",
+                nav_about: "About",
+                nav_skills: "Skills",
+                nav_projects: "Projects",
+                nav_contact: "Contact",
+                hero_title1: "Statistical & Data Analysis",
+                hero_title2: "Projects",
+                hero_desc: "A living list of GitHub repositories—automatically updated, filterable, and presented as a portfolio.",
+                filter_all: "All Projects",
+                filter_ml: "🤖 Machine Learning",
+                filter_stats: "📊 Statistics",
+                filter_viz: "📈 Visualization",
+                loading: "Loading projects from GitHub…",
+                empty: "No public repositories found.",
+                view_repo: "Source Code",
+                live_demo: "View Project",
+                updated: "Updated",
+                stats_title: "GitHub Snapshot",
+                stat1: "Public repositories",
+                stat2: "Total stars",
+                stat3: "Primary languages",
+                stat4: "Updated (last 90 days)",
+                cta_title: "Have a Project in Mind?",
+                cta_desc: "Ready to collaborate on data analysis projects, statistical consulting, and academic campaign design.",
+                cta_email: "Send Email",
+                cta_github: "GitHub",
+                footer_rights: "All rights reserved.",
+                footer_tagline: "Built with data-driven precision 📊"
+            },
+            fa: {
+                nav_subtitle: "دانشمند داده",
+                nav_about: "درباره من",
+                nav_skills: "مهارت‌ها",
+                nav_projects: "پروژه‌ها",
+                nav_contact: "تماس",
+                hero_title1: "پروژه‌های",
+                hero_title2: "آماری و تحلیل داده",
+                hero_desc: "فهرست زنده از ریپازیتوری‌های GitHub؛ به‌صورت خودکار آپدیت می‌شود و قابلیت فیلتر دارد.",
+                filter_all: "همه پروژه‌ها",
+                filter_ml: "🤖 یادگیری ماشین",
+                filter_stats: "📊 آمار",
+                filter_viz: "📈 تجسم‌سازی",
+                loading: "در حال دریافت پروژه‌ها از GitHub…",
+                empty: "هیچ ریپازیتوری عمومی پیدا نشد.",
+                view_repo: "مشاهده کد",
+                live_demo: "مشاهده پروژه",
+                updated: "آخرین آپدیت",
+                stats_title: "نمای کلی GitHub",
+                stat1: "ریپازیتوری‌های عمومی",
+                stat2: "مجموع ستاره‌ها",
+                stat3: "زبان‌های اصلی",
+                stat4: "آپدیت‌شده (۹۰ روز اخیر)",
+                cta_title: "پروژه‌ای در ذهن دارید؟",
+                cta_desc: "آماده همکاری در پروژه‌های تحلیل داده، مشاوره آماری و طراحی کمپین‌های آکادمیک هستم.",
+                cta_email: "ارسال ایمیل",
+                cta_github: "گیت‌هاب",
+                footer_rights: "تمامی حقوق محفوظ است.",
+                footer_tagline: "ساخته شده با دقت داده‌محور 📊"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'fa' : 'en';
+            const htmlRoot = document.getElementById('html-root');
+            htmlRoot.lang = currentLang === 'fa' ? 'fa' : 'en';
+            htmlRoot.dir = currentLang === 'fa' ? 'rtl' : 'ltr';
+            
+            document.getElementById('lang-text').textContent = currentLang === 'en' ? 'FA' : 'EN';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.textContent = translations[currentLang][key];
+                }
+            });
+
+            loadRepos();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+title: "امیرعلی سطوتی"
+description: "تحلیل‌گر داده و مشتاق هوش مصنوعی | Data Analyst & AI Enthusiast"
+url: "https://amiralisatvati.github.io"
+baseurl: ""
+
+# نویسنده
+author:
+  name: "امیرعلی سطوتی"
+  bio: "دانشجوی آمار دانشگاه فردوسی | R & Python Developer"
+  location: "مشهد، ایران"
+  email: "amirali.satvati@gmail.com"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/amiralisatvati"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/amirali-satvati"
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope"
+      url: "mailto:amirali.satvati@gmail.com"
+
+# تم و تنظیمات
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+minimal_mistakes_skin: "dark"
+locale: "fa-IR"
+
+# پلاگین‌ها
+plugins:
+  - jekyll-include-cache
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# SASS Settings
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Pagination Settings
+paginate: 6
+paginate_path: "/blog/page:num/"
+
+# Search Settings  
+search: true
+search_full_content: true
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: false
+      share: true
+      related: true
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      author_profile: true

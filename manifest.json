@@ -1,0 +1,27 @@
+{
+  "name": "Amir Ali Satvati Portfolio",
+  "short_name": "AA Portfolio",
+  "description": "Statistics Student & Data Analyst specializing in statistical modeling, data mining, and evidence-based insights",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e27",
+  "theme_color": "#06b6d4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "portfolio", "statistics"],
+  "lang": "en",
+  "dir": "ltr"
+}
