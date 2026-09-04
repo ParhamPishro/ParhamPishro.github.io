@@ -1,7 +1,7 @@
 {
-  "name": "Amir Ali Satvati Portfolio",
-  "short_name": "AA Portfolio",
-  "description": "Statistics Student & Data Analyst specializing in statistical modeling, data mining, and evidence-based insights",
+  "name": "Parham Pishro Portfolio",
+  "short_name": "Pr Pishro",
+  "description": "Data Scientist with interest in Applied Machine Learning for Real-World Problems",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0e27",
@@ -21,7 +21,7 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["education", "portfolio", "statistics"],
+  "categories": ["PhD", "portfolio", "data"],
   "lang": "en",
   "dir": "ltr"
 }
