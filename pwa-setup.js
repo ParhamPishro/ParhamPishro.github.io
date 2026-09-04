@@ -24,7 +24,7 @@
     // Apple app title
     const appleTitle = document.createElement('meta');
     appleTitle.name = 'apple-mobile-web-app-title';
-    appleTitle.content = 'AA Portfolio';
+    appleTitle.content = 'Pr Pishro';
     head.appendChild(appleTitle);
     
     // Manifest link
