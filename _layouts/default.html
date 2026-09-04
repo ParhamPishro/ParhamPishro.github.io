@@ -1,0 +1,31 @@
+---
+---
+
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: page.lang | default: 'en-US' }}">
+
+  {% include head.html %}
+
+  <body class="layout--{{ page.layout | default: layout.layout }}{% if page.classes or layout.classes %}{{ page.classes | default: layout.classes | join: ' ' | prepend: ' ' }}{% endif %}">
+    {% include skip-links.html %}
+    {% include browser-upgrade.html %}
+    {% include masthead.html %}
+
+    <div class="initial-content">
+      {{ content }}
+    </div>
+
+    {% if site.search == true %}
+      {% include search/search_form.html %}
+    {% endif %}
+
+    <footer class="page__footer">
+      {% include footer/custom.html %}
+      {% include footer.html %}
+    </footer>
+
+    {% include scripts.html %}
+
+  </body>
+
+</html>
