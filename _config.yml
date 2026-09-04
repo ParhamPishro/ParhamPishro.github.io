@@ -1,31 +1,31 @@
-title: "امیرعلی سطوتی"
-description: "تحلیل‌گر داده و مشتاق هوش مصنوعی | Data Analyst & AI Enthusiast"
-url: "https://amiralisatvati.github.io"
+title: "Parham Pishro"
+description: "Data Scientist"
+url: "https://parhampishro.github.io"
 baseurl: ""
 
-# نویسنده
+# Author
 author:
-  name: "امیرعلی سطوتی"
-  bio: "دانشجوی آمار دانشگاه فردوسی | R & Python Developer"
-  location: "مشهد، ایران"
-  email: "amirali.satvati@gmail.com"
+  name: "Parham Pishro"
+  bio: "Data Scientist"
+  location: "Iran"
+  email: "PrPishro@gmail.com"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/amiralisatvati"
+      url: "https://github.com/parhampishro"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://linkedin.com/in/amirali-satvati"
+      url: "https://linkedin.com/in/parham-pishro"
     - label: "Email"
       icon: "fas fa-fw fa-envelope"
-      url: "mailto:amirali.satvati@gmail.com"
+      url: "mailto:PrPishro@gmail.com"
 
-# تم و تنظیمات
+# Theme and Settings
 remote_theme: "mmistakes/minimal-mistakes@4.26.2"
 minimal_mistakes_skin: "dark"
-locale: "fa-IR"
+locale: "en-US"
 
-# پلاگین‌ها
+# Plugins
 plugins:
   - jekyll-include-cache
   - jekyll-paginate
