@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://amiralisatvati.github.io/sitemap.xml
+Sitemap: https://parhampishro.github.io/sitemap.xml
