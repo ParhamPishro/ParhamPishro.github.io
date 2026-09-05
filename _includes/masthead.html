@@ -1,0 +1,39 @@
+{% capture logo_path %}{{ site.logo }}{% endcapture %}
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    {% if site.logo %}
+      <div class="site__title">
+        <a href="{{ '/' | relative_url }}" class="site__logo">
+          <img src="{{ logo_path | relative_url }}" alt="{{ site.masthead_title | default: site.title }}">
+        </a>
+      </div>
+    {% endif %}
+    <div class="site__title">
+      <h1 class="site__name" itemprop="name">
+        <a href="{{ '/' | relative_url }}">{{ site.masthead_title | default: site.title }}</a>
+      </h1>
+      {% if site.subtitle %}<p class="site__description" itemprop="description">{{ site.subtitle }}</p>{% endif %}
+    </div>
+    <nav class="greedy-nav">
+      <button class="greedy-nav__toggle hidden" type="button">
+        <span class="visually-hidden">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle menu" }}</span>
+        <div class="navicon"></div>
+      </button>
+      <ul class="visible-links">
+        {%- for link in site.data.navigation.main -%}
+          <li class="masthead__menu-item">
+            <a href="{{ link.url | relative_url }}">{{ link.title }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {% if site.data.navigation.main %}
+        <button class="greedy-nav__toggle visible-links" type="button">
+          <span class="visually-hidden">{{ site.data.ui-text[site.locale].menu_label | default: "Toggle menu" }}</span>
+          <div class="navicon"></div>
+        </button>
+      {% endif %}
+      <ul class="hidden-links hidden"></ul>
+    </nav>
+  </div>
+</div>

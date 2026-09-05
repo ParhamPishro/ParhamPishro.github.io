@@ -1,0 +1,28 @@
+<!-- head.html -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+
+<!-- Feed -->
+<link href="{{ '/feed.xml' | relative_url }}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/apple-touch-icon.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/favicon-32x32.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ '/assets/favicon-16x16.png' | relative_url }}">
+<link rel="manifest" href="{{ '/site.webmanifest' | relative_url }}">
+
+<!-- Theme CSS -->
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+<!-- Preload Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+{% if site.analytics.provider %}
+  {% include analytics.html %}
+{% endif %}
