@@ -1,5 +1,5 @@
 // Service Worker for PWA
-const CACHE_NAME = 'portfolio-v1';
+const CACHE_NAME = 'portfolio-v1.1';
 const urlsToCache = [
   '/',
   '/index.html',
