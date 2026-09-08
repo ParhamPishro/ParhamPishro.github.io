@@ -85,10 +85,6 @@
             color: #e2e8f0;
             overflow-x: hidden;
         }
-
-        [dir="rtl"] {
-            font-family: 'Vazirmatn', sans-serif;
-        }
         
         .glass {
             background: rgba(10, 14, 39, 0.7);
@@ -305,24 +301,18 @@
                         <i class="fas fa-chart-network text-accent"></i>
                         <span class="font-mono">&lt;Parham/&gt;</span>
                     </a>
-                    <button onclick="toggleLanguage()" class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full border border-slate-700 hover:border-accent text-xs font-bold text-slate-300 transition-all hover:bg-accent/10" aria-label="Toggle language between English and Persian">
-                        <i class="fas fa-globe"></i> <span id="lang-text-desktop">FA</span>
-                    </button>
                 </div>
                 
-                <div class="hidden md:flex space-x-8 rtl:space-x-reverse items-center">
-                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors" data-i18n="nav_about">About</a>
-                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors" data-i18n="nav_skills">Skills</a>
-                    <a href="#code" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors" data-i18n="nav_code">Code</a>
-                    <a href="#projects" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors" data-i18n="nav_projects">Projects</a>
-                    <a href="#resources" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors" data-i18n="nav_resources">Resources</a>
-                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-accent to-accentSec text-sm font-semibold text-white hover:shadow-lg hover:shadow-accent/50 transition-all" data-i18n="nav_contact">Contact</a>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Skills</a>
+                    <a href="#code" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Code</a>
+                    <a href="#projects" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Projects</a>
+                    <a href="#resources" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Resources</a>
+                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">About</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-accent to-accentSec text-sm font-semibold text-white hover:shadow-lg hover:shadow-accent/50 transition-all">Contact</a>
                 </div>
 
-                <div class="md:hidden flex items-center gap-3">
-                    <button onclick="toggleLanguage()" class="px-2 py-1 rounded border border-slate-700 text-xs font-bold text-slate-300" aria-label="Toggle language between English and Persian">
-                        <span id="lang-text-mobile">FA</span>
-                    </button>
+                <div class="md:hidden flex items-center">
                     <button id="mobile-menu-btn" class="text-slate-300 hover:text-accent focus:outline-none" aria-label="Toggle mobile menu">
                         <i class="fas fa-bars text-2xl"></i>
                     </button>
@@ -332,12 +322,12 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-darker/95 border-b border-slate-800 absolute w-full backdrop-blur-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors" data-i18n="nav_about">About</a>
-                <a href="#skills" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors" data-i18n="nav_skills">Skills</a>
-                <a href="#code" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors" data-i18n="nav_code">Code</a>
-                <a href="#projects" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors" data-i18n="nav_projects">Projects</a>
-                <a href="#resources" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors" data-i18n="nav_resources">Resources</a>
-                <a href="#contact" class="block px-3 py-3 text-base font-medium text-accent hover:bg-slate-800/50 rounded-md transition-colors" data-i18n="nav_contact">Contact</a>
+                <a href="#skills" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Skills</a>
+                <a href="#code" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Code</a>
+                <a href="#projects" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Projects</a>
+                <a href="#resources" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Resources</a>
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">About</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-accent hover:bg-slate-800/50 rounded-md transition-colors">Contact</a>
             </div>
         </div>
     </nav>
