@@ -3,8 +3,8 @@ const CACHE_NAME = 'portfolio-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/assets/profile.jpg',
-  '/assets/og-image.jpg',
+  '/assets/profile.png',
+  '/assets/og-image.png',
   '/assets/icon-192x192.png',
   '/assets/icon-512x512.png'
 ];
