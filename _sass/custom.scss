@@ -1,0 +1,153 @@
+/*
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+*/
+
+:root {
+  --primary-color: #00d4ff;
+  --secondary-color: #7c3aed;
+  --bg-dark: #0a0e27;
+  --glass-bg: rgba(26, 31, 58, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+/*
+body {
+  font-family: 'Inter', sans-serif !important;
+}
+*/
+
+/* Header */
+.masthead {
+  background: rgba(10, 14, 39, 0.95);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* Hero Style at the Main Page*/
+.hero-wrapper {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.2), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(0, 212, 255, 0.1), transparent 40%);
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--glass-border);
+}
+
+.hero-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 0%, var(--primary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: #a1a1aa;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+/* Buttons*/
+.btn-hero {
+  display: inline-block;
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none !important;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-glow {
+  background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+  margin: 0 10px;
+}
+
+.btn-primary-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+}
+
+.btn-secondary-outline {
+  background: transparent;
+  color: var(--primary-color) !important;
+  border: 2px solid var(--primary-color);
+  margin: 0 10px;
+}
+
+.btn-secondary-outline:hover {
+  background: rgba(0, 212, 255, 0.1);
+}
+
+/* Skills Card */
+.skill-tag {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.skill-tag:hover {
+  background: rgba(124, 58, 237, 0.15);
+  border-color: var(--primary-color);
+}
+
+
+/* Skills Table */
+.skills-table {
+  margin: 2rem 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.skills-table th,
+.skills-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.skills-table th {
+  background: rgba(124, 58, 237, 0.1);
+  font-weight: 700;
+}
+
+/* Project Cards */
+.post-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.post-card:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 20px rgba(0, 212, 255, 0.2);
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .btn-hero {
+    display: block;
+    margin: 0.5rem auto;
+  }
+}
