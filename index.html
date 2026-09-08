@@ -337,23 +337,23 @@
         <canvas id="particles-canvas"></canvas>
 
         <div class="formula-bg hidden md:block" style="top: 15%; left: 10%;">σ² = Σ(x-μ)²/N</div>
-        <div class="formula-bg hidden md:block" style="top: 60%; right: 15%;">P(A|B) = P(B|A)·P(A)/P(B)</div>
+        <div class="formula-bg hidden md:block" style="top: 60%; right: 15%;">θₜ₊₁ = θₜ - η∇θJ(θₜ)</div>
         <div class="formula-bg hidden md:block" style="bottom: 20%; left: 20%;">y = β₀ + β₁x + ε</div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="reveal active space-y-6 text-center lg:text-left rtl:lg:text-right">
+                <div class="reveal active space-y-6 text-center lg:text-left">
                     <div class="inline-flex items-center px-4 py-2 rounded-full border border-accent/30 bg-accent/5 backdrop-blur-sm text-accent text-xs font-bold tracking-wider uppercase">
                         <span class="relative flex h-2 w-2 ltr:mr-2 rtl:ml-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                         </span>
-                        <span data-i18n="hero_status">Open to Collaboration</span>
+                        <span>Looking for PhD Positions</span>
                     </div>
                     
                     <h1 class="text-5xl md:text-7xl font-extrabold leading-tight">
-                        <span class="text-slate-300" data-i18n="hero_greeting">Hello, I'm</span><br>
-                        <span class="text-gradient-stat font-black" data-i18n="hero_name">Parham Pishro</span>
+                        <span class="text-slate-300">Hello, I'm</span><br>
+                        <span class="text-gradient-stat font-black">Parham Pishro</span>
                     </h1>
                     
                     <div class="text-xl md:text-2xl text-slate-400 h-8 font-mono">
@@ -361,10 +361,10 @@
                     </div>
                     
                     <p class="text-lg text-slate-400 max-w-lg leading-relaxed mx-auto lg:mx-0 mt-4" data-i18n="hero_desc">
-                        Statistics Student & Data Analyst specializing in statistical modeling, data mining, and evidence-based insights.
+                        Data Scientist with a strong interest in Applied Machine Learning and Data-Driven Modeling for Real-World Problems.
                     </p>
                     
-                    <div class="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start rtl:lg:justify-end hero-buttons">
+                    <div class="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start hero-buttons">
                         <a href="/projects.html" class="group px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-accentSec hover:shadow-2xl hover:shadow-accent/40 text-white font-bold transition-all transform hover:-translate-y-1 flex items-center gap-2">
                             <i class="fas fa-folder-open group-hover:rotate-12 transition-transform"></i>
                             <span data-i18n="hero_btn_work">View Projects</span>
@@ -376,16 +376,16 @@
 
                     <div class="grid grid-cols-3 gap-4 pt-8 max-w-md mx-auto lg:mx-0">
                         <div class="text-center p-3 rounded-lg bg-slate-800/30 border border-slate-700/50 backdrop-blur-sm">
-                            <div class="text-2xl font-bold text-accent counter" data-target="3">0</div>
-                            <div class="text-xs text-slate-500" data-i18n="quick_years">Years</div>
+                            <div class="text-2xl font-bold text-accent counter" data-target="6">0</div>
+                            <div class="text-xs text-slate-500">Years</div>
                         </div>
                         <div class="text-center p-3 rounded-lg bg-slate-800/30 border border-slate-700/50 backdrop-blur-sm">
-                            <div class="text-2xl font-bold text-accentSec counter" data-target="15">0</div>
-                            <div class="text-xs text-slate-500" data-i18n="quick_projects">Projects</div>
+                            <div class="text-2xl font-bold text-accentSec counter" data-target="3">0</div>
+                            <div class="text-xs text-slate-500">Publications</div>
                         </div>
                         <div class="text-center p-3 rounded-lg bg-slate-800/30 border border-slate-700/50 backdrop-blur-sm">
                             <div class="text-2xl font-bold text-accentTer counter" data-target="7">0</div>
-                            <div class="text-xs text-slate-500" data-i18n="quick_certs">Certs</div>
+                            <div class="text-xs text-slate-500">Projects</div>
                         </div>
                     </div>
                 </div>
@@ -401,7 +401,7 @@
                                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500">
                         </div>
                         
-                        <div class="absolute -top-4 right-4 rtl:right-auto rtl:-left-4 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-accent/30 p-4 rounded-2xl shadow-2xl backdrop-blur-md z-20 animate-float">
+                        <div class="absolute -top-4 right-4 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-accent/30 p-4 rounded-2xl shadow-2xl backdrop-blur-md z-20 animate-float">
                             <div class="flex items-center gap-3">
                                 <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400">
                                     <i class="fab fa-python text-2xl"></i>
@@ -413,26 +413,26 @@
                             </div>
                         </div>
                         
-                        <div class="absolute bottom-8 -left-4 rtl:left-auto rtl:-right-4 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-accentSec/30 p-4 rounded-2xl shadow-2xl backdrop-blur-md z-20 animate-float" style="animation-delay: 1s;">
+                        <div class="absolute bottom-8 -left-4 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-accentSec/30 p-4 rounded-2xl shadow-2xl backdrop-blur-md z-20 animate-float" style="animation-delay: 1s;">
                             <div class="flex items-center gap-3">
                                 <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400">
-                                    <i class="fab fa-r-project text-2xl"></i>
+                                    <i class="fas fa-brain text-2xl"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-slate-400 font-mono">R Studio</p>
-                                    <p class="font-bold text-white">Statistics</p>
+                                    <p class="text-xs text-slate-400 font-mono">Data Mining</p>
+                                    <p class="font-bold text-white">Machine Learning</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="absolute top-1/2 -right-8 rtl:right-auto rtl:-left-8 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-accentTer/30 p-4 rounded-2xl shadow-2xl backdrop-blur-md z-20 animate-float" style="animation-delay: 2s;">
+                        <div class="absolute top-1/2 -right-8 bg-gradient-to-br from-slate-900/90 to-slate-800/90 border border-accentTer/30 p-4 rounded-2xl shadow-2xl backdrop-blur-md z-20 animate-float" style="animation-delay: 2s;">
                             <div class="flex items-center gap-3">
                                 <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400">
-                                    <i class="fas fa-file-excel text-2xl"></i>
+                                    <i class="fas fa-robot text-2xl"></i>
                                 </div>
                                 <div>
-                                    <p class="text-xs text-slate-400 font-mono">Excel</p>
-                                    <p class="font-bold text-white">Analysis</p>
+                                    <p class="text-xs text-slate-400 font-mono">AI</p>
+                                    <p class="font-bold text-white">Deep Learning</p>
                                 </div>
                             </div>
                         </div>
