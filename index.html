@@ -979,15 +979,15 @@
                 <span class="font-mono font-bold text-lg">&lt;Parham/&gt;</span>
             </div>
             <p class="text-slate-500 text-sm">
-                &copy; <span id="year"></span> Parham Pishro. <span data-i18n="footer_rights">All rights reserved.</span>
+                &copy; <span id="year"></span> Parham Pishro. All rights reserved.
             </p>
             <p class="text-slate-600 text-xs mt-2">
-                <span data-i18n="footer_tagline">Inspired and adapted from the work of AmirAli Satvati 📊</span>
+                Inspired and adapted from the work of AmirAli Satvati
             </p>
         </div>
     </footer>
 
-    <button id="scroll-to-top" class="fixed bottom-8 right-8 rtl:left-8 rtl:right-auto z-50 p-3 rounded-full bg-accent hover:bg-cyan-400 text-slate-900 shadow-lg shadow-cyan-500/50 transition-all transform hover:-translate-y-1" aria-label="Scroll to top">
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-accent hover:bg-cyan-400 text-slate-900 shadow-lg shadow-cyan-500/50 transition-all transform hover:-translate-y-1" aria-label="Scroll to top">
         <i class="fas fa-arrow-up text-xl"></i>
     </button>
 
@@ -1068,8 +1068,7 @@
         const typeElement = document.getElementById('typewriter');
 
         function typeWriter() {
-            const currentRoles = document.documentElement.dir === 'rtl' ? rolesFa : roles;
-            const currentRole = currentRoles[roleIndex];
+            const currentRole = roles[roleIndex];
             
             if (isDeleting) {
                 typeElement.textContent = currentRole.substring(0, charIndex - 1);
@@ -1086,7 +1085,7 @@
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
-                roleIndex = (roleIndex + 1) % currentRoles.length;
+                roleIndex = (roleIndex + 1) % roles.length;
             }
 
             setTimeout(typeWriter, typeDelay);
