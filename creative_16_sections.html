@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Developer Portfolio — 16 Section Showcase</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050816;
+      --panel: rgba(15, 23, 42, .68);
+      --panel-2: rgba(30, 41, 59, .45);
+      --line: rgba(148, 163, 184, .15);
+      --text: #e5eefb;
+      --muted: #94a3b8;
+      --cyan: #22d3ee;
+      --purple: #a78bfa;
+      --pink: #f472b6;
+      --green: #34d399;
+      --yellow: #facc15;
+    }
+
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      font-family: Inter, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(34,211,238,.10), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(167,139,250,.12), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(244,114,182,.08), transparent 28%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(to bottom, black, transparent 90%);
+      z-index: -2;
+    }
+
+    .mono { font-family: "JetBrains Mono", monospace; }
+
+    .glass {
+      background: linear-gradient(135deg, rgba(15,23,42,.82), rgba(15,23,42,.48));
+      border: 1px solid var(--line);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .section {
+      position: relative;
+      padding: 110px 20px;
+      max-width: 1240px;
+      margin: auto;
+    }
+
+    .section-heading {
+      max-width: 780px;
+      margin: 0 auto 55px;
+      text-align: center;
+    }
+
+    .section-heading .eyebrow {
+      color: var(--cyan);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      font-size: .72rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1;
+      margin: 0 0 18px;
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0 auto;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 { transition-delay: .08s; }
+    .delay-2 { transition-delay: .16s; }
+    .delay-3 { transition-delay: .24s; }
+    .delay-4 { transition-delay: .32s; }
+
+    .nav {
+      position: fixed;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 50;
+      width: min(1100px, calc(100% - 28px));
+      padding: 10px 14px;
+      border-radius: 999px;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+
+    .nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: .78rem;
+      padding: 9px 12px;
+      border-radius: 999px;
+      white-space: nowrap;
+      transition: .25s;
+    }
+
+    .nav a:hover {
+      color: white;
+      background: rgba(255,255,255,.07);
+    }
+
+    .brand {
+      font-weight: 800;
+      font-size: .95rem;
+      white-space: nowrap;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 150px 20px 90px;
+    }
+
+    .hero-orb {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(34,211,238,.18), transparent 68%);
+      filter: blur(8px);
+      animation: float 7s ease-in-out infinite;
+      z-index: -1;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-25px) scale(1.04); }
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 10vw, 7.8rem);
+      line-height: .9;
+      letter-spacing: -.07em;
+      margin: 18px 0;
+      font-weight: 800;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0 auto 28px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(34,211,238,.25);
+      background: rgba(34,211,238,.07);
+      color: #a5f3fc;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 12px 17px;
+      border-radius: 13px;
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .85rem;
+      border: 1px solid rgba(255,255,255,.1);
+      background: linear-gradient(135deg, rgba(34,211,238,.18), rgba(167,139,250,.18));
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      border-color: rgba(34,211,238,.45);
+      box-shadow: 0 18px 45px rgba(34,211,238,.10);
+    }
+
+    /* 01 — Terminal */
+    .terminal {
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 35px 90px rgba(0,0,0,.35);
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(2,6,23,.78);
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #64748b; }
+    .terminal-body { padding: 26px; background: rgba(2,6,23,.62); }
+    .terminal-line { margin: 12px 0; color: #cbd5e1; }
+    .terminal-line span { color: var(--cyan); }
+    .cursor { animation: blink 1s infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* 02 — Bento */
+    .bento {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      grid-auto-rows: 190px;
+      gap: 16px;
+    }
+
+    .bento-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 25px;
+      padding: 25px;
+      transition: .35s cubic-bezier(.2,.8,.2,1);
+    }
+
+    .bento-card:hover { transform: translateY(-7px) scale(1.01); }
+    .bento-card.featured { grid-row: span 2; }
+    .bento-card.wide { grid-column: span 2; }
+
+    .bento-card::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      right: -70px;
+      bottom: -80px;
+      border-radius: 50%;
+      background: rgba(34,211,238,.12);
+      filter: blur(20px);
+    }
+
+    /* 03 — Knowledge timeline */
+    .timeline {
+      position: relative;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 18px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(var(--cyan), var(--purple), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 58px;
+      margin-bottom: 34px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 10px;
+      top: 22px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 4px solid var(--bg);
+      background: var(--cyan);
+      box-shadow: 0 0 25px rgba(34,211,238,.5);
+    }
+
+    /* 04 — Commit history */
+    .commit-list { display: grid; gap: 12px; max-width: 950px; margin: auto; }
+
+    .commit {
+      display: grid;
+      grid-template-columns: 105px 1fr auto;
+      gap: 18px;
+      align-items: center;
+      padding: 18px 20px;
+      border-radius: 17px;
+      transition: .3s;
+    }
+
+    .commit:hover {
+      transform: translateX(7px);
+      border-color: rgba(167,139,250,.4);
+    }
+
+    .hash { color: var(--purple); font-size: .75rem; }
+    .commit-tag { font-size: .68rem; padding: 5px 8px; border-radius: 999px; background: rgba(52,211,153,.1); color: #86efac; }
+
+    /* 05 — Tilt cards */
+    .tilt-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      perspective: 1000px;
+    }
+
+    .tilt-card {
+      min-height: 330px;
+      border-radius: 25px;
+      padding: 28px;
+      transform-style: preserve-3d;
+      transition: transform .12s ease-out, border-color .25s;
+      overflow: hidden;
+    }
+
+    .tilt-card:hover { border-color: rgba(34,211,238,.4); }
+
+    .tilt-icon {
+      font-size: 3rem;
+      transform: translateZ(45px);
+      display: inline-block;
+    }
+
+    /* 06 — Interactive library */
+    .library-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-bottom: 20px;
+    }
+
+    .filter {
+      cursor: pointer;
+      border: 1px solid var(--line);
+      color: #cbd5e1;
+      background: rgba(15,23,42,.65);
+      border-radius: 999px;
+      padding: 8px 13px;
+      font-size: .76rem;
+    }
+
+    .filter.active, .filter:hover {
+      border-color: rgba(34,211,238,.4);
+      color: #a5f3fc;
+    }
+
+    .library-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
+    }
+
+    .resource-card {
+      padding: 23px;
+      border-radius: 20px;
+      transition: .3s;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px rgba(0,0,0,.25);
+    }
+
+    .resource-card.hidden { display: none; }
+
+    /* 07 — Skill radar / metrics */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 14px;
+    }
+
+    .metric {
+      padding: 26px;
+      border-radius: 22px;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .metric-number {
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -.06em;
+    }
+
+    .progress {
+      height: 7px;
+      background: rgba(148,163,184,.12);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 18px;
+    }
+
+    .progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      border-radius: inherit;
+      transition: width 1.5s cubic-bezier(.2,.8,.2,1);
+    }
+
+    /* 08 — FAQ accordion */
+    .faq {
+      max-width: 850px;
+      margin: auto;
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 20px 22px;
+      border: 0;
+      color: white;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      color: var(--muted);
+      line-height: 1.8;
+      padding: 0 22px;
+      transition: max-height .4s ease, padding .4s ease;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 180px;
+      padding: 0 22px 20px;
+    }
+
+    .plus { transition: transform .3s; }
+    .faq-item.open .plus { transform: rotate(45deg); }
+
+    /* 09 — Roadmap */
+    .roadmap {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    .roadmap::before {
+      content: "";
+      position: absolute;
+      top: 34px;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+      opacity: .45;
+    }
+
+    .road-step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .road-dot {
+      width: 68px;
+      height: 68px;
+      display: grid;
+      place-items: center;
+      margin: auto;
+      border-radius: 50%;
+      background: #0b1224;
+      border: 1px solid rgba(255,255,255,.14);
+      font-weight: 800;
+      box-shadow: 0 0 0 10px rgba(5,8,22,.9);
+    }
+
+    /* 10 — Testimonials */
+    .quotes {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+    }
+
+    .quote {
+      padding: 27px;
+      border-radius: 24px;
+      transition: .3s;
+    }
+
+    .quote:hover { transform: translateY(-7px); }
+
+    .quote-mark {
+      font-size: 4rem;
+      line-height: .6;
+      color: var(--cyan);
+      opacity: .55;
+    }
+
+    /* 11 — Pricing */
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .price-card {
+      padding: 30px;
+      border-radius: 25px;
+      position: relative;
+    }
+
+    .price-card.featured-price {
+      border-color: rgba(34,211,238,.4);
+      transform: translateY(-10px);
+      box-shadow: 0 30px 70px rgba(34,211,238,.08);
+    }
+
+    .price {
+      font-size: 3.3rem;
+      font-weight: 800;
+      letter-spacing: -.07em;
+      margin: 20px 0;
+    }
+
+    .feature-list { display: grid; gap: 12px; color: #cbd5e1; font-size: .86rem; }
+
+    /* 12 — Stats / ticker */
+    .ticker {
+      overflow: hidden;
+      border-block: 1px solid var(--line);
+      padding: 18px 0;
+      white-space: nowrap;
+    }
+
+    .ticker-track {
+      display: inline-flex;
+      gap: 45px;
+      animation: marquee 22s linear infinite;
+    }
+
+    @keyframes marquee {
+      to { transform: translateX(-50%); }
+    }
+
+    /* 13 — Process */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 15px;
+    }
+
+    .process-card {
+      padding: 27px;
+      border-radius: 23px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg,var(--cyan),var(--purple));
+      transition: width .5s;
+    }
+
+    .process-card:hover::before { width: 100%; }
+
+    /* 14 — Changelog */
+    .change-grid {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 15px;
+      max-width: 850px;
+      margin: auto;
+    }
+
+    .version {
+      color: var(--cyan);
+      font-weight: 800;
+      padding-top: 24px;
+    }
+
+    .change-card {
+      padding: 24px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+    }
+
+    /* 15 — Contact */
+    .contact-box {
+      max-width: 900px;
+      margin: auto;
+      border-radius: 30px;
+      padding: 55px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-box::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: conic-gradient(from 180deg, transparent, rgba(34,211,238,.14), transparent, rgba(167,139,250,.12), transparent);
+      animation: spin 12s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .contact-content { position: relative; z-index: 1; }
+
+    /* 16 — Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 45px 20px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .float-shape {
+      position: fixed;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(70px);
+      opacity: .09;
+      z-index: -1;
+      background: var(--purple);
+      animation: drift 12s ease-in-out infinite alternate;
+    }
+
+    .shape-a { top: 15%; left: -100px; }
+    .shape-b { bottom: 10%; right: -90px; background: var(--cyan); animation-delay: -4s; }
+
+    @keyframes drift {
+      from { transform: translate(0,0); }
+      to { transform: translate(80px,40px); }
+    }
+
+    @media (max-width: 900px) {
+      .bento { grid-template-columns: 1fr 1fr; }
+      .bento-card.featured { grid-row: span 1; }
+      .bento-card.wide { grid-column: span 2; }
+      .tilt-grid, .library-grid, .quotes, .pricing, .process { grid-template-columns: 1fr 1fr; }
+      .metrics { grid-template-columns: 1fr 1fr; }
+      .roadmap { grid-template-columns: 1fr 1fr; gap: 35px 0; }
+      .roadmap::before { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .section { padding: 80px 16px; }
+      .nav { top: 10px; }
+      .brand { display: none; }
+      .nav-inner { justify-content: center; }
+      .bento, .tilt-grid, .library-grid, .quotes, .pricing, .process, .metrics { grid-template-columns: 1fr; }
+      .bento-card.wide { grid-column: span 1; }
+      .commit { grid-template-columns: 1fr; gap: 7px; }
+      .timeline-item { padding-left: 45px; }
+      .change-grid { grid-template-columns: 1fr; }
+      .version { padding-top: 0; }
+      .contact-box { padding: 35px 20px; }
+      .roadmap { grid-template-columns: 1fr; gap: 28px; }
+      .price-card.featured-price { transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="float-shape shape-a"></div>
+  <div class="float-shape shape-b"></div>
+
+  <!-- Navigation -->
+  <nav class="nav glass">
+    <div class="nav-inner">
+      <div class="brand gradient-text">DEV.STUDIO</div>
+      <div class="nav-links">
+        <a href="#terminal">Terminal</a>
+        <a href="#bento">Bento</a>
+        <a href="#knowledge">Knowledge</a>
+        <a href="#commits">Commits</a>
+        <a href="#tilt">3D</a>
+        <a href="#library">Library</a>
+        <a href="#skills">Skills</a>
+        <a href="#faq">FAQ</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-orb"></div>
+    <div class="reveal active">
+      <span class="pill mono">16 creative UI sections · one HTML file</span>
+      <h1>Build something<br><span class="gradient-text">different.</span></h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+        posuere, libero at cursus volutpat, justo neque tincidunt nunc,
+        vitae consequat ipsum lorem non erat.
+      </p>
+      <div class="flex flex-wrap justify-center gap-3">
+        <a class="btn" href="#terminal">Explore sections ↓</a>
+        <a class="btn" href="#contact">Start a project ↗</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 01 TERMINAL -->
+  <section id="terminal" class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">01 / Code alternative</div>
+      <h2>Terminal <span class="gradient-text">Command Center</span></h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. A terminal-inspired presentation for repositories, scripts and developer workflows.</p>
+    </div>
+
+    <div class="terminal glass reveal delay-1">
+      <div class="terminal-top">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+        <span class="mono text-xs text-slate-500 ml-3">~/workspace/creative-lab</span>
+      </div>
+      <div class="terminal-body mono text-sm">
+        <div class="terminal-line"><span>guest@studio</span>:~$ ls projects/</div>
+        <div class="terminal-line text-slate-400">alpha-ui &nbsp; orbit-api &nbsp; nova-dashboard &nbsp; prism-engine</div>
+        <div class="terminal-line"><span>guest@studio</span>:~$ cat README.md</div>
+        <div class="terminal-line text-slate-300">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+        <div class="terminal-line"><span>guest@studio</span>:~$ npm run showcase</div>
+        <div class="terminal-line text-emerald-400">✓ compiled successfully in 1.84s</div>
+        <div class="terminal-line"><span>guest@studio</span>:~$ <span class="cursor">▋</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 BENTO -->
+  <section id="bento" class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">02 / Project alternative</div>
+      <h2>Project <span class="gradient-text">Bento Archive</span></h2>
+      <p>یک چیدمان نامتقارن برای نمایش پروژه‌ها، case studyها، محصولات و دستاوردها.</p>
+    </div>
+
+    <div class="bento">
+      <article class="bento-card featured glass reveal">
+        <div class="text-5xl mb-8">◈</div>
+        <span class="pill">Featured project</span>
+        <h3 class="text-3xl font-bold mt-5 mb-3">Project Aurora</h3>
+        <p class="text-slate-400 leading-7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <a class="btn mt-7" href="#">View case study →</a>
+      </article>
+      <article class="bento-card glass reveal delay-1">
+        <div class="text-3xl mb-4">⚡</div>
+        <h3 class="text-xl font-bold">Nova API</h3>
+        <p class="text-sm text-slate-400 mt-2">Lorem ipsum dolor sit amet.</p>
+      </article>
+      <article class="bento-card glass reveal delay-2">
+        <div class="text-3xl mb-4">◎</div>
+        <h3 class="text-xl font-bold">Orbit UI</h3>
+        <p class="text-sm text-slate-400 mt-2">Consectetur adipiscing elit.</p>
+      </article>
+      <article class="bento-card wide glass reveal delay-3">
+        <div class="flex items-end justify-between h-full">
+          <div>
+            <span class="text-xs text-cyan-300 mono">EXPERIMENTAL</span>
+            <h3 class="text-2xl font-bold mt-2">Prism Engine</h3>
+            <p class="text-sm text-slate-400 mt-2">Lorem ipsum dolor sit amet, consectetur.</p>
+          </div>
+          <div class="text-6xl opacity-20">✦</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 03 KNOWLEDGE -->
+  <section id="knowledge" class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">03 / Resource alternative</div>
+      <h2>Knowledge <span class="gradient-text">Learning Path</span></h2>
+      <p>منابع را به شکل مسیر یادگیری و فصل‌های تعاملی نمایش بده.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="glass rounded-3xl p-6">
+          <span class="text-xs mono text-cyan-300">CHAPTER 01 · 12 MIN</span>
+          <h3 class="text-xl font-bold mt-2">The Foundation</h3>
+          <p class="text-slate-400 leading-7 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.</p>
+          <a href="#" class="btn mt-5">Open chapter →</a>
+        </div>
+      </div>
+      <div class="timeline-item reveal delay-1">
+        <div class="timeline-dot"></div>
+        <div class="glass rounded-3xl p-6">
+          <span class="text-xs mono text-purple-300">CHAPTER 02 · 18 MIN</span>
+          <h3 class="text-xl font-bold mt-2">Advanced Patterns</h3>
+          <p class="text-slate-400 leading-7 mt-2">Praesent libero. Sed cursus ante dapibus diam. Sed nisi.</p>
+          <a href="#" class="btn mt-5">Read lesson →</a>
+        </div>
+      </div>
+      <div class="timeline-item reveal delay-2">
+        <div class="timeline-dot"></div>
+        <div class="glass rounded-3xl p-6">
+          <span class="text-xs mono text-pink-300">CHAPTER 03 · 25 MIN</span>
+          <h3 class="text-xl font-bold mt-2">Production Workflow</h3>
+          <p class="text-slate-400 leading-7 mt-2">Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper.</p>
+          <a href="#" class="btn mt-5">Start module →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 COMMITS -->
+  <section id="commits" class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">04 / Code alternative</div>
+      <h2>Commit <span class="gradient-text">History</span></h2>
+      <p>به‌جای cardهای معمولی، کد یا پروژه را مثل تاریخچه تغییرات نمایش بده.</p>
+    </div>
+
+    <div class="commit-list">
+      <div class="commit glass reveal"><div class="hash mono">a81c92f</div><div><b>feat:</b> Lorem ipsum navigation system</div><span class="commit-tag">FEATURE</span></div>
+      <div class="commit glass reveal delay-1"><div class="hash mono">e41d2aa</div><div><b>fix:</b> Consectetur adipiscing responsive layout</div><span class="commit-tag">FIX</span></div>
+      <div class="commit glass reveal delay-2"><div class="hash mono">92bf701</div><div><b>refactor:</b> Integer posuere component architecture</div><span class="commit-tag">REFACTOR</span></div>
+      <div class="commit glass reveal delay-3"><div class="hash mono">f7aa120</div><div><b>perf:</b> Sed do eiusmod animation pipeline</div><span class="commit-tag">PERF</span></div>
+    </div>
+  </section>
+
+  <!-- 05 TILT -->
+  <section id="tilt" class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">05 / Project alternative</div>
+      <h2>3D <span class="gradient-text">Tilt Cards</span></h2>
+      <p>کارت‌هایی که با حرکت موس سه‌بعدی می‌شوند و برای showcase محصولات یا پروژه‌ها مناسب‌اند.</p>
+    </div>
+
+    <div class="tilt-grid">
+      <article class="tilt-card glass reveal" data-tilt>
+        <div class="tilt-icon">◉</div>
+        <h3 class="text-2xl font-bold mt-8">Vision OS</h3>
+        <p class="text-slate-400 leading-7 mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <div class="mt-7 text-xs mono text-cyan-300">UI / SYSTEM / 2026</div>
+      </article>
+      <article class="tilt-card glass reveal delay-1" data-tilt>
+        <div class="tilt-icon">✦</div>
+        <h3 class="text-2xl font-bold mt-8">Lumina</h3>
+        <p class="text-slate-400 leading-7 mt-3">Sed do eiusmod tempor incididunt ut labore et dolore.</p>
+        <div class="mt-7 text-xs mono text-purple-300">BRAND / WEB / 2026</div>
+      </article>
+      <article class="tilt-card glass reveal delay-2" data-tilt>
+        <div class="tilt-icon">⌁</div>
+        <h3 class="text-2xl font-bold mt-8">Flux Data</h3>
+        <p class="text-slate-400 leading-7 mt-3">Ut enim ad minim veniam, quis nostrud exercitation.</p>
+        <div class="mt-7 text-xs mono text-pink-300">DATA / DASHBOARD / 2026</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 06 LIBRARY -->
+  <section id="library" class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">06 / Resource alternative</div>
+      <h2>Interactive <span class="gradient-text">Library</span></h2>
+      <p>Resourceها با filter و category؛ مناسب docs، مقاله، ابزار، template و tutorial.</p>
+    </div>
+
+    <div class="library-toolbar reveal">
+      <button class="filter active" data-filter="all">All</button>
+      <button class="filter" data-filter="article">Articles</button>
+      <button class="filter" data-filter="tool">Tools</button>
+      <button class="filter" data-filter="template">Templates</button>
+    </div>
+
+    <div class="library-grid">
+      <article class="resource-card glass reveal" data-category="article">
+        <span class="text-xs mono text-cyan-300">ARTICLE</span>
+        <h3 class="text-xl font-bold mt-3">Lorem Design Systems</h3>
+        <p class="text-sm text-slate-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </article>
+      <article class="resource-card glass reveal delay-1" data-category="tool">
+        <span class="text-xs mono text-purple-300">TOOL</span>
+        <h3 class="text-xl font-bold mt-3">Ipsum Formatter</h3>
+        <p class="text-sm text-slate-400 mt-2">Praesent commodo cursus magna, vel scelerisque nisl.</p>
+      </article>
+      <article class="resource-card glass reveal delay-2" data-category="template">
+        <span class="text-xs mono text-pink-300">TEMPLATE</span>
+        <h3 class="text-xl font-bold mt-3">Dolor Dashboard</h3>
+        <p class="text-sm text-slate-400 mt-2">Donec sed odio dui. Nullam id dolor id nibh ultricies.</p>
+      </article>
+      <article class="resource-card glass reveal" data-category="article">
+        <span class="text-xs mono text-cyan-300">ARTICLE</span>
+        <h3 class="text-xl font-bold mt-3">Amet Motion</h3>
+        <p class="text-sm text-slate-400 mt-2">Maecenas faucibus mollis interdum.</p>
+      </article>
+      <article class="resource-card glass reveal delay-1" data-category="tool">
+        <span class="text-xs mono text-purple-300">TOOL</span>
+        <h3 class="text-xl font-bold mt-3">Sit Color Lab</h3>
+        <p class="text-sm text-slate-400 mt-2">Curabitur blandit tempus porttitor.</p>
+      </article>
+      <article class="resource-card glass reveal delay-2" data-category="template">
+        <span class="text-xs mono text-pink-300">TEMPLATE</span>
+        <h3 class="text-xl font-bold mt-3">Elit Starter</h3>
+        <p class="text-sm text-slate-400 mt-2">Etiam porta sem malesuada magna mollis euismod.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 07 SKILLS -->
+  <section id="skills" class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">07 / New section</div>
+      <h2>Skills & <span class="gradient-text">Metrics</span></h2>
+      <p>یک بخش آماری مدرن برای skill، تجربه، پروژه و performance.</p>
+    </div>
+
+    <div class="metrics">
+      <div class="metric glass reveal"><div class="metric-number gradient-text">98%</div><div class="text-slate-400 text-sm">Frontend</div><div class="progress"><span data-width="98%"></span></div></div>
+      <div class="metric glass reveal delay-1"><div class="metric-number gradient-text">91%</div><div class="text-slate-400 text-sm">Backend</div><div class="progress"><span data-width="91%"></span></div></div>
+      <div class="metric glass reveal delay-2"><div class="metric-number gradient-text">94%</div><div class="text-slate-400 text-sm">UI / UX</div><div class="progress"><span data-width="94%"></span></div></div>
+      <div class="metric glass reveal delay-3"><div class="metric-number gradient-text">87%</div><div class="text-slate-400 text-sm">Motion</div><div class="progress"><span data-width="87%"></span></div></div>
+    </div>
+  </section>
+
+  <!-- 08 FAQ -->
+  <section id="faq" class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">08 / New section</div>
+      <h2>Frequently Asked <span class="gradient-text">Questions</span></h2>
+      <p>FAQ آکاردئونی برای معرفی خدمات، پروژه یا مستندات.</p>
+    </div>
+
+    <div class="faq">
+      <div class="faq-item glass reveal">
+        <button class="faq-question">Lorem ipsum dolor sit amet?<span class="plus text-xl">＋</span></button>
+        <div class="faq-answer">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</div>
+      </div>
+      <div class="faq-item glass reveal delay-1">
+        <button class="faq-question">Consectetur adipiscing elit?<span class="plus text-xl">＋</span></button>
+        <div class="faq-answer">Sed posuere consectetur est at lobortis. Cras mattis consectetur purus sit amet fermentum.</div>
+      </div>
+      <div class="faq-item glass reveal delay-2">
+        <button class="faq-question">Sed do eiusmod tempor?<span class="plus text-xl">＋</span></button>
+        <div class="faq-answer">Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 09 ROADMAP -->
+  <section id="roadmap" class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">09 / New section</div>
+      <h2>Product <span class="gradient-text">Roadmap</span></h2>
+      <p>برای product، پروژه یا مسیر رشد از یک timeline افقی استفاده کن.</p>
+    </div>
+
+    <div class="roadmap">
+      <div class="road-step reveal"><div class="road-dot">01</div><h3 class="font-bold mt-5">Research</h3><p class="text-sm text-slate-500 mt-2">Lorem ipsum dolor.</p></div>
+      <div class="road-step reveal delay-1"><div class="road-dot">02</div><h3 class="font-bold mt-5">Design</h3><p class="text-sm text-slate-500 mt-2">Consectetur elit.</p></div>
+      <div class="road-step reveal delay-2"><div class="road-dot">03</div><h3 class="font-bold mt-5">Build</h3><p class="text-sm text-slate-500 mt-2">Sed tempor.</p></div>
+      <div class="road-step reveal delay-3"><div class="road-dot">04</div><h3 class="font-bold mt-5">Launch</h3><p class="text-sm text-slate-500 mt-2">Donec vitae.</p></div>
+    </div>
+  </section>
+
+  <!-- 10 TESTIMONIALS -->
+  <section class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">10 / New section</div>
+      <h2>Words from the <span class="gradient-text">Team</span></h2>
+      <p>بخش testimonial با طراحی شیشه‌ای و hover animation.</p>
+    </div>
+
+    <div class="quotes">
+      <article class="quote glass reveal">
+        <div class="quote-mark">“</div>
+        <p class="text-slate-300 leading-8 mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <div class="mt-6 font-bold">Alex Morgan</div>
+        <div class="text-xs text-slate-500 mt-1">Product Lead</div>
+      </article>
+      <article class="quote glass reveal delay-1">
+        <div class="quote-mark">“</div>
+        <p class="text-slate-300 leading-8 mt-4">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div class="mt-6 font-bold">Jamie Stone</div>
+        <div class="text-xs text-slate-500 mt-1">Creative Director</div>
+      </article>
+      <article class="quote glass reveal delay-2">
+        <div class="quote-mark">“</div>
+        <p class="text-slate-300 leading-8 mt-4">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        <div class="mt-6 font-bold">Taylor Reed</div>
+        <div class="text-xs text-slate-500 mt-1">Engineering</div>
+      </article>
+    </div>
+  </section>
+
+  <!-- 11 PRICING -->
+  <section class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">11 / New section</div>
+      <h2>Simple <span class="gradient-text">Pricing</span></h2>
+      <p>برای خدمات یا SaaS می‌توانی این layout را مستقیم استفاده کنی.</p>
+    </div>
+
+    <div class="pricing">
+      <article class="price-card glass reveal">
+        <span class="pill">STARTER</span>
+        <h3 class="text-2xl font-bold mt-5">Basic</h3>
+        <div class="price">$19</div>
+        <div class="feature-list">
+          <div>✓ Lorem ipsum features</div>
+          <div>✓ Consectetur support</div>
+          <div>✓ Basic analytics</div>
+        </div>
+        <a href="#" class="btn mt-8 w-full">Choose plan</a>
+      </article>
+
+      <article class="price-card glass featured-price reveal delay-1">
+        <span class="pill">MOST POPULAR</span>
+        <h3 class="text-2xl font-bold mt-5">Pro</h3>
+        <div class="price">$49</div>
+        <div class="feature-list">
+          <div>✓ Everything in Basic</div>
+          <div>✓ Advanced components</div>
+          <div>✓ Priority support</div>
+          <div>✓ Custom integrations</div>
+        </div>
+        <a href="#" class="btn mt-8 w-full">Get started</a>
+      </article>
+
+      <article class="price-card glass reveal delay-2">
+        <span class="pill">TEAMS</span>
+        <h3 class="text-2xl font-bold mt-5">Scale</h3>
+        <div class="price">$99</div>
+        <div class="feature-list">
+          <div>✓ Unlimited projects</div>
+          <div>✓ Team collaboration</div>
+          <div>✓ Dedicated support</div>
+        </div>
+        <a href="#" class="btn mt-8 w-full">Contact sales</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- 12 TICKER -->
+  <section class="ticker">
+    <div class="ticker-track mono text-sm text-slate-500">
+      <span>✦ CREATIVE DEVELOPMENT</span>
+      <span>✦ DESIGN SYSTEMS</span>
+      <span>✦ INTERACTIVE UI</span>
+      <span>✦ MOTION DESIGN</span>
+      <span>✦ FRONTEND ENGINEERING</span>
+      <span>✦ CREATIVE DEVELOPMENT</span>
+      <span>✦ DESIGN SYSTEMS</span>
+      <span>✦ INTERACTIVE UI</span>
+      <span>✦ MOTION DESIGN</span>
+      <span>✦ FRONTEND ENGINEERING</span>
+    </div>
+  </section>
+
+  <!-- 13 PROCESS -->
+  <section class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">13 / New section</div>
+      <h2>How we <span class="gradient-text">Work</span></h2>
+      <p>فرآیند کار را به شکل سه مرحله‌ای با hover line نشان بده.</p>
+    </div>
+
+    <div class="process">
+      <article class="process-card glass reveal">
+        <div class="text-cyan-300 mono text-sm">01</div>
+        <h3 class="text-2xl font-bold mt-5">Discover</h3>
+        <p class="text-slate-400 leading-7 mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. We define goals and constraints.</p>
+      </article>
+      <article class="process-card glass reveal delay-1">
+        <div class="text-purple-300 mono text-sm">02</div>
+        <h3 class="text-2xl font-bold mt-5">Create</h3>
+        <p class="text-slate-400 leading-7 mt-3">Sed do eiusmod tempor incididunt ut labore. We prototype and build the experience.</p>
+      </article>
+      <article class="process-card glass reveal delay-2">
+        <div class="text-pink-300 mono text-sm">03</div>
+        <h3 class="text-2xl font-bold mt-5">Deliver</h3>
+        <p class="text-slate-400 leading-7 mt-3">Ut enim ad minim veniam. We test, refine and launch the final product.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- 14 CHANGELOG -->
+  <section class="section">
+    <div class="section-heading reveal">
+      <div class="eyebrow mono">14 / New section</div>
+      <h2>Release <span class="gradient-text">Changelog</span></h2>
+      <p>برای نمایش نسخه‌ها، آپدیت‌ها و تغییرات محصول.</p>
+    </div>
+
+    <div class="change-grid">
+      <div class="version mono reveal">v2.4</div>
+      <div class="change-card glass reveal">
+        <div class="text-xs text-cyan-300 mono">SEP 2026</div>
+        <h3 class="text-xl font-bold mt-2">New visual engine</h3>
+        <p class="text-sm text-slate-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+
+      <div class="version mono reveal">v2.3</div>
+      <div class="change-card glass reveal delay-1">
+        <div class="text-xs text-purple-300 mono">AUG 2026</div>
+        <h3 class="text-xl font-bold mt-2">Performance update</h3>
+        <p class="text-sm text-slate-400 mt-2">Sed do eiusmod tempor incididunt ut labore et dolore.</p>
+      </div>
+
+      <div class="version mono reveal">v2.2</div>
+      <div class="change-card glass reveal delay-2">
+        <div class="text-xs text-pink-300 mono">JUL 2026</div>
+        <h3 class="text-xl font-bold mt-2">Component refresh</h3>
+        <p class="text-sm text-slate-400 mt-2">Duis aute irure dolor in reprehenderit in voluptate velit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 CONTACT -->
+  <section id="contact" class="section">
+    <div class="contact-box glass reveal">
+      <div class="contact-content">
+        <span class="pill mono">AVAILABLE FOR SELECTED PROJECTS</span>
+        <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight mt-7">
+          Let's build something <span class="gradient-text">memorable.</span>
+        </h2>
+        <p class="text-slate-400 leading-8 max-w-2xl mx-auto mt-5">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus.
+        </p>
+        <div class="flex flex-wrap justify-center gap-3 mt-8">
+          <a class="btn" href="mailto:hello@example.com">hello@example.com ↗</a>
+          <a class="btn" href="#">Download CV ↓</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 FOOTER -->
+  <footer>
+    <div class="mono text-xs mb-3">© 2026 DEV.STUDIO</div>
+    <div class="text-sm">Lorem ipsum dolor sit amet — built with HTML, CSS & JavaScript.</div>
+  </footer>
+
+  <script>
+    // Reveal on scroll
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("active");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+
+    // Skill progress animation
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll(".progress span").forEach(bar => {
+            bar.style.width = bar.dataset.width;
+          });
+          progressObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .3 });
+
+    document.querySelectorAll(".metrics").forEach(el => progressObserver.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll(".faq-question").forEach(button => {
+      button.addEventListener("click", () => {
+        const item = button.closest(".faq-item");
+        document.querySelectorAll(".faq-item").forEach(other => {
+          if (other !== item) other.classList.remove("open");
+        });
+        item.classList.toggle("open");
+      });
+    });
+
+    // Resource filters
+    const filters = document.querySelectorAll(".filter");
+    const resourceCards = document.querySelectorAll(".resource-card");
+
+    filters.forEach(filter => {
+      filter.addEventListener("click", () => {
+        filters.forEach(f => f.classList.remove("active"));
+        filter.classList.add("active");
+
+        const category = filter.dataset.filter;
+
+        resourceCards.forEach(card => {
+          const show = category === "all" || card.dataset.category === category;
+          card.classList.toggle("hidden", !show);
+        });
+      });
+    });
+
+    // 3D tilt cards
+    document.querySelectorAll("[data-tilt]").forEach(card => {
+      card.addEventListener("mousemove", e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const rotateY = ((x / rect.width) - .5) * 14;
+        const rotateX = ((y / rect.height) - .5) * -14;
+
+        card.style.transform =
+          `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
+      });
+
+      card.addEventListener("mouseleave", () => {
+        card.style.transform =
+          "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)";
+      });
+    });
+
+    // Small parallax effect for background shapes
+    window.addEventListener("mousemove", e => {
+      const x = (e.clientX / window.innerWidth - .5) * 18;
+      const y = (e.clientY / window.innerHeight - .5) * 18;
+
+      document.querySelector(".shape-a").style.transform = `translate(${x}px, ${y}px)`;
+      document.querySelector(".shape-b").style.transform = `translate(${-x}px, ${-y}px)`;
+    });
+  </script>
+</body>
+</html>
