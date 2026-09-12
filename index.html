@@ -288,6 +288,145 @@
             #particles-canvas { display: none; }
             .formula-bg { display: none; }
         }
+
+                /* =========================================
+           Knowledge Base / FAQ Library
+           ========================================= */
+        
+        .knowledge-card {
+            background: linear-gradient(
+                135deg,
+                rgba(15, 23, 42, 0.85),
+                rgba(30, 41, 59, 0.65)
+            );
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+        
+        .knowledge-card:hover {
+            border-color: rgba(6, 182, 212, 0.45);
+            box-shadow: 0 20px 50px rgba(6, 182, 212, 0.08);
+        }
+        
+        /* Category buttons */
+        
+        .knowledge-filter {
+            padding: 0.65rem 1rem;
+            border-radius: 999px;
+            border: 1px solid rgba(71, 85, 105, 0.6);
+            background: rgba(15, 23, 42, 0.55);
+            color: #94a3b8;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .knowledge-filter:hover {
+            color: #e2e8f0;
+            border-color: rgba(6, 182, 212, 0.45);
+            background: rgba(6, 182, 212, 0.08);
+        }
+        
+        .knowledge-filter.active {
+            color: white;
+            border-color: rgba(6, 182, 212, 0.5);
+            background: linear-gradient(
+                135deg,
+                rgba(6, 182, 212, 0.18),
+                rgba(139, 92, 246, 0.18)
+            );
+            box-shadow: 0 8px 25px rgba(6, 182, 212, 0.12);
+        }
+        
+        /* FAQ items */
+        
+        .knowledge-item {
+            border-top: 1px solid rgba(71, 85, 105, 0.35);
+        }
+        
+        .knowledge-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            color: #e2e8f0;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .knowledge-question:hover {
+            color: #22d3ee;
+            background: rgba(6, 182, 212, 0.04);
+        }
+        
+        .knowledge-question .question-number {
+            color: #64748b;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            min-width: 2rem;
+        }
+        
+        .knowledge-question .question-text {
+            flex: 1;
+            font-weight: 600;
+        }
+        
+        .knowledge-question .question-icon {
+            color: #06b6d4;
+            transition: transform 0.3s ease;
+        }
+        
+        .knowledge-item.open .question-icon {
+            transform: rotate(45deg);
+        }
+        
+        .knowledge-answer {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.35s ease;
+        }
+        
+        .knowledge-answer-inner {
+            overflow: hidden;
+        }
+        
+        .knowledge-answer-content {
+            padding: 0 1.5rem 1.35rem 4.5rem;
+            color: #94a3b8;
+            line-height: 1.8;
+            font-size: 0.9rem;
+        }
+        
+        .knowledge-item.open .knowledge-answer {
+            grid-template-rows: 1fr;
+        }
+        
+        .knowledge-item.hidden-category {
+            display: none;
+        }
+        
+        /* Mobile */
+        
+        @media (max-width: 640px) {
+            .knowledge-question {
+                padding: 1rem;
+            }
+        
+            .knowledge-answer-content {
+                padding: 0 1rem 1.15rem 3.25rem;
+            }
+        
+            .knowledge-question .question-text {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body class="antialiased font-sans relative selection:bg-accent/30 selection:text-white">
@@ -787,6 +926,368 @@
         </div>
     </section>
 
+    <!-- Knowledge Base / FAQ Library -->
+    <section id="knowledge" class="py-24 relative bg-dark overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+            <!-- Section Header -->
+            <div class="text-center mb-12 reveal">
+    
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-accentSec/20 mb-6 border border-accent/30">
+                    <i class="fas fa-book-open text-3xl text-accent"></i>
+                </div>
+    
+                <div class="text-accent text-xs font-mono font-bold uppercase tracking-widest mb-3">
+                    Knowledge Base
+                </div>
+    
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    Questions & <span class="gradient-text">Answers</span>
+                </h2>
+    
+                <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                    A small collection of questions about statistics, machine learning,
+                    research, and programming.
+                </p>
+    
+            </div>
+    
+    
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 reveal">
+    
+                <div class="text-center p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
+                    <div class="text-2xl font-black text-accent">10</div>
+                    <div class="text-xs text-slate-500 mt-1">Questions</div>
+                </div>
+    
+                <div class="text-center p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
+                    <div class="text-2xl font-black text-accentSec">4</div>
+                    <div class="text-xs text-slate-500 mt-1">Categories</div>
+                </div>
+    
+                <div class="text-center p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
+                    <div class="text-2xl font-black text-emerald-400">∞</div>
+                    <div class="text-xs text-slate-500 mt-1">Learning</div>
+                </div>
+    
+                <div class="text-center p-4 rounded-2xl bg-slate-900/50 border border-slate-800">
+                    <div class="text-2xl font-black text-purple-400">01</div>
+                    <div class="text-xs text-slate-500 mt-1">Knowledge Hub</div>
+                </div>
+    
+            </div>
+    
+    
+            <!-- Category Filters -->
+            <div class="flex flex-wrap justify-center gap-3 mb-8 reveal">
+    
+                <button class="knowledge-filter active" data-category="all">
+                    All
+                </button>
+    
+                <button class="knowledge-filter" data-category="statistics">
+                    <i class="fas fa-chart-line mr-1"></i>
+                    Statistics
+                </button>
+    
+                <button class="knowledge-filter" data-category="machine-learning">
+                    <i class="fas fa-brain mr-1"></i>
+                    Machine Learning
+                </button>
+    
+                <button class="knowledge-filter" data-category="research">
+                    <i class="fas fa-flask mr-1"></i>
+                    Research
+                </button>
+    
+                <button class="knowledge-filter" data-category="programming">
+                    <i class="fas fa-code mr-1"></i>
+                    Programming
+                </button>
+    
+            </div>
+    
+    
+            <!-- FAQ Library -->
+            <div class="knowledge-card reveal delay-1">
+    
+                <!-- Question 01 -->
+                <div class="knowledge-item" data-category="statistics">
+    
+                    <button class="knowledge-question" type="button">
+                        <span class="question-number">01</span>
+    
+                        <span class="question-text">
+                            What is statistical modeling?
+                        </span>
+    
+                        <i class="fas fa-plus question-icon"></i>
+                    </button>
+    
+                    <div class="knowledge-answer">
+                        <div class="knowledge-answer-inner">
+                            <div class="knowledge-answer-content">
+                                Statistical modeling is a way of using mathematical
+                                and statistical techniques to describe relationships
+                                between variables and make predictions or decisions.
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Question 02 -->
+                <div class="knowledge-item" data-category="statistics">
+    
+                    <button class="knowledge-question" type="button">
+                        <span class="question-number">02</span>
+    
+                        <span class="question-text">
+                            When should regression analysis be used?
+                        </span>
+    
+                        <i class="fas fa-plus question-icon"></i>
+                    </button>
+    
+                    <div class="knowledge-answer">
+                        <div class="knowledge-answer-inner">
+                            <div class="knowledge-answer-content">
+                                Regression is useful when you want to understand
+                                or predict how one variable changes in relation
+                                to one or more other variables.
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Question 03 -->
+                <div class="knowledge-item" data-category="statistics">
+    
+                    <button class="knowledge-question" type="button">
+                        <span class="question-number">03</span>
+    
+                        <span class="question-text">
+                            What is hypothesis testing?
+                        </span>
+    
+                        <i class="fas fa-plus question-icon"></i>
+                    </button>
+    
+                    <div class="knowledge-answer">
+                        <div class="knowledge-answer-inner">
+                            <div class="knowledge-answer-content">
+                                Hypothesis testing is a statistical framework used
+                                to evaluate evidence and determine whether a claim
+                                about a population is supported by sample data.
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Question 04 -->
+                <div class="knowledge-item" data-category="machine-learning">
+    
+                    <button class="knowledge-question" type="button">
+                        <span class="question-number">04</span>
+    
+                        <span class="question-text">
+                            What is overfitting in machine learning?
+                        </span>
+    
+                        <i class="fas fa-plus question-icon"></i>
+                    </button>
+    
+                    <div class="knowledge-answer">
+                        <div class="knowledge-answer-inner">
+                            <div class="knowledge-answer-content">
+                                Overfitting happens when a model learns the training
+                                data too closely and performs poorly on new,
+                                unseen data.
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Question 05 -->
+                <div class="knowledge-item" data-category="machine-learning">
+    
+                    <button class="knowledge-question" type="button">
+                        <span class="question-number">05</span>
+    
+                        <span class="question-text">
+                            How do you evaluate a machine learning model?
+                        </span>
+    
+                        <i class="fas fa-plus question-icon"></i>
+                    </button>
+    
+                    <div class="knowledge-answer">
+                        <div class="knowledge-answer-inner">
+                            <div class="knowledge-answer-content">
+                                Model evaluation depends on the task. Common
+                                approaches include accuracy, precision, recall,
+                                F1-score, ROC-AUC, MAE, RMSE, and cross-validation.
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Question 06 -->
+                <div class="knowledge-item" data-category="machine-learning">
+    
+                    <button class="knowledge-question" type="button">
+                        <span class="question-number">06</span>
+    
+                        <span class="question-text">
+                            What is feature engineering?
+                        </span>
+    
+                        <i class="fas fa-plus question-icon"></i>
+                    </button>
+    
+                    <div class="knowledge-answer">
+                        <div class="knowledge-answer-inner">
+                            <div class="knowledge-answer-content">
+                                Feature engineering is the process of creating,
+                                transforming, or selecting useful variables
+                                so that a machine learning model can learn
+                                meaningful patterns from the data.
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Question 07 -->
+                <div class="knowledge-item" data-category="research">
+    
+                    <button class="knowledge-question" type="button">
+                        <span class="question-number">07</span>
+    
+                        <span class="question-text">
+                            How do you approach a research problem?
+                        </span>
+    
+                        <i class="fas fa-plus question-icon"></i>
+                    </button>
+    
+                    <div class="knowledge-answer">
+                        <div class="knowledge-answer-inner">
+                            <div class="knowledge-answer-content">
+                                A good research workflow usually starts with
+                                defining the problem, reviewing existing work,
+                                developing a methodology, analyzing evidence,
+                                validating the results, and communicating the findings.
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Question 08 -->
+                <div class="knowledge-item" data-category="research">
+    
+                    <button class="knowledge-question" type="button">
+                        <span class="question-number">08</span>
+    
+                        <span class="question-text">
+                            What makes a data-driven result reliable?
+                        </span>
+    
+                        <i class="fas fa-plus question-icon"></i>
+                    </button>
+    
+                    <div class="knowledge-answer">
+                        <div class="knowledge-answer-inner">
+                            <div class="knowledge-answer-content">
+                                Reliability depends on data quality, appropriate
+                                methodology, transparent assumptions, suitable
+                                validation, and careful interpretation of uncertainty.
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Question 09 -->
+                <div class="knowledge-item" data-category="programming">
+    
+                    <button class="knowledge-question" type="button">
+                        <span class="question-number">09</span>
+    
+                        <span class="question-text">
+                            Why is Python useful for data science?
+                        </span>
+    
+                        <i class="fas fa-plus question-icon"></i>
+                    </button>
+    
+                    <div class="knowledge-answer">
+                        <div class="knowledge-answer-inner">
+                            <div class="knowledge-answer-content">
+                                Python provides a large ecosystem for data analysis,
+                                visualization, machine learning, automation,
+                                and scientific computing.
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Question 10 -->
+                <div class="knowledge-item" data-category="programming">
+    
+                    <button class="knowledge-question" type="button">
+                        <span class="question-number">10</span>
+    
+                        <span class="question-text">
+                            Python or R: which one should I use?
+                        </span>
+    
+                        <i class="fas fa-plus question-icon"></i>
+                    </button>
+    
+                    <div class="knowledge-answer">
+                        <div class="knowledge-answer-inner">
+                            <div class="knowledge-answer-content">
+                                Both are powerful tools. R is especially strong
+                                for statistical analysis and visualization,
+                                while Python offers a broader ecosystem for
+                                programming, machine learning, and production workflows.
+                            </div>
+                        </div>
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+    
+            <!-- Bottom Note -->
+            <div class="text-center mt-8 reveal">
+                <p class="text-slate-500 text-sm">
+                    <i class="fas fa-lightbulb text-accent mr-2"></i>
+                    More questions and resources can be added over time.
+                </p>
+            </div>
+    
+        </div>
+    </section>
+    
     <!-- Resources Section -->
     <section id="resources" class="py-24 bg-darker/90 border-y border-slate-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1238,6 +1739,85 @@
             'repo3_stars',
             'repo3_forks'
         );
+
+        /* =========================================
+           Knowledge Base / FAQ Library
+           ========================================= */
+        
+        document.addEventListener('DOMContentLoaded', () => {
+        
+            const knowledgeItems = document.querySelectorAll('.knowledge-item');
+            const filterButtons = document.querySelectorAll('.knowledge-filter');
+        
+        
+            /* -----------------------------------------
+               FAQ Accordion
+               ----------------------------------------- */
+        
+            knowledgeItems.forEach(item => {
+        
+                const question = item.querySelector('.knowledge-question');
+        
+                question.addEventListener('click', () => {
+        
+                    const isOpen = item.classList.contains('open');
+        
+                    // Close all other questions
+                    knowledgeItems.forEach(otherItem => {
+                        otherItem.classList.remove('open');
+                    });
+        
+                    // Open the clicked question
+                    if (!isOpen) {
+                        item.classList.add('open');
+                    }
+        
+                });
+        
+            });
+        
+        
+            /* -----------------------------------------
+               Category Filtering
+               ----------------------------------------- */
+        
+            filterButtons.forEach(button => {
+        
+                button.addEventListener('click', () => {
+        
+                    const selectedCategory = button.dataset.category;
+        
+        
+                    // Change active button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+        
+                    button.classList.add('active');
+        
+        
+                    // Show / hide questions
+                    knowledgeItems.forEach(item => {
+        
+                        const itemCategory = item.dataset.category;
+        
+                        if (
+                            selectedCategory === 'all' ||
+                            itemCategory === selectedCategory
+                        ) {
+                            item.classList.remove('hidden-category');
+                        } else {
+                            item.classList.add('hidden-category');
+                            item.classList.remove('open');
+                        }
+        
+                    });
+        
+                });
+        
+            });
+        
+        });
         
         const translations = {
             en: {
