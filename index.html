@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" dir="ltr" id="html-root">
+<html lang="en" class="scroll-smooth" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -480,7 +480,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="reveal active space-y-6 text-center lg:text-left">
                     <div class="inline-flex items-center px-4 py-2 rounded-full border border-accent/30 bg-accent/5 backdrop-blur-sm text-accent text-xs font-bold tracking-wider uppercase">
-                        <span class="relative flex h-2 w-2 ltr:mr-2 rtl:ml-2">
+                        <span class="relative flex h-2 w-2 mr-2">
                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                             <span class="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                         </span>
@@ -503,7 +503,7 @@
                     <div class="flex flex-wrap gap-4 pt-4 justify-center lg:justify-start hero-buttons">
                         <a href="/projects.html" class="group px-8 py-4 rounded-xl bg-gradient-to-r from-accent to-accentSec hover:shadow-2xl hover:shadow-accent/40 text-white font-bold transition-all transform hover:-translate-y-1 flex items-center gap-2">
                             <i class="fas fa-folder-open group-hover:rotate-12 transition-transform"></i>
-                            <span data-i18n="hero_btn_work">View Projects</span>
+                            <span>View Projects</span>
                         </a>
                         <a href="https://linkedin.com/in/parham-pishro" target="_blank" class="px-8 py-4 rounded-xl border-2 border-slate-700 hover:border-accent hover:bg-accent/5 text-white font-medium transition-all flex items-center gap-2">
                             <i class="fab fa-linkedin text-xl text-accent"></i> LinkedIn
@@ -693,7 +693,7 @@
                             </a>
                         </div>
                         
-                        <p class="text-sm text-slate-400 mb-4 leading-relaxed" data-i18n="repo1_desc">
+                        <p class="text-sm text-slate-400 mb-4 leading-relaxed">
                             A collection of data science and machine learning algorithms
                         </p>
                         
@@ -1677,171 +1677,7 @@
         
             });
         
-        });
-        
-        const translations = {
-            en: {
-                nav_about: "About",
-                nav_skills: "Skills",
-                nav_code: "Code",
-                nav_projects: "Projects",
-                nav_resources: "Resources",
-                nav_contact: "Contact",
-                hero_status: "Open to Collaboration",
-                hero_greeting: "Hello, I'm",
-                hero_name: "Parham Pishro",
-                hero_desc: "Statistics Student & Data Analyst specializing in statistical modeling, data mining, and evidence-based insights.",
-                hero_btn_work: "View Projects",
-                quick_years: "Years",
-                quick_projects: "Projects",
-                quick_certs: "Certs",
-                about_title: "About Me",
-                about_text: "I am a passionate Statistics student at Ferdowsi University of Mashhad, specializing in statistical modeling, Data Mining, and data-driven decision making. I combine rigorous mathematical foundations with modern analytical tools to extract meaningful insights from complex datasets.",
-                about_edu_label: "Education:",
-                about_edu_val: "B.Sc. Statistics, Ferdowsi Univ",
-                about_role_label: "Role:",
-                about_role_val: "Data Analyst & Designer",
-                about_loc_label: "Location:",
-                about_loc_val: "Mashhad, Iran",
-                expertise_title: "Statistical Expertise",
-                stat_inference: "Data Mining",
-                graphic_design: "Graphic Design",
-                data_viz: "Machine Learning",
-                learning_badge: "Learning Path",
-                skills_title: "Technical Skills",
-                skills_subtitle: "Tools and technologies for statistical analysis and data science",
-                skill_dm: "Data Mining",
-                code_title: "Open Source Work",
-                code_subtitle: "Explore my statistical programming projects, R packages, and data analysis repositories",
-                repo1_name: "Statistical Analysis",
-                repo1_desc: "Statistical modeling and hypothesis testing projects using R programming",
-                repo2_name: "Data Mining Projects",
-                repo2_desc: "Clustering, classification, and pattern recognition algorithms implementation",
-                repo3_name: "Data Visualization",
-                repo3_desc: "Creating insightful visualizations using ggplot2, matplotlib, and seaborn",
-                repo_stars: "Stars",
-                repo_forks: "Forks",
-                github_cta_label: "View All Repositories",
-                github_cta_main: "Explore More on GitHub",
-                github_stat1: "20+ Repositories",
-                github_stat2: "Open Source",
-                github_stat3: "Collaborative",
-                projects_title: "Statistical Projects",
-                projects_subtitle: "Real-world applications of statistical methods and data analysis",
-                proj_1_title: "University Statistical Analysis",
-                proj_1_desc: "Analyzing dataset for final course project using R, focusing on hypothesis testing and data visualization.",
-                proj_dm_title: "Customer Segmentation",
-                proj_dm_desc: "Applied clustering algorithms (K-Means) to segment customers based on purchasing behavior for targeted marketing.",
-                proj_6_title: "Scientific Posters Design",
-                proj_6_desc: "Designing professional posters and social media assets for Statistics Association workshops.",
-                view_all_projects: "View All Code Projects",
-                view_all_projects_desc: "Explore detailed showcase of my data analysis and ML projects",
-                resources_title: "Learning Resources",
-                resources_desc: "Curated collection of educational materials, blog posts, and learning resources.",
-                res_card1_title: "Programming Tutorials",
-                res_card1_desc: "R, Python guides and code examples",
-                res_card2_title: "Statistical Methods",
-                res_card2_desc: "Articles on data analysis techniques",
-                res_card3_title: "Learning Materials",
-                res_card3_desc: "Curated resources and references",
-                res_btn: "Explore All Resources",
-                res_btn_desc: "Browse through blog posts, tutorials, and educational content",
-                contact_title: "Let's Collaborate",
-                contact_text: "Interested in statistical consulting, data analysis projects, or need a designer for your academic event? Let's connect and create something impactful together.",
-                footer_rights: "All rights reserved.",
-                footer_tagline: "Built with data-driven precision 📊"
-            },
-            fa: {
-                nav_about: "درباره من",
-                nav_skills: "مهارت‌ها",
-                nav_code: "کدها",
-                nav_projects: "پروژه‌ها",
-                nav_resources: "منابع",
-                nav_contact: "تماس",
-                hero_status: "آماده همکاری",
-                hero_greeting: "سلام، من",
-                hero_name: "امیرعلی سطوتی",
-                hero_desc: "دانشجوی آمار و تحلیلگر داده با تخصص در مدل‌سازی آماری، داده‌کاوی و بینش‌های مبتنی بر شواهد.",
-                hero_btn_work: "مشاهده پروژه‌ها",
-                quick_years: "سال",
-                quick_projects: "پروژه",
-                quick_certs: "گواهی",
-                about_title: "درباره من",
-                about_text: "من دانشجوی آمار در دانشگاه فردوسی مشهد هستم که به مدل‌سازی آماری، داده‌کاوی و تصمیم‌گیری مبتنی بر داده علاقه‌مندم. من پایه‌های ریاضی دقیق را با ابزارهای تحلیلی مدرن ترکیب می‌کنم تا بینش‌های معنادار از مجموعه داده‌های پیچیده استخراج کنم.",
-                about_edu_label: "تحصیلات:",
-                about_edu_val: "کارشناسی آمار، دانشگاه فردوسی",
-                about_role_label: "نقش:",
-                about_role_val: "تحلیلگر داده و طراح",
-                about_loc_label: "موقعیت:",
-                about_loc_val: "مشهد، ایران",
-                expertise_title: "تخصص آماری",
-                stat_inference: "داده‌کاوی",
-                graphic_design: "طراحی گرافیک",
-                data_viz: "یادگیری ماشین",
-                learning_badge: "درحال یادگیری",
-                skills_title: "مهارت‌های فنی",
-                skills_subtitle: "ابزارها و فناوری‌های تحلیل آماری و علم داده",
-                skill_dm: "داده‌کاوی",
-                code_title: "پروژه‌های متن‌باز",
-                code_subtitle: "کاوش در پروژه‌های برنامه‌نویسی آماری، پکیج‌های R و مخازن تحلیل داده من",
-                repo1_name: "تحلیل آماری",
-                repo1_desc: "پروژه‌های مدل‌سازی آماری و آزمون فرضیه با استفاده از برنامه‌نویسی R",
-                repo2_name: "پروژه‌های داده‌کاوی",
-                repo2_desc: "پیاده‌سازی الگوریتم‌های خوشه‌بندی، طبقه‌بندی و تشخیص الگو",
-                repo3_name: "تجسم داده",
-                repo3_desc: "ایجاد تصویرسازی‌های بصیرت‌آمیز با استفاده از ggplot2، matplotlib و seaborn",
-                repo_stars: "ستاره",
-                repo_forks: "فورک",
-                github_cta_label: "مشاهده تمام مخازن",
-                github_cta_main: "کاوش بیشتر در گیت‌هاب",
-                github_stat1: "+ ۲۰ مخزن",
-                github_stat2: "متن‌باز",
-                github_stat3: "مشارکتی",
-                projects_title: "پروژه‌های آماری",
-                projects_subtitle: "کاربردهای واقعی روش‌های آماری و تحلیل داده",
-                proj_1_title: "تحلیل آماری دانشگاهی",
-                proj_1_desc: "تحلیل مجموعه داده برای پروژه پایانی درس با استفاده از R، با تمرکز بر آزمون فرضیه و تجسم داده.",
-                proj_dm_title: "خوشه‌بندی مشتریان",
-                proj_dm_desc: "اعمال الگوریتم‌های خوشه‌بندی (K-Means) برای بخش‌بندی مشتریان بر اساس رفتار خرید جهت بازاریابی هدفمند.",
-                proj_6_title: "طراحی پوسترهای علمی",
-                proj_6_desc: "طراحی پوسترهای حرفه‌ای و محتوای شبکه‌های اجتماعی برای کارگاه‌های انجمن علمی آمار.",
-                view_all_projects: "مشاهده همه پروژه‌های کدنویسی",
-                view_all_projects_desc: "نمایش جامع پروژه‌های تحلیل داده و یادگیری ماشین من",
-                resources_title: "منابع یادگیری",
-                resources_desc: "مجموعه منتخب از مطالب آموزشی، پست‌های بلاگ و منابع یادگیری.",
-                res_card1_title: "آموزش برنامه‌نویسی",
-                res_card1_desc: "راهنماهای R، Python و مثال‌های کد",
-                res_card2_title: "روش‌های آماری",
-                res_card2_desc: "مقالات درباره تکنیک‌های تحلیل داده",
-                res_card3_title: "مواد آموزشی",
-                res_card3_desc: "منابع و مراجع منتخب",
-                res_btn: "مشاهده همه منابع",
-                res_btn_desc: "مرور پست‌های بلاگ، آموزش‌ها و محتوای آموزشی",
-                contact_title: "بیایید همکاری کنیم",
-                contact_text: "به مشاوره آماری، پروژه‌های تحلیل داده یا طراح برای رویداد دانشگاهی‌تان نیاز دارید؟ بیایید ارتباط برقرار کنیم و چیزی تاثیرگذار بسازیم.",
-                footer_rights: "تمامی حقوق محفوظ است.",
-                footer_tagline: "ساخته شده با دقت داده‌محور 📊"
-            }
-        };
-
-        let currentLang = 'en';
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'fa' : 'en';
-            const htmlRoot = document.getElementById('html-root');
-            htmlRoot.lang = currentLang === 'fa' ? 'fa' : 'en';
-            htmlRoot.dir = currentLang === 'fa' ? 'rtl' : 'ltr';
-            
-            document.getElementById('lang-text-desktop').textContent = currentLang === 'en' ? 'FA' : 'EN';
-            document.getElementById('lang-text-mobile').textContent = currentLang === 'en' ? 'FA' : 'EN';
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    el.textContent = translations[currentLang][key];
-                }
-            });
-        }
+        });        
     </script>
 </body>
 </html>
