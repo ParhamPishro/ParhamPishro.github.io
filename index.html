@@ -290,8 +290,8 @@
             .formula-bg { display: none; }
         }
 
-                /* =========================================
-           Knowledge Base / FAQ Library
+            /* =========================================
+           Knowledge Base / FAQ Library / Experiences
            ========================================= */
         
         .knowledge-card {
@@ -428,6 +428,171 @@
                 font-size: 0.9rem;
             }
         }
+        
+        /* =========================================
+           Learning Path / Publications
+           ========================================= */
+        
+        .learning-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 0;
+        }
+        
+        .learning-timeline::before {
+            content: "";
+            position: absolute;
+            left: 18px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(
+                to bottom,
+                #06b6d4,
+                #8b5cf6,
+                rgba(139, 92, 246, 0)
+            );
+        }
+        
+        .learning-item {
+            position: relative;
+            padding-left: 58px;
+            margin-bottom: 36px;
+        }
+        
+        .learning-dot {
+            position: absolute;
+            left: 9px;
+            top: 24px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 4px solid #0a0e27;
+            background: #06b6d4;
+            box-shadow:
+                0 0 0 4px rgba(6, 182, 212, 0.08),
+                0 0 25px rgba(6, 182, 212, 0.5);
+            z-index: 2;
+        }
+        
+        .learning-card {
+            position: relative;
+            background: linear-gradient(
+                135deg,
+                rgba(15, 23, 42, 0.88),
+                rgba(30, 41, 59, 0.65)
+            );
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            transition: all 0.35s ease;
+            overflow: hidden;
+        }
+        
+        .learning-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(6, 182, 212, 0.06),
+                transparent 45%,
+                rgba(139, 92, 246, 0.06)
+            );
+            pointer-events: none;
+        }
+        
+        .learning-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(6, 182, 212, 0.45);
+            box-shadow:
+                0 20px 45px rgba(6, 182, 212, 0.10),
+                0 0 30px rgba(139, 92, 246, 0.05);
+        }
+        
+        .learning-meta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+        }
+        
+        .learning-card h3,
+        .learning-card p,
+        .learning-card a {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .learning-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1rem;
+            border-radius: 0.75rem;
+            background: rgba(6, 182, 212, 0.08);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            color: #67e8f9;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .learning-btn:hover {
+            background: rgba(6, 182, 212, 0.16);
+            border-color: rgba(6, 182, 212, 0.5);
+            transform: translateX(4px);
+        }
+        
+        .learning-item:nth-child(2) .learning-dot {
+            background: #8b5cf6;
+            box-shadow:
+                0 0 0 4px rgba(139, 92, 246, 0.08),
+                0 0 25px rgba(139, 92, 246, 0.5);
+        }
+        
+        .learning-item:nth-child(3) .learning-dot {
+            background: #ec4899;
+            box-shadow:
+                0 0 0 4px rgba(236, 72, 153, 0.08),
+                0 0 25px rgba(236, 72, 153, 0.5);
+        }
+        
+        @media (max-width: 640px) {
+        
+            .learning-timeline::before {
+                left: 12px;
+            }
+        
+            .learning-item {
+                padding-left: 42px;
+                margin-bottom: 24px;
+            }
+        
+            .learning-dot {
+                left: 3px;
+                width: 18px;
+                height: 18px;
+            }
+        
+            .learning-card {
+                padding: 1.15rem;
+                border-radius: 1.25rem;
+            }
+        
+            .learning-card h3 {
+                font-size: 1.1rem;
+            }
+        
+            .learning-card p {
+                font-size: 0.9rem;
+                line-height: 1.7;
+            }
+        }
+        
     </style>
 </head>
 <body class="antialiased font-sans relative selection:bg-accent/30 selection:text-white">
@@ -444,6 +609,7 @@
                 
                 <div class="hidden md:flex space-x-8 items-center">
                     <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Skills</a>
+                    <a href="#publications" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Publications</a>
                     <a href="#projects" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Projects</a>
                     <a href="#experiences" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Experiences</a>
                     <a href="#about" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">About</a>
@@ -461,6 +627,7 @@
         <div id="mobile-menu" class="hidden md:hidden bg-darker/95 border-b border-slate-800 absolute w-full backdrop-blur-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#skills" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Skills</a>
+                <a href="#publications" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Publications</a>
                 <a href="#projects" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Projects</a>
                 <a href="#experiences" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Experiences</a>
                 <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">About</a>
@@ -660,6 +827,215 @@
         </div>
     </section>
 
+    <!-- Publications -->
+    <section id="publications" class="py-24 relative bg-dark overflow-hidden">
+    
+        <!-- Background Glow -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="absolute top-1/4 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-1/4 right-0 w-72 h-72 bg-accentSec/5 rounded-full blur-3xl"></div>
+        </div>
+    
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+            <!-- Section Header -->
+            <div class="text-center mb-16 reveal">
+    
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-accentSec/20 mb-6 border border-accent/30">
+                    <i class="fas fa-route text-3xl text-accent"></i>
+                </div>
+    
+                <div class="text-accent text-xs font-mono font-bold uppercase tracking-widest mb-3">
+                    03 / Learning Path
+                </div>
+    
+                <h2 class="text-4xl md:text-5xl font-black mb-4">
+                    Knowledge
+                    <span class="text-accentSec">
+                        Learning Path
+                    </span>
+                </h2>
+    
+                <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                    A structured journey through statistics, data science,
+                    machine learning, and research-driven problem solving.
+                </p>
+    
+            </div>  
+    
+            <!-- Timeline -->
+            <div class="learning-timeline">
+    
+                <!-- Chapter 01 -->
+                <div class="learning-item reveal">
+    
+                    <div class="learning-dot"></div>
+    
+                    <div class="learning-card">
+    
+                        <div class="flex items-center justify-between gap-4 mb-3">
+    
+                            <span class="learning-meta text-cyan-300">
+                                CHAPTER 01 · FOUNDATION
+                            </span>
+    
+                            <span class="text-xs text-slate-500 font-mono">
+                                01
+                            </span>
+    
+                        </div>
+    
+                        <h3 class="text-xl md:text-2xl font-bold text-white">
+                            Statistics & Mathematical Foundations
+                        </h3>
+    
+                        <p class="text-slate-400 leading-7 mt-3">
+                            Build a strong foundation in probability, statistics,
+                            regression, hypothesis testing, and mathematical
+                            concepts required for data-driven modeling.
+                        </p>
+    
+                        <div class="flex flex-wrap gap-2 mt-4">
+    
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                Statistics
+                            </span>
+    
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">
+                                Probability
+                            </span>
+    
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                                Modeling
+                            </span>
+    
+                        </div>
+    
+                        <a href="#about" class="learning-btn mt-5">
+                            Explore foundation
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+    
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Chapter 02 -->
+                <div class="learning-item reveal">
+    
+                    <div class="learning-dot"></div>
+    
+                    <div class="learning-card">
+    
+                        <div class="flex items-center justify-between gap-4 mb-3">
+    
+                            <span class="learning-meta text-purple-300">
+                                CHAPTER 02 · ADVANCED
+                            </span>
+    
+                            <span class="text-xs text-slate-500 font-mono">
+                                02
+                            </span>
+    
+                        </div>
+    
+                        <h3 class="text-xl md:text-2xl font-bold text-white">
+                            Machine Learning & Data Mining
+                        </h3>
+    
+                        <p class="text-slate-400 leading-7 mt-3">
+                            Move from raw data to predictive models using
+                            supervised and unsupervised learning, feature
+                            engineering, clustering, and data mining techniques.
+                        </p>
+    
+                        <div class="flex flex-wrap gap-2 mt-4">
+    
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-purple-500/10 text-purple-300 border border-purple-500/20">
+                                Machine Learning
+                            </span>
+    
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-pink-500/10 text-pink-300 border border-pink-500/20">
+                                Data Mining
+                            </span>
+    
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-blue-500/10 text-blue-300 border border-blue-500/20">
+                                Feature Engineering
+                            </span>
+    
+                        </div>
+    
+                        <a href="#projects" class="learning-btn mt-5">
+                            View applied projects
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+    
+                    </div>
+    
+                </div>
+    
+    
+                <!-- Chapter 03 -->
+                <div class="learning-item reveal">
+    
+                    <div class="learning-dot"></div>
+    
+                    <div class="learning-card">
+    
+                        <div class="flex items-center justify-between gap-4 mb-3">
+    
+                            <span class="learning-meta text-pink-300">
+                                CHAPTER 03 · RESEARCH
+                            </span>
+    
+                            <span class="text-xs text-slate-500 font-mono">
+                                03
+                            </span>
+    
+                        </div>
+    
+                        <h3 class="text-xl md:text-2xl font-bold text-white">
+                            Deep Learning & Research Workflow
+                        </h3>
+    
+                        <p class="text-slate-400 leading-7 mt-3">
+                            Connect machine learning with real-world research
+                            problems through deep learning, experimental design,
+                            validation, interpretation, and reproducible analysis.
+                        </p>
+    
+                        <div class="flex flex-wrap gap-2 mt-4">
+    
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-pink-500/10 text-pink-300 border border-pink-500/20">
+                                Deep Learning
+                            </span>
+    
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-green-500/10 text-green-300 border border-green-500/20">
+                                Research
+                            </span>
+    
+                            <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-yellow-500/10 text-yellow-300 border border-yellow-500/20">
+                                Validation
+                            </span>
+    
+                        </div>
+    
+                        <a href="#contact" class="learning-btn mt-5">
+                            Start a collaboration
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+    
+                    </div>
+    
+                </div>
+    
+            </div>
+    
+        </div>
+    
+    </section>
+    
     <!-- Code & Projects Section (NEW) -->
     <section id="projects" class="py-24 bg-darker/90 border-y border-slate-800/50 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent pointer-events-none"></div>
