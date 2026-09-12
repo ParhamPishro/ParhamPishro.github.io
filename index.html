@@ -461,9 +461,8 @@
         <div id="mobile-menu" class="hidden md:hidden bg-darker/95 border-b border-slate-800 absolute w-full backdrop-blur-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#skills" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Skills</a>
-                <a href="#code" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Code</a>
                 <a href="#projects" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Projects</a>
-                <a href="#resources" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Resources</a>
+                <a href="#experiences" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Experiences</a>
                 <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">About</a>
                 <a href="#contact" class="block px-3 py-3 text-base font-medium text-accent hover:bg-slate-800/50 rounded-md transition-colors">Contact</a>
             </div>
@@ -662,7 +661,7 @@
     </section>
 
     <!-- Code & Projects Section (NEW) -->
-    <section id="code" class="py-24 bg-darker/90 border-y border-slate-800/50 relative overflow-hidden">
+    <section id="projects" class="py-24 bg-darker/90 border-y border-slate-800/50 relative overflow-hidden">
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent pointer-events-none"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -841,93 +840,8 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-24 bg-darker/70">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
-                    <i class="fas fa-folder-open text-accent"></i>
-                    <span data-i18n="projects_title">Statistical Projects</span>
-                </h2>
-                <p class="text-slate-400" data-i18n="projects_subtitle">Real-world applications of statistical methods and data analysis</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                <div class="reveal project-card rounded-2xl overflow-hidden border border-slate-700/50 group">
-                    <div class="h-48 w-full bg-gradient-to-br from-blue-900/20 to-blue-600/20 relative overflow-hidden flex items-center justify-center border-b border-slate-700">
-                        <i class="fab fa-r-project text-6xl text-blue-400 group-hover:scale-125 transition-transform duration-500"></i>
-                        <div class="absolute top-3 right-3 px-3 py-1 bg-blue-500/20 backdrop-blur-sm rounded-full text-xs font-mono text-blue-300 border border-blue-500/30">
-                            R Studio
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors" data-i18n="proj_1_title">University Statistical Analysis</h3>
-                        <p class="text-slate-400 text-sm mb-4 leading-relaxed" data-i18n="proj_1_desc">
-                            Analyzing dataset for final course project using R, focusing on hypothesis testing and data visualization.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Hypothesis Test</span>
-                            <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">Regression</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal project-card rounded-2xl overflow-hidden border border-slate-700/50 group">
-                    <div class="h-48 w-full bg-gradient-to-br from-orange-900/20 to-orange-600/20 relative overflow-hidden flex items-center justify-center border-b border-slate-700">
-                        <i class="fas fa-project-diagram text-6xl text-orange-400 group-hover:scale-125 transition-transform duration-500"></i>
-                        <div class="absolute top-3 right-3 px-3 py-1 bg-orange-500/20 backdrop-blur-sm rounded-full text-xs font-mono text-orange-300 border border-orange-500/30">
-                            Data Mining
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors" data-i18n="proj_dm_title">Customer Segmentation</h3>
-                        <p class="text-slate-400 text-sm mb-4 leading-relaxed" data-i18n="proj_dm_desc">
-                            Applied clustering algorithms (K-Means) to segment customers based on purchasing behavior for targeted marketing.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs font-mono text-orange-400 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">Clustering</span>
-                            <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Python/R</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="reveal project-card rounded-2xl overflow-hidden border border-slate-700/50 group">
-                    <div class="h-48 w-full bg-gradient-to-br from-pink-900/20 to-pink-600/20 relative overflow-hidden flex items-center justify-center border-b border-slate-700">
-                        <i class="fas fa-palette text-6xl text-pink-400 group-hover:scale-125 transition-transform duration-500"></i>
-                        <div class="absolute top-3 right-3 px-3 py-1 bg-pink-500/20 backdrop-blur-sm rounded-full text-xs font-mono text-pink-300 border border-pink-500/30">
-                            Design
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-pink-400 transition-colors" data-i18n="proj_6_title">Scientific Posters Design</h3>
-                        <p class="text-slate-400 text-sm mb-4 leading-relaxed" data-i18n="proj_6_desc">
-                            Designing professional posters and social media assets for Statistics Association workshops.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="text-xs font-mono text-pink-400 bg-pink-500/10 px-3 py-1 rounded-full border border-pink-500/20">Photoshop</span>
-                            <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">Branding</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- View All Projects Button -->
-            <div class="text-center reveal">
-                <a href="/projects.html" class="group inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-accentSec hover:shadow-2xl hover:shadow-accent/40 text-white text-lg font-bold transition-all transform hover:-translate-y-1">
-                    <i class="fas fa-th-large text-2xl group-hover:rotate-12 transition-transform"></i>
-                    <span data-i18n="view_all_projects">View All Code Projects</span>
-                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
-                </a>
-                <p class="text-slate-500 text-sm mt-4">
-                    <i class="fas fa-code text-accent"></i> 
-                    <span data-i18n="view_all_projects_desc">Explore detailed showcase of my data analysis and ML projects</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Knowledge Base / FAQ Library -->
-    <section id="knowledge" class="py-24 relative bg-dark overflow-hidden">
+    <!-- Experiences -->
+    <section id="experiences" class="py-24 relative bg-dark overflow-hidden">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
     
             <!-- Section Header -->
@@ -1288,59 +1202,6 @@
         </div>
     </section>
     
-    <!-- Resources Section -->
-    <section id="resources" class="py-24 bg-darker/90 border-y border-slate-800/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="reveal text-center">
-                <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
-                    <i class="fas fa-book text-accent"></i>
-                    <span data-i18n="resources_title">Learning Resources</span>
-                </h2>
-                <p class="text-slate-400 mb-8 max-w-2xl mx-auto" data-i18n="resources_desc">
-                    Curated collection of educational materials, blog posts, and learning resources.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal mb-12 max-w-5xl mx-auto">
-                <div class="group p-8 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-accent/50 transition-all hover:shadow-xl hover:shadow-accent/10 text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center border border-blue-500/30 group-hover:scale-110 transition-transform">
-                        <i class="fab fa-python text-3xl text-blue-400"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="res_card1_title">Programming Tutorials</h3>
-                    <p class="text-sm text-slate-400" data-i18n="res_card1_desc">R, Python guides and code examples</p>
-                </div>
-
-                <div class="group p-8 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-purple-500/50 transition-all hover:shadow-xl hover:shadow-purple-500/10 text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center border border-purple-500/30 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-chart-line text-3xl text-purple-400"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="res_card2_title">Statistical Methods</h3>
-                    <p class="text-sm text-slate-400" data-i18n="res_card2_desc">Articles on data analysis techniques</p>
-                </div>
-
-                <div class="group p-8 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-green-500/50 transition-all hover:shadow-xl hover:shadow-green-500/10 text-center">
-                    <div class="w-16 h-16 mx-auto mb-4 rounded-xl bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center border border-green-500/30 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-book-open text-3xl text-green-400"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-white mb-2" data-i18n="res_card3_title">Learning Materials</h3>
-                    <p class="text-sm text-slate-400" data-i18n="res_card3_desc">Curated resources and references</p>
-                </div>
-            </div>
-
-            <div class="text-center reveal">
-                <a href="/resources" class="group inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-accentSec hover:shadow-2xl hover:shadow-accent/40 text-white text-lg font-bold transition-all transform hover:-translate-y-1">
-                    <i class="fas fa-graduation-cap text-2xl group-hover:rotate-12 transition-transform"></i>
-                    <span data-i18n="res_btn">Explore All Resources</span>
-                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
-                </a>
-                <p class="text-slate-500 text-sm mt-4">
-                    <i class="fas fa-file-alt text-accent"></i> 
-                    <span data-i18n="res_btn_desc">Browse through blog posts, tutorials, and educational content</span>
-                </p>
-            </div>
-        </div>
-    </section>
-
     <!-- About Section -->
     <section id="about" class="py-24 bg-darker/70 border-y border-slate-800/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
