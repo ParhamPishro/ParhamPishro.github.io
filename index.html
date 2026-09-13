@@ -122,7 +122,7 @@
             animation: blink 1s infinite;
         }
         @keyframes blink {
-            0%, 100% { opacity: 1; },
+            0%, 100% { opacity: 1; }
             50% { opacity: 0; }
         }
 
@@ -505,12 +505,62 @@
             pointer-events: none;
         }
         
-        .learning-card:hover {
+        /* Odd cards → Cyan */
+        .learning-item:nth-child(odd) .learning-card {
+            border-color: rgba(6, 182, 212, 0.35);
+        }
+        
+        .learning-item:nth-child(odd) .learning-card:hover {
             transform: translateY(-6px);
-            border-color: rgba(6, 182, 212, 0.45);
+            border-color: rgba(6, 182, 212, 0.65);
             box-shadow:
-                0 20px 45px rgba(6, 182, 212, 0.10),
-                0 0 30px rgba(139, 92, 246, 0.05);
+                0 20px 45px rgba(6, 182, 212, 0.15),
+                0 0 30px rgba(6, 182, 212, 0.08);
+        }
+        
+        /* Even cards → Purple */
+        .learning-item:nth-child(even) .learning-card {
+            border-color: rgba(139, 92, 246, 0.35);
+        }
+        
+        .learning-item:nth-child(even) .learning-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(139, 92, 246, 0.65);
+            box-shadow:
+                0 20px 45px rgba(139, 92, 246, 0.15),
+                0 0 30px rgba(139, 92, 246, 0.08);
+        }
+
+        .learning-item:nth-child(odd) .learning-meta {
+            color: #67e8f9;
+        }
+        
+        .learning-item:nth-child(even) .learning-meta {
+            color: #c4b5fd;
+        }
+
+        .learning-item:nth-child(odd) .learning-btn {
+            color: #67e8f9;
+            border-color: rgba(6, 182, 212, 0.25);
+            background: rgba(6, 182, 212, 0.08);
+        }
+        
+        .learning-item:nth-child(even) .learning-btn {
+            color: #c4b5fd;
+            border-color: rgba(139, 92, 246, 0.25);
+            background: rgba(139, 92, 246, 0.08);
+        }
+
+        .learning-item:nth-child(odd) .learning-btn:hover {
+            color: #67e8f9;
+            border-color: rgba(6, 182, 212, 0.5);
+            background: rgba(6, 182, 212, 0.16);
+        }
+        
+        .learning-item:nth-child(even) .learning-btn:hover {
+            color: #c4b5fd;
+            border-color: rgba(139, 92, 246, 0.5);
+            background: rgba(139, 92, 246, 0.16);
         }
         
         .learning-meta {
@@ -547,19 +597,21 @@
             transform: translateX(4px);
         }
         
-        .learning-item:nth-child(2) .learning-dot {
+        /* Odd items → Cyan */
+        .learning-item:nth-child(odd) .learning-dot {
+            background: #06b6d4;
+            box-shadow:
+                0 0 0 4px rgba(6, 182, 212, 0.08),
+                0 0 25px rgba(6, 182, 212, 0.5);
+        }
+        
+        /* Even items → Purple */
+        .learning-item:nth-child(even) .learning-dot {
             background: #8b5cf6;
             box-shadow:
                 0 0 0 4px rgba(139, 92, 246, 0.08),
                 0 0 25px rgba(139, 92, 246, 0.5);
-        }
-        
-        .learning-item:nth-child(3) .learning-dot {
-            background: #ec4899;
-            box-shadow:
-                0 0 0 4px rgba(236, 72, 153, 0.08),
-                0 0 25px rgba(236, 72, 153, 0.5);
-        }
+        }  
         
         @media (max-width: 640px) {
         
@@ -840,7 +892,7 @@
     
             <!-- Section Header -->
             <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl md:text-5xl font-black mb-4 flex items-center justify-center gap-3">
+                <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
                     <i class="fas fa-route text-accent"></i>
                     <span>
                         Publications
@@ -859,23 +911,23 @@
                     <div class="learning-dot"></div>
                     <div class="learning-card">
                         <div class="flex items-center justify-between gap-4 mb-3">
-                            <span class="learning-meta text-cyan-300">
+                            <span class="learning-meta">
                                 (Under Review) <!--CHAPTER 01 · FOUNDATION-->
                             </span>
                             <!--<span class="text-xs text-slate-500 font-mono">
                                 02
                             </span>-->
                         </div>
-                        <h3 class="text-xl md:text-xl font-bold text-white">
+                        <h3 class="text-lg font-bold text-white">
                             Long-Term Environmental Monitoring of Water Stability and Corrosion Risk in Drinking Water Reservoirs: A Case Study from Southeastern Iran
                         </h3>
-                        <p class="text-slate-400 leading-7 mt-3">
+                        <p class="text-xs text-slate-400 leading-6 mt-3">
                             M. Hosseini, H. Banejad, <span class="font-extrabold">P. Pishro</span>, and B. Durin,
                             "Long-Term Environmental Monitoring of Water Stability and Corrosion Risk in Drinking Water Reservoirs: A Case Study from Southeastern Iran,"
                             <em>Water Practice and Technology</em>, Under Review.
                         </p>
-                        <a href="#about" class="learning-btn mt-5">
-                            Explore foundation
+                        <a href="#about" class="learning-btn mt-5 text-xs">
+                            URL
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
@@ -886,23 +938,23 @@
                     <div class="learning-dot"></div>
                     <div class="learning-card">
                         <div class="flex items-center justify-between gap-4 mb-3">
-                            <span class="learning-meta text-purple-300">
+                            <span class="learning-meta">
                                 Nov 2025
                             </span>
                         </div>
-                        <h3 class="text-xl md:text-xl font-bold text-white">
+                        <h3 class="text-lg font-bold text-white">
                             Predictive Modeling of Flavonoid Efficacy Against Esophageal Carcinoma: A Comprehensive Approach
                         </h3>
-                        <p class="text-slate-400 leading-7 mt-3">
+                        <p class="text-xs text-slate-400 leading-6 mt-3">
                             <span class="font-extrabold">P. Pishro</span>, J. A. Nasiri, Z. Nasiri Sarvi, S. Saeidi, and F. B. Rasouli,
                             "Predictive Modeling of Flavonoid Efficacy Against Esophageal Carcinoma: A Comprehensive Approach,"
                             <em>Scientific Reports</em>, 2025.
                         </p>    
-                        <a href="https://www.nature.com/articles/s41598-025-23689-2" class="learning-btn mt-5">
+                        <a href="https://www.nature.com/articles/s41598-025-23689-2" class="learning-btn mt-5 text-xs">
                             <i class="fas fa-link"></i>
                             URL
                         </a>
-                        <a href="https://doi.org/10.1038/s41598-025-23689-2" class="learning-btn mt-5">
+                        <a href="https://doi.org/10.1038/s41598-025-23689-2" class="learning-btn mt-5 text-xs">
                             <i class="fas fa-link"></i>
                             DOI
                         </a>
@@ -914,19 +966,19 @@
                     <div class="learning-dot"></div>
                     <div class="learning-card">
                         <div class="flex items-center justify-between gap-4 mb-3">
-                            <span class="learning-meta text-cyan-300">
+                            <span class="learning-meta">
                                 Nov 2024
                             </span>
                         </div>
-                        <h3 class="text-xl md:text-xl font-bold text-white">
+                        <h3 class="text-lg font-bold text-white">
                             Natural Gas Demand Forecasting at CGS Stations of Mashhad
                         </h3>
-                        <p class="text-slate-400 leading-7 mt-3">
+                        <p class="text-xs text-slate-400 leading-6 mt-3">
                             <span class="font-extrabold">P. Pishro</span>,
                             "Natural Gas Demand Forecasting at CGS Stations of Mashhad," MSc Thesis, 2024.
                         </p>
-                        <a href="#contact" class="learning-btn mt-5">
-                            <i class="fas fa-arrow-right"></i>
+                        <a href="#contact" class="learning-btn mt-5 text-xs">
+                            <i class="fas fa-link"></i>
                             URL
                         </a>
                     </div>
@@ -937,19 +989,19 @@
                     <div class="learning-dot"></div>
                     <div class="learning-card">
                         <div class="flex items-center justify-between gap-4 mb-3">
-                            <span class="learning-meta text-purple-300">
+                            <span class="learning-meta">
                                 Jul 2024
                             </span>
                         </div>
-                        <h3 class="text-xl md:text-xl font-bold text-white">
+                        <h3 class="text-lg font-bold text-white">
                             Presentation of Models Used in the Field of Natural Gas Forecasting
                         </h3>
-                        <p class="text-slate-400 leading-7 mt-3">
+                        <p class="text-xs text-slate-400 leading-6 mt-3">
                             <span class="font-extrabold">P. Pishro</span>, R. Ghanbari, and S. Amini,
                             "Presentation of Models Used in the Field of Natural Gas Forecasting,"
                             <em>in The 17th International Conference of Iranian Operations Research Society</em>, Tehran, Iran, 2024. [in Persian]
                         </p>    
-                        <a href="https://civilica.com/doc/2061243" class="learning-btn mt-5">
+                        <a href="https://civilica.com/doc/2061243" class="learning-btn mt-5 text-xs">
                             <i class="fas fa-link"></i>
                             URL
                         </a>
