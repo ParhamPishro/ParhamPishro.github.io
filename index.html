@@ -646,7 +646,118 @@
             }
         }
         
+        /* ===== SECTION 06 — LIBRARY CARDS ===== */
+        
+        #library .library-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+        
+        #library .library-card {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(148, 163, 184, 0.14);
+            border-radius: 20px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.07),
+                    rgba(255, 255, 255, 0.025)
+                );
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        
+            transition:
+                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                border-color 0.35s ease,
+                box-shadow 0.35s ease,
+                background 0.35s ease;
+        }
+        
+        /* Light in Cards*/
+        #library .library-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(
+                    circle at 20% 0%,
+                    rgba(6, 182, 212, 0.10),
+                    transparent 45%
+                );
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+        
+        /* Primary Hover of Cards */
+        #library .library-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(6, 182, 212, 0.35);
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.09),
+                    rgba(255, 255, 255, 0.035)
+                );
+            box-shadow:
+                0 20px 45px rgba(0, 0, 0, 0.28),
+                0 0 30px rgba(6, 182, 212, 0.08);
+        }
+        
+        #library .library-card:hover::before {
+            opacity: 1;
+        }
+        
+        /*Upper Content*/
+        #library .library-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /*Card Icon */
+        #library .library-card .library-icon {
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+        
+        #library .library-card:hover .library-icon {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.12);
+        }
+        
+        /*Card Bottom Arrow*/
+        #library .library-card .library-arrow {
+            transition:
+                transform 0.3s ease,
+                color 0.3s ease;
+        }
+        
+        #library .library-card:hover .library-arrow {
+            transform: translateX(5px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            #library .library-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        
+        @media (max-width: 640px) {
+            #library .library-grid {
+                grid-template-columns: 1fr;
+            }
+        
+            #library .library-card:hover {
+                transform: translateY(-5px);
+            }
+        }
+        
     </style>
+    
 </head>
 <body class="antialiased font-sans relative selection:bg-accent/30 selection:text-white">
 
@@ -661,11 +772,10 @@
                 </div>
                 
                 <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">About</a>
-                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Skills</a>
                     <a href="#publications" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Publications</a>
                     <a href="#projects" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Projects</a>
                     <a href="#experiences" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Experiences</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Skills</a>
                     <a href="#seminars" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Seminars</a>
                     <a href="#contact" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-accent to-accentSec text-sm font-semibold text-white hover:shadow-lg hover:shadow-accent/50 transition-all">Contact</a>
                 </div>
@@ -680,11 +790,10 @@
 
         <div id="mobile-menu" class="hidden md:hidden bg-darker/95 border-b border-slate-800 absolute w-full backdrop-blur-lg">
             <div class="px-4 pt-2 pb-6 space-y-2">
-                <a href="#about" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">About</a>
-                <a href="#skills" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Skills</a>
                 <a href="#publications" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Publications</a>
                 <a href="#projects" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Projects</a>
                 <a href="#experiences" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Experiences</a>
+                <a href="#skills" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Skills</a>
                 <a href="#seminars" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Seminars</a>
                 <a href="#contact" class="block px-3 py-3 text-base font-medium text-accent hover:bg-slate-800/50 rounded-md transition-colors">Contact</a>
             </div>
@@ -899,87 +1008,6 @@
         </div>
     </section>
     
-    <!-- Technical Skills Section -->
-    <section id="skills" class="py-24 relative bg-dark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
-                <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
-                    <i class="fas fa-code text-accent"></i>
-                    <span>Technical Skills</span>
-                </h2>
-                <p class="text-slate-400">Tools and technologies for data science and ai</p>
-            </div>
-
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 reveal">
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-blue-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20">
-                    <i class="fab fa-python text-5xl text-blue-400 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">Python</h3>
-                    <p class="text-xs text-slate-500">NumPy, Pandas, Sklearn</p>
-                </div>
-
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-pink-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20">
-                    <i class="fas fa-brain text-5xl text-pink-500 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">Machine Learning</h3>
-                    <p class="text-xs text-slate-500">Predictive Modeling</p>
-                </div>
-
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-orange-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20">
-                    <i class="fas fa-project-diagram text-5xl text-orange-500 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">Data Mining</h3>
-                    <p class="text-xs text-slate-500">Clustering, Association Rules</p>
-                </div>
-
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-gray-200/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-gray-200/20">
-                    <i class="fas fa-network-wired text-5xl text-gray-200 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">Deep Learning</h3>
-                    <p class="text-xs text-slate-500">NLP, Computer Vision</p>
-                </div>
-
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-green-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/20">
-                    <i class="fas fa-robot text-5xl text-green-500 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">AI</h3>
-                    <p class="text-xs text-slate-500">Intelligent Systems, Automation</p>
-                </div>
-
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-yellow-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/20">
-                    <i class="fas fa-chart-line text-5xl text-yellow-500 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">Data Visualization</h3>
-                    <p class="text-xs text-slate-500">Matplotlib, Seaborn</p>
-                </div>
-
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-green-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/20">
-                    <i class="fas fa-file-excel text-5xl text-green-500 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">Excel</h3>
-                    <p class="text-xs text-slate-500">Data Analysis, Reporting</p>
-                </div>
-                
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-blue-600/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-600/20">
-                    <i class="fab fa-r-project text-5xl text-blue-500 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">R / RStudio</h3>
-                    <p class="text-xs text-slate-500">Statistical Modeling</p>
-                </div>
-
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-purple-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20">
-                    <i class="fas fa-database text-5xl text-purple-500 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">SQL</h3>
-                    <p class="text-xs text-slate-500">My SQL, SQL Server</p>
-                </div>
-
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-yellow-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/20">
-                    <i class="fas fa-chart-bar text-5xl text-yellow-500 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">Business Intelligence</h3>
-                    <p class="text-xs text-slate-500">Power BI, Tableau</p>
-                </div>
-
-                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-gray-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-gray-500/20">
-                    <i class="fab fa-github text-5xl text-gray-500 mb-4 group-hover:scale-110 transition-transform"></i>
-                    <h3 class="text-lg font-bold text-white mb-1">Git & GitHub</h3>
-                    <p class="text-xs text-slate-500">Version Control, Collaboration</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Publications -->
     <section id="publications" class="py-24 relative bg-dark overflow-hidden">
     
@@ -994,7 +1022,7 @@
             <!-- Section Header -->
             <div class="text-center mb-16 reveal">
                 <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
-                    <i class="fas fa-route text-accent"></i>
+                    <i class="fas fa-file-alt text-accent"></i>
                     <span>
                         Publications
                     </span>
@@ -1624,6 +1652,87 @@
         </div>
     </section>
 
+    <!-- Technical Skills Section -->
+    <section id="skills" class="py-24 relative bg-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
+                    <i class="fas fa-code text-accent"></i>
+                    <span>Technical Skills</span>
+                </h2>
+                <p class="text-slate-400">Tools and technologies for data science and ai</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 reveal">
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-blue-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20">
+                    <i class="fab fa-python text-5xl text-blue-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">Python</h3>
+                    <p class="text-xs text-slate-500">NumPy, Pandas, Sklearn</p>
+                </div>
+
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-pink-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-pink-500/20">
+                    <i class="fas fa-brain text-5xl text-pink-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">Machine Learning</h3>
+                    <p class="text-xs text-slate-500">Predictive Modeling</p>
+                </div>
+
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-orange-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-500/20">
+                    <i class="fas fa-project-diagram text-5xl text-orange-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">Data Mining</h3>
+                    <p class="text-xs text-slate-500">Clustering, Association Rules</p>
+                </div>
+
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-gray-200/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-gray-200/20">
+                    <i class="fas fa-network-wired text-5xl text-gray-200 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">Deep Learning</h3>
+                    <p class="text-xs text-slate-500">NLP, Computer Vision</p>
+                </div>
+
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-green-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/20">
+                    <i class="fas fa-robot text-5xl text-green-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">AI</h3>
+                    <p class="text-xs text-slate-500">Intelligent Systems, Automation</p>
+                </div>
+
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-yellow-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/20">
+                    <i class="fas fa-chart-line text-5xl text-yellow-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">Data Visualization</h3>
+                    <p class="text-xs text-slate-500">Matplotlib, Seaborn</p>
+                </div>
+
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-green-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-green-500/20">
+                    <i class="fas fa-file-excel text-5xl text-green-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">Excel</h3>
+                    <p class="text-xs text-slate-500">Data Analysis, Reporting</p>
+                </div>
+                
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-blue-600/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-600/20">
+                    <i class="fab fa-r-project text-5xl text-blue-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">R / RStudio</h3>
+                    <p class="text-xs text-slate-500">Statistical Modeling</p>
+                </div>
+
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-purple-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20">
+                    <i class="fas fa-database text-5xl text-purple-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">SQL</h3>
+                    <p class="text-xs text-slate-500">My SQL, SQL Server</p>
+                </div>
+
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-yellow-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-yellow-500/20">
+                    <i class="fas fa-chart-bar text-5xl text-yellow-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">Business Intelligence</h3>
+                    <p class="text-xs text-slate-500">Power BI, Tableau</p>
+                </div>
+
+                <div class="group p-6 bg-gradient-to-br from-slate-900/80 to-slate-800/80 rounded-2xl border border-slate-700/50 hover:border-gray-500/50 text-center transition-all hover:transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-gray-500/20">
+                    <i class="fab fa-github text-5xl text-gray-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                    <h3 class="text-lg font-bold text-white mb-1">Git & GitHub</h3>
+                    <p class="text-xs text-slate-500">Version Control, Collaboration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Seminars and Workshops-->
     <section id="seminars" class="py-24 relative bg-dark overflow-hidden">
     
@@ -1637,25 +1746,16 @@
     
             <!-- Section Header -->
             <div class="text-center mb-12 reveal">
-                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-accentSec/20 mb-6 border border-accent/30">
-                    <i class="fas fa-book-open text-3xl text-accent"></i>
-                </div>
-    
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    Interactive
+                    Seminars &
                     <span class="text-gradient-stat">
-                        Library
+                        Workshops
                     </span>
                 </h2>
-    
                 <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                    A curated collection of articles, tools, templates,
-                    and learning resources for data science, machine learning,
-                    statistics, and research.
+                    Selected seminars and workshops I have delivered on topics in data science and related fields
                 </p>
-    
             </div>
-    
     
             <!-- Category Filters -->
             <div class="flex flex-wrap justify-center gap-3 mb-8 reveal">
@@ -1670,229 +1770,183 @@
                 <button
                     type="button"
                     class="knowledge-filter"
-                    data-category="article">
-                    <i class="fas fa-file-alt mr-1"></i>
-                    Articles
+                    data-category="data">
+                    Data Science
                 </button>
     
                 <button
                     type="button"
                     class="knowledge-filter"
-                    data-category="tool">
-                    <i class="fas fa-tools mr-1"></i>
-                    Tools
+                    data-category="research">
+                    Research
                 </button>
     
                 <button
                     type="button"
                     class="knowledge-filter"
-                    data-category="template">
-                    <i class="fas fa-layer-group mr-1"></i>
-                    Templates
+                    data-category="math">
+                    Mathematics
                 </button>
     
             </div>
     
-    
-            <!-- Library Cards -->
+            <!-- Seminars Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-    
-    
-                <!-- Article 01 -->
-                <article
-                    class="glass rounded-2xl p-6 reveal"
-                    data-category="article">
-    
-                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5">
-                        <i class="fas fa-chart-line text-xl text-cyan-300"></i>
-                    </div>
-    
+                
+                <article class="library-card reveal p-6" data-category="research">
                     <span class="text-xs font-mono font-bold text-cyan-300 uppercase tracking-wider">
-                        ARTICLE
+                        Research
                     </span>
-    
                     <h3 class="text-xl font-bold text-white mt-3">
-                        Statistical Modeling
+                        Gas Demand Forecasting
                     </h3>
-    
-                    <p class="text-sm text-slate-400 mt-3 leading-7">
-                        Practical concepts and explanations for statistical
-                        modeling, regression, probability, and data-driven analysis.
-                    </p>
-    
-                    <a
-                        href="#about"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
-                        Explore article
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-    
-                </article>
-    
-    
-                <!-- Tool 01 -->
-                <article
-                    class="glass rounded-2xl p-6 reveal"
-                    data-category="tool">
-    
-                    <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mb-5">
-                        <i class="fas fa-code text-xl text-purple-300"></i>
-                    </div>
-    
-                    <span class="text-xs font-mono font-bold text-purple-300 uppercase tracking-wider">
-                        TOOL
-                    </span>
-    
-                    <h3 class="text-xl font-bold text-white mt-3">
-                        Data Analysis Toolkit
-                    </h3>
-    
-                    <p class="text-sm text-slate-400 mt-3 leading-7">
-                        Useful tools and workflows for cleaning, exploring,
-                        transforming, and analyzing structured datasets.
-                    </p>
-    
-                    <a
-                        href="#projects"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-purple-300 hover:text-white transition">
-                        View toolkit
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-    
-                </article>
-    
-    
-                <!-- Template 01 -->
-                <article
-                    class="glass rounded-2xl p-6 reveal"
-                    data-category="template">
-    
-                    <div class="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center mb-5">
-                        <i class="fas fa-layer-group text-xl text-pink-300"></i>
-                    </div>
-    
-                    <span class="text-xs font-mono font-bold text-pink-300 uppercase tracking-wider">
-                        TEMPLATE
-                    </span>
-    
-                    <h3 class="text-xl font-bold text-white mt-3">
-                        Research Dashboard
-                    </h3>
-    
                     <p class="text-sm text-slate-400 mt-3 leading-7">
                         A structured dashboard concept for presenting experiments,
                         model performance, datasets, and research results.
                     </p>
-    
                     <a
-                        href="#projects"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
-                        View template
+                        href="#about"
+                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
+                        View Slides
                         <i class="fas fa-arrow-right"></i>
                     </a>
-    
                 </article>
     
-    
-                <!-- Article 02 -->
-                <article
-                    class="glass rounded-2xl p-6 reveal"
-                    data-category="article">
-    
-                    <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-5">
-                        <i class="fas fa-brain text-xl text-blue-300"></i>
-                    </div>
-    
-                    <span class="text-xs font-mono font-bold text-blue-300 uppercase tracking-wider">
-                        ARTICLE
+                <article class="library-card reveal p-6" data-category="research">
+                    <span class="text-xs font-mono font-bold text-cyan-300 uppercase tracking-wider">
+                        Research
                     </span>
-    
                     <h3 class="text-xl font-bold text-white mt-3">
-                        Machine Learning Patterns
+                        Gas Forecasting Models (2)
                     </h3>
+                    <p class="text-sm text-slate-400 mt-3 leading-7">
+                        A structured dashboard concept for presenting experiments,
+                        model performance, datasets, and research results.
+                    </p>
+                    <a
+                        href="#about"
+                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
+                        View Slides
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
     
+                <article class="library-card reveal p-6" data-category="research">
+                    <span class="text-xs font-mono font-bold text-cyan-300 uppercase tracking-wider">
+                        Research
+                    </span>
+                    <h3 class="text-xl font-bold text-white mt-3">
+                        Gas Forecasting Models
+                    </h3>
+                    <p class="text-sm text-slate-400 mt-3 leading-7">
+                        A structured dashboard concept for presenting experiments,
+                        model performance, datasets, and research results.
+                    </p>
+                    <a
+                        href="#about"
+                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
+                        View Slides
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+    
+                <article class="library-card reveal p-6" data-category="math">
+                    <span class="text-xs font-mono font-bold text-purple-300 uppercase tracking-wider">
+                        Mathematics
+                    </span>    
+                    <h3 class="text-xl font-bold text-white mt-3">
+                        FBI Algorithm
+                    </h3>
                     <p class="text-sm text-slate-400 mt-3 leading-7">
                         A practical overview of machine learning patterns,
                         feature engineering, validation, and model evaluation.
                     </p>
-    
                     <a
-                        href="#projects"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-blue-300 hover:text-white transition">
-                        Read article
+                        href="#about"
+                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-purple-300 hover:text-white transition">
+                        View Slides
                         <i class="fas fa-arrow-right"></i>
                     </a>
-    
                 </article>
     
-    
-                <!-- Tool 02 -->
-                <article
-                    class="glass rounded-2xl p-6 reveal"
-                    data-category="tool">
-    
-                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
-                        <i class="fas fa-database text-xl text-emerald-300"></i>
-                    </div>
-    
-                    <span class="text-xs font-mono font-bold text-emerald-300 uppercase tracking-wider">
-                        TOOL
+                <article class="library-card reveal p-6" data-category="data">
+                    <span class="text-xs font-mono font-bold text-pink-300 uppercase tracking-wider">
+                        Data Science
                     </span>
-    
                     <h3 class="text-xl font-bold text-white mt-3">
-                        Data Preparation Tools
+                        Flume & Zookeeper
                     </h3>
-    
                     <p class="text-sm text-slate-400 mt-3 leading-7">
                         Approaches for preprocessing, feature preparation,
                         transformation, and improving data quality.
                     </p>
-    
                     <a
-                        href="#projects"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-emerald-300 hover:text-white transition">
-                        Explore tools
+                        href="#about"
+                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
+                        View Slides
                         <i class="fas fa-arrow-right"></i>
                     </a>
-    
                 </article>
     
-    
-                <!-- Template 02 -->
-                <article
-                    class="glass rounded-2xl p-6 reveal"
-                    data-category="template">
-    
-                    <div class="w-12 h-12 rounded-xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center mb-5">
-                        <i class="fas fa-file-code text-xl text-yellow-300"></i>
-                    </div>
-    
-                    <span class="text-xs font-mono font-bold text-yellow-300 uppercase tracking-wider">
-                        TEMPLATE
+                <article class="library-card reveal p-6" data-category="data">
+                    <span class="text-xs font-mono font-bold text-pink-300 uppercase tracking-wider">
+                        Data Science
                     </span>
-    
                     <h3 class="text-xl font-bold text-white mt-3">
-                        ML Project Template
+                        DGBL
                     </h3>
-    
                     <p class="text-sm text-slate-400 mt-3 leading-7">
                         A reusable structure for organizing machine learning
                         experiments, datasets, models, evaluation, and documentation.
                     </p>
-    
                     <a
-                        href="#projects"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-yellow-300 hover:text-white transition">
-                        Use template
+                        href="#about"
+                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
+                        View Slides
                         <i class="fas fa-arrow-right"></i>
                     </a>
-    
                 </article>
-    
+
+                <article class="library-card reveal p-6" data-category="data">
+                    <span class="text-xs font-mono font-bold text-pink-300 uppercase tracking-wider">
+                        Data Science
+                    </span>
+                    <h3 class="text-xl font-bold text-white mt-3">
+                        Clustering
+                    </h3>
+                    <p class="text-sm text-slate-400 mt-3 leading-7">
+                        A reusable structure for organizing machine learning
+                        experiments, datasets, models, evaluation, and documentation.
+                    </p>
+                    <a
+                        href="#about"
+                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
+                        View Slides
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+
+                <article class="library-card reveal p-6" data-category="math">
+                    <span class="text-xs font-mono font-bold text-purple-300 uppercase tracking-wider">
+                        Mathematics
+                    </span>
+                    <h3 class="text-xl font-bold text-white mt-3">
+                        Fermat
+                    </h3>
+                    <p class="text-sm text-slate-400 mt-3 leading-7">
+                        A reusable structure for organizing machine learning
+                        experiments, datasets, models, evaluation, and documentation.
+                    </p>
+                    <a
+                        href="#about"
+                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-purple-300 hover:text-white transition">
+                        View Slides
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </article>
+                
             </div>
-    
         </div>
-    
     </section>
     
     <!-- Contact Section -->
