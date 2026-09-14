@@ -687,6 +687,31 @@
         }
         
         .resource-card.hidden { display: none; }
+
+        /* Section 6 — Centered layout */
+        #library {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        #library > .section-heading {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        
+        #library > .library-toolbar,
+        #library > .library-grid {
+            width: 100%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        #library > .library-toolbar {
+            justify-content: center;
+        }
         
     </style>
     
@@ -2384,7 +2409,45 @@
         
             });
         
-        });        
+        });
+        
+        document.addEventListener("DOMContentLoaded", () => {
+        
+            const library = document.getElementById("library");
+        
+            if (!library) return;
+        
+            const filters = library.querySelectorAll(".filter");
+            const resourceCards = library.querySelectorAll(".resource-card");
+        
+            filters.forEach(filter => {
+        
+                filter.addEventListener("click", () => {
+        
+                    filters.forEach(f => {
+                        f.classList.remove("active");
+                    });
+        
+                    filter.classList.add("active");
+        
+                    const category = filter.dataset.filter;
+        
+                    resourceCards.forEach(card => {
+        
+                        const show =
+                            category === "all" ||
+                            card.dataset.category === category;
+        
+                        card.classList.toggle("hidden", !show);
+        
+                    });
+        
+                });
+        
+            });
+        
+        });
+        
     </script>
 </body>
 </html>
