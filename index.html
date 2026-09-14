@@ -646,115 +646,47 @@
             }
         }
         
-        /* ===== SECTION 06 — LIBRARY CARDS ===== */
-        
-        #library .library-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 24px;
+        /* 06 — Interactive library */
+        .library-toolbar {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 9px;
+          margin-bottom: 20px;
         }
         
-        #library .library-card {
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(148, 163, 184, 0.14);
-            border-radius: 20px;
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255, 255, 255, 0.07),
-                    rgba(255, 255, 255, 0.025)
-                );
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-        
-            transition:
-                transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                border-color 0.35s ease,
-                box-shadow 0.35s ease,
-                background 0.35s ease;
+        .filter {
+          cursor: pointer;
+          border: 1px solid var(--line);
+          color: #cbd5e1;
+          background: rgba(15,23,42,.65);
+          border-radius: 999px;
+          padding: 8px 13px;
+          font-size: .76rem;
         }
         
-        /* Light in Cards*/
-        #library .library-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(
-                    circle at 20% 0%,
-                    rgba(6, 182, 212, 0.10),
-                    transparent 45%
-                );
-            opacity: 0;
-            transition: opacity 0.35s ease;
-            pointer-events: none;
+        .filter.active, .filter:hover {
+          border-color: rgba(34,211,238,.4);
+          color: #a5f3fc;
         }
         
-        /* Primary Hover of Cards */
-        #library .library-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(6, 182, 212, 0.35);
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(255, 255, 255, 0.09),
-                    rgba(255, 255, 255, 0.035)
-                );
-            box-shadow:
-                0 20px 45px rgba(0, 0, 0, 0.28),
-                0 0 30px rgba(6, 182, 212, 0.08);
+        .library-grid {
+          display: grid;
+          grid-template-columns: repeat(3,1fr);
+          gap: 15px;
         }
         
-        #library .library-card:hover::before {
-            opacity: 1;
+        .resource-card {
+          padding: 23px;
+          border-radius: 20px;
+          transition: .3s;
         }
         
-        /*Upper Content*/
-        #library .library-card > * {
-            position: relative;
-            z-index: 1;
+        .resource-card:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 25px 50px rgba(0,0,0,.25);
         }
         
-        /*Card Icon */
-        #library .library-card .library-icon {
-            transition:
-                transform 0.35s ease,
-                box-shadow 0.35s ease;
-        }
-        
-        #library .library-card:hover .library-icon {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.12);
-        }
-        
-        /*Card Bottom Arrow*/
-        #library .library-card .library-arrow {
-            transition:
-                transform 0.3s ease,
-                color 0.3s ease;
-        }
-        
-        #library .library-card:hover .library-arrow {
-            transform: translateX(5px);
-        }
-        
-        /* Responsive */
-        @media (max-width: 1024px) {
-            #library .library-grid {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-            }
-        }
-        
-        @media (max-width: 640px) {
-            #library .library-grid {
-                grid-template-columns: 1fr;
-            }
-        
-            #library .library-card:hover {
-                transform: translateY(-5px);
-            }
-        }
+        .resource-card.hidden { display: none; }
         
     </style>
     
@@ -1156,6 +1088,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                
                 <!-- Repository Card 1 -->
                 <div class="reveal code-repo-card rounded-2xl border border-slate-700/50 overflow-hidden group">
                     <div class="p-6">
@@ -1732,11 +1665,122 @@
             </div>
         </div>
     </section>
+
+    <!-- 06 Seminars -->
+    <section id="seminars" class="section">
+      <div class="section-heading reveal">
+            <h2 class="text-4xl md:text-5xl font-black mb-4">
+                Seminars &
+                <span class="text-gradient-stat">
+                    Workshops
+                </span>
+            </h2>
+            <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                Selected seminars and workshops I have delivered on academic topics
+            </p>
+      </div>
     
-    <!-- Seminars and Workshops-->
+      <div class="library-toolbar reveal">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="data">Data Science</button>
+        <button class="filter" data-filter="research">Research</button>
+        <button class="filter" data-filter="math">Mathematics</button>
+      </div>
+    
+      <div class="library-grid">
+        <article class="resource-card glass reveal" data-category="research">
+          <span class="text-xs mono text-cyan-300">RESEARCH</span>
+          <h3 class="text-xl font-bold mt-3">Gas Demand Forecasting</h3>
+          <p class="text-sm text-slate-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <a  href="#about"
+            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
+            View Slides
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+    
+        <article class="resource-card glass reveal delay-1" data-category="research">
+          <span class="text-xs mono text-cyan-300">RESEARCH</span>
+          <h3 class="text-xl font-bold mt-3">Gas Forecasting Models (Iran)</h3>
+          <p class="text-sm text-slate-400 mt-2">Praesent commodo cursus magna, vel scelerisque nisl.</p>
+          <a  href="#about"
+            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
+            View Slides
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+    
+        <article class="resource-card glass reveal delay-2" data-category="research">
+          <span class="text-xs mono text-cyan-300">RESEARCH</span>
+          <h3 class="text-xl font-bold mt-3">Gas Forecasting Models</h3>
+          <p class="text-sm text-slate-400 mt-2">Donec sed odio dui. Nullam id dolor id nibh ultricies.</p>
+          <a  href="#about"
+            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
+            View Slides
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+    
+        <article class="resource-card glass reveal" data-category="math">
+          <span class="text-xs mono text-purple-300">MATHEMATICS</span>
+          <h3 class="text-xl font-bold mt-3">FBI Algorithm</h3>
+          <p class="text-sm text-slate-400 mt-2">Maecenas faucibus mollis interdum.</p>
+          <a  href="#about"
+            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-purple-300 hover:text-white transition">
+            View Slides
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+
+        <article class="resource-card glass reveal delay-2" data-category="data">
+          <span class="text-xs mono text-pink-300">DATA SCIENCE</span>
+          <h3 class="text-xl font-bold mt-3">Flume and Zookeeper</h3>
+          <p class="text-sm text-slate-400 mt-2">Donec sed odio dui. Nullam id dolor id nibh ultricies.</p>
+          <a  href="#about"
+            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
+            View Slides
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+    
+        <article class="resource-card glass reveal" data-category="data">
+          <span class="text-xs mono text-pink-300">DATA SCIENCE</span>
+          <h3 class="text-xl font-bold mt-3">DGBL</h3>
+          <p class="text-sm text-slate-400 mt-2">Maecenas faucibus mollis interdum.</p>
+          <a  href="#about"
+            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
+            View Slides
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+          
+        <article class="resource-card glass reveal delay-1" data-category="data">
+          <span class="text-xs mono text-pink-300">DATA SCIENCE</span>
+          <h3 class="text-xl font-bold mt-3">Clustering</h3>
+          <p class="text-sm text-slate-400 mt-2">Curabitur blandit tempus porttitor.</p>
+          <a  href="#about"
+            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
+            View Slides
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+    
+        <article class="resource-card glass reveal delay-2" data-category="math">
+          <span class="text-xs mono text-purple-300">MATHEMATICS</span>
+          <h3 class="text-xl font-bold mt-3">Fermat</h3>
+          <p class="text-sm text-slate-400 mt-2">Etiam porta sem malesuada magna mollis euismod.</p>
+          <a  href="#about"
+            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-purple-300 hover:text-white transition">
+            View Slides
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </article>
+      </div>
+    </section>
+    
+    <!-- Seminars and Workshops
     <section id="seminars" class="py-24 relative bg-dark overflow-hidden">
-    
-        <!-- Background Glow -->
+        
         <div class="absolute inset-0 pointer-events-none">
             <div class="absolute top-1/4 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl"></div>
             <div class="absolute bottom-1/4 right-0 w-72 h-72 bg-accentSec/5 rounded-full blur-3xl"></div>
@@ -1744,7 +1788,6 @@
     
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
-            <!-- Section Header -->
             <div class="text-center mb-12 reveal">
                 <h2 class="text-4xl md:text-5xl font-black mb-4">
                     Seminars &
@@ -1756,8 +1799,7 @@
                     Selected seminars and workshops I have delivered on topics in data science and related fields
                 </p>
             </div>
-    
-            <!-- Category Filters -->
+
             <div class="flex flex-wrap justify-center gap-3 mb-8 reveal">
     
                 <button
@@ -1790,7 +1832,6 @@
     
             </div>
     
-            <!-- Seminars Cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 
                 <article class="library-card reveal p-6" data-category="research">
@@ -1947,7 +1988,7 @@
                 
             </div>
         </div>
-    </section>
+    </section>-->
     
     <!-- Contact Section -->
     <section id="contact" class="py-24 relative overflow-hidden bg-darker">
@@ -2319,6 +2360,24 @@
                             item.classList.remove('open');
                         }
         
+                    });
+
+                    // Resource filters
+                    const filters = document.querySelectorAll(".filter");
+                    const resourceCards = document.querySelectorAll(".resource-card");
+                    
+                    filters.forEach(filter => {
+                      filter.addEventListener("click", () => {
+                        filters.forEach(f => f.classList.remove("active"));
+                        filter.classList.add("active");
+                    
+                        const category = filter.dataset.filter;
+                    
+                        resourceCards.forEach(card => {
+                          const show = category === "all" || card.dataset.category === category;
+                          card.classList.toggle("hidden", !show);
+                        });
+                      });
                     });
         
                 });
