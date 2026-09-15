@@ -646,75 +646,7 @@
             }
         }
         
-        /* 06 — Interactive library */
-        .library-toolbar {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 9px;
-          margin-bottom: 20px;
-        }
-        
-        .filter {
-          cursor: pointer;
-          border: 1px solid var(--line);
-          color: #cbd5e1;
-          background: rgba(15,23,42,.65);
-          border-radius: 999px;
-          padding: 8px 13px;
-          font-size: .76rem;
-        }
-        
-        .filter.active, .filter:hover {
-          border-color: rgba(34,211,238,.4);
-          color: #a5f3fc;
-        }
-        
-        .library-grid {
-          display: grid;
-          grid-template-columns: repeat(3,1fr);
-          gap: 15px;
-        }
-        
-        .resource-card {
-          padding: 23px;
-          border-radius: 20px;
-          transition: .3s;
-        }
-        
-        .resource-card:hover {
-          transform: translateY(-6px);
-          box-shadow: 0 25px 50px rgba(0,0,0,.25);
-        }
-        
-        .resource-card.hidden { display: none; }
-
-        /* Section 6 — Centered layout */
-        #library {
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-        
-        #library > .section-heading {
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-        }
-        
-        #library > .library-toolbar,
-        #library > .library-grid {
-            width: 100%;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        #library > .library-toolbar {
-            justify-content: center;
-        }
-        
     </style>
-    
 </head>
 <body class="antialiased font-sans relative selection:bg-accent/30 selection:text-white">
 
@@ -1113,7 +1045,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                
                 <!-- Repository Card 1 -->
                 <div class="reveal code-repo-card rounded-2xl border border-slate-700/50 overflow-hidden group">
                     <div class="p-6">
@@ -1691,329 +1622,90 @@
         </div>
     </section>
 
-    <!-- 06 Seminars -->
-    <section id="seminars" class="section">
-      <div class="section-heading reveal">
-            <h2 class="text-4xl md:text-5xl font-black mb-4">
-                Seminars &
-                <span class="text-gradient-stat">
-                    Workshops
-                </span>
-            </h2>
-            <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                Selected seminars and workshops I have delivered on academic topics
-            </p>
-      </div>
-    
-      <div class="library-toolbar reveal">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="data">Data Science</button>
-        <button class="filter" data-filter="research">Research</button>
-        <button class="filter" data-filter="math">Mathematics</button>
-      </div>
-    
-      <div class="library-grid">
-        <article class="resource-card glass reveal" data-category="research">
-          <span class="text-xs mono text-cyan-300">RESEARCH</span>
-          <h3 class="text-xl font-bold mt-3">Gas Demand Forecasting</h3>
-          <p class="text-sm text-slate-400 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          <a  href="#about"
-            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
-            View Slides
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </article>
-    
-        <article class="resource-card glass reveal delay-1" data-category="research">
-          <span class="text-xs mono text-cyan-300">RESEARCH</span>
-          <h3 class="text-xl font-bold mt-3">Gas Forecasting Models (Iran)</h3>
-          <p class="text-sm text-slate-400 mt-2">Praesent commodo cursus magna, vel scelerisque nisl.</p>
-          <a  href="#about"
-            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
-            View Slides
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </article>
-    
-        <article class="resource-card glass reveal delay-2" data-category="research">
-          <span class="text-xs mono text-cyan-300">RESEARCH</span>
-          <h3 class="text-xl font-bold mt-3">Gas Forecasting Models</h3>
-          <p class="text-sm text-slate-400 mt-2">Donec sed odio dui. Nullam id dolor id nibh ultricies.</p>
-          <a  href="#about"
-            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
-            View Slides
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </article>
-    
-        <article class="resource-card glass reveal" data-category="math">
-          <span class="text-xs mono text-purple-300">MATHEMATICS</span>
-          <h3 class="text-xl font-bold mt-3">FBI Algorithm</h3>
-          <p class="text-sm text-slate-400 mt-2">Maecenas faucibus mollis interdum.</p>
-          <a  href="#about"
-            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-purple-300 hover:text-white transition">
-            View Slides
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </article>
-
-        <article class="resource-card glass reveal delay-2" data-category="data">
-          <span class="text-xs mono text-pink-300">DATA SCIENCE</span>
-          <h3 class="text-xl font-bold mt-3">Flume and Zookeeper</h3>
-          <p class="text-sm text-slate-400 mt-2">Donec sed odio dui. Nullam id dolor id nibh ultricies.</p>
-          <a  href="#about"
-            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
-            View Slides
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </article>
-    
-        <article class="resource-card glass reveal" data-category="data">
-          <span class="text-xs mono text-pink-300">DATA SCIENCE</span>
-          <h3 class="text-xl font-bold mt-3">DGBL</h3>
-          <p class="text-sm text-slate-400 mt-2">Maecenas faucibus mollis interdum.</p>
-          <a  href="#about"
-            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
-            View Slides
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </article>
-          
-        <article class="resource-card glass reveal delay-1" data-category="data">
-          <span class="text-xs mono text-pink-300">DATA SCIENCE</span>
-          <h3 class="text-xl font-bold mt-3">Clustering</h3>
-          <p class="text-sm text-slate-400 mt-2">Curabitur blandit tempus porttitor.</p>
-          <a  href="#about"
-            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
-            View Slides
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </article>
-    
-        <article class="resource-card glass reveal delay-2" data-category="math">
-          <span class="text-xs mono text-purple-300">MATHEMATICS</span>
-          <h3 class="text-xl font-bold mt-3">Fermat</h3>
-          <p class="text-sm text-slate-400 mt-2">Etiam porta sem malesuada magna mollis euismod.</p>
-          <a  href="#about"
-            class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-purple-300 hover:text-white transition">
-            View Slides
-            <i class="fas fa-arrow-right"></i>
-          </a>
-        </article>
-      </div>
-    </section>
-    
-    <!-- Seminars and Workshops
-    <section id="seminars" class="py-24 relative bg-dark overflow-hidden">
-        
-        <div class="absolute inset-0 pointer-events-none">
-            <div class="absolute top-1/4 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl"></div>
-            <div class="absolute bottom-1/4 right-0 w-72 h-72 bg-accentSec/5 rounded-full blur-3xl"></div>
-        </div>
-    
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    
-            <div class="text-center mb-12 reveal">
-                <h2 class="text-4xl md:text-5xl font-black mb-4">
-                    Seminars &
-                    <span class="text-gradient-stat">
-                        Workshops
-                    </span>
+    <!-- Seminars Section -->
+    <section id="seminars" class="py-24 bg-darker/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
+                    <i class="fas fa-folder-open text-accent"></i>
+                    <span>Seminars & Workshops</span>
                 </h2>
-                <p class="text-slate-400 max-w-2xl mx-auto leading-relaxed">
-                    Selected seminars and workshops I have delivered on topics in data science and related fields
+                <p class="text-slate-400">Real-world applications of statistical methods and data analysis</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <div class="reveal project-card rounded-2xl overflow-hidden border border-slate-700/50 group">
+                    <div class="h-48 w-full bg-gradient-to-br from-blue-900/20 to-blue-600/20 relative overflow-hidden flex items-center justify-center border-b border-slate-700">
+                        <i class="fab fa-r-project text-6xl text-blue-400 group-hover:scale-125 transition-transform duration-500"></i>
+                        <div class="absolute top-3 right-3 px-3 py-1 bg-blue-500/20 backdrop-blur-sm rounded-full text-xs font-mono text-blue-300 border border-blue-500/30">
+                            R Studio
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">University Statistical Analysis</h3>
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                            Analyzing dataset for final course project using R, focusing on hypothesis testing and data visualization.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Hypothesis Test</span>
+                            <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">Regression</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal project-card rounded-2xl overflow-hidden border border-slate-700/50 group">
+                    <div class="h-48 w-full bg-gradient-to-br from-orange-900/20 to-orange-600/20 relative overflow-hidden flex items-center justify-center border-b border-slate-700">
+                        <i class="fas fa-project-diagram text-6xl text-orange-400 group-hover:scale-125 transition-transform duration-500"></i>
+                        <div class="absolute top-3 right-3 px-3 py-1 bg-orange-500/20 backdrop-blur-sm rounded-full text-xs font-mono text-orange-300 border border-orange-500/30">
+                            Data Mining
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">Customer Segmentation</h3>
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                            Applied clustering algorithms (K-Means) to segment customers based on purchasing behavior for targeted marketing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono text-orange-400 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20">Clustering</span>
+                            <span class="text-xs font-mono text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">Python/R</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal project-card rounded-2xl overflow-hidden border border-slate-700/50 group">
+                    <div class="h-48 w-full bg-gradient-to-br from-pink-900/20 to-pink-600/20 relative overflow-hidden flex items-center justify-center border-b border-slate-700">
+                        <i class="fas fa-palette text-6xl text-pink-400 group-hover:scale-125 transition-transform duration-500"></i>
+                        <div class="absolute top-3 right-3 px-3 py-1 bg-pink-500/20 backdrop-blur-sm rounded-full text-xs font-mono text-pink-300 border border-pink-500/30">
+                            Design
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-pink-400 transition-colors">Scientific Posters Design</h3>
+                        <p class="text-slate-400 text-sm mb-4 leading-relaxed">
+                            Designing professional posters and social media assets for Statistics Association workshops.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs font-mono text-pink-400 bg-pink-500/10 px-3 py-1 rounded-full border border-pink-500/20">Photoshop</span>
+                            <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">Branding</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- View All Seminars Button -->
+            <div class="text-center reveal">
+                <a href="/projects.html" class="group inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-accentSec hover:shadow-2xl hover:shadow-accent/40 text-white text-lg font-bold transition-all transform hover:-translate-y-1">
+                    <i class="fas fa-th-large text-2xl group-hover:rotate-12 transition-transform"></i>
+                    <span>View All Seminars & Workshops</span>
+                    <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+                </a>
+                <p class="text-slate-500 text-sm mt-4">
+                    <i class="fas fa-code text-accent"></i> 
+                    <span>Explore detailed showcase of my data analysis and ML projects</span>
                 </p>
             </div>
-
-            <div class="flex flex-wrap justify-center gap-3 mb-8 reveal">
-    
-                <button
-                    type="button"
-                    class="knowledge-filter active"
-                    data-category="all">
-                    All
-                </button>
-    
-                <button
-                    type="button"
-                    class="knowledge-filter"
-                    data-category="data">
-                    Data Science
-                </button>
-    
-                <button
-                    type="button"
-                    class="knowledge-filter"
-                    data-category="research">
-                    Research
-                </button>
-    
-                <button
-                    type="button"
-                    class="knowledge-filter"
-                    data-category="math">
-                    Mathematics
-                </button>
-    
-            </div>
-    
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                
-                <article class="library-card reveal p-6" data-category="research">
-                    <span class="text-xs font-mono font-bold text-cyan-300 uppercase tracking-wider">
-                        Research
-                    </span>
-                    <h3 class="text-xl font-bold text-white mt-3">
-                        Gas Demand Forecasting
-                    </h3>
-                    <p class="text-sm text-slate-400 mt-3 leading-7">
-                        A structured dashboard concept for presenting experiments,
-                        model performance, datasets, and research results.
-                    </p>
-                    <a
-                        href="#about"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
-                        View Slides
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-    
-                <article class="library-card reveal p-6" data-category="research">
-                    <span class="text-xs font-mono font-bold text-cyan-300 uppercase tracking-wider">
-                        Research
-                    </span>
-                    <h3 class="text-xl font-bold text-white mt-3">
-                        Gas Forecasting Models (2)
-                    </h3>
-                    <p class="text-sm text-slate-400 mt-3 leading-7">
-                        A structured dashboard concept for presenting experiments,
-                        model performance, datasets, and research results.
-                    </p>
-                    <a
-                        href="#about"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
-                        View Slides
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-    
-                <article class="library-card reveal p-6" data-category="research">
-                    <span class="text-xs font-mono font-bold text-cyan-300 uppercase tracking-wider">
-                        Research
-                    </span>
-                    <h3 class="text-xl font-bold text-white mt-3">
-                        Gas Forecasting Models
-                    </h3>
-                    <p class="text-sm text-slate-400 mt-3 leading-7">
-                        A structured dashboard concept for presenting experiments,
-                        model performance, datasets, and research results.
-                    </p>
-                    <a
-                        href="#about"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
-                        View Slides
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-    
-                <article class="library-card reveal p-6" data-category="math">
-                    <span class="text-xs font-mono font-bold text-purple-300 uppercase tracking-wider">
-                        Mathematics
-                    </span>    
-                    <h3 class="text-xl font-bold text-white mt-3">
-                        FBI Algorithm
-                    </h3>
-                    <p class="text-sm text-slate-400 mt-3 leading-7">
-                        A practical overview of machine learning patterns,
-                        feature engineering, validation, and model evaluation.
-                    </p>
-                    <a
-                        href="#about"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-purple-300 hover:text-white transition">
-                        View Slides
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-    
-                <article class="library-card reveal p-6" data-category="data">
-                    <span class="text-xs font-mono font-bold text-pink-300 uppercase tracking-wider">
-                        Data Science
-                    </span>
-                    <h3 class="text-xl font-bold text-white mt-3">
-                        Flume & Zookeeper
-                    </h3>
-                    <p class="text-sm text-slate-400 mt-3 leading-7">
-                        Approaches for preprocessing, feature preparation,
-                        transformation, and improving data quality.
-                    </p>
-                    <a
-                        href="#about"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
-                        View Slides
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-    
-                <article class="library-card reveal p-6" data-category="data">
-                    <span class="text-xs font-mono font-bold text-pink-300 uppercase tracking-wider">
-                        Data Science
-                    </span>
-                    <h3 class="text-xl font-bold text-white mt-3">
-                        DGBL
-                    </h3>
-                    <p class="text-sm text-slate-400 mt-3 leading-7">
-                        A reusable structure for organizing machine learning
-                        experiments, datasets, models, evaluation, and documentation.
-                    </p>
-                    <a
-                        href="#about"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
-                        View Slides
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-
-                <article class="library-card reveal p-6" data-category="data">
-                    <span class="text-xs font-mono font-bold text-pink-300 uppercase tracking-wider">
-                        Data Science
-                    </span>
-                    <h3 class="text-xl font-bold text-white mt-3">
-                        Clustering
-                    </h3>
-                    <p class="text-sm text-slate-400 mt-3 leading-7">
-                        A reusable structure for organizing machine learning
-                        experiments, datasets, models, evaluation, and documentation.
-                    </p>
-                    <a
-                        href="#about"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-pink-300 hover:text-white transition">
-                        View Slides
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-
-                <article class="library-card reveal p-6" data-category="math">
-                    <span class="text-xs font-mono font-bold text-purple-300 uppercase tracking-wider">
-                        Mathematics
-                    </span>
-                    <h3 class="text-xl font-bold text-white mt-3">
-                        Fermat
-                    </h3>
-                    <p class="text-sm text-slate-400 mt-3 leading-7">
-                        A reusable structure for organizing machine learning
-                        experiments, datasets, models, evaluation, and documentation.
-                    </p>
-                    <a
-                        href="#about"
-                        class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-purple-300 hover:text-white transition">
-                        View Slides
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </article>
-                
-            </div>
         </div>
-    </section>-->
+    </section>
     
     <!-- Contact Section -->
     <section id="contact" class="py-24 relative overflow-hidden bg-darker">
@@ -2386,68 +2078,12 @@
                         }
         
                     });
-
-                    // Resource filters
-                    const filters = document.querySelectorAll(".filter");
-                    const resourceCards = document.querySelectorAll(".resource-card");
-                    
-                    filters.forEach(filter => {
-                      filter.addEventListener("click", () => {
-                        filters.forEach(f => f.classList.remove("active"));
-                        filter.classList.add("active");
-                    
-                        const category = filter.dataset.filter;
-                    
-                        resourceCards.forEach(card => {
-                          const show = category === "all" || card.dataset.category === category;
-                          card.classList.toggle("hidden", !show);
-                        });
-                      });
-                    });
         
                 });
         
             });
         
-        });
-        
-        document.addEventListener("DOMContentLoaded", () => {
-        
-            const library = document.getElementById("library");
-        
-            if (!library) return;
-        
-            const filters = library.querySelectorAll(".filter");
-            const resourceCards = library.querySelectorAll(".resource-card");
-        
-            filters.forEach(filter => {
-        
-                filter.addEventListener("click", () => {
-        
-                    filters.forEach(f => {
-                        f.classList.remove("active");
-                    });
-        
-                    filter.classList.add("active");
-        
-                    const category = filter.dataset.filter;
-        
-                    resourceCards.forEach(card => {
-        
-                        const show =
-                            category === "all" ||
-                            card.dataset.category === category;
-        
-                        card.classList.toggle("hidden", !show);
-        
-                    });
-        
-                });
-        
-            });
-        
-        });
-        
+        });        
     </script>
 </body>
 </html>
