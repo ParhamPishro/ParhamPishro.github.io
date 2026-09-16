@@ -645,6 +645,66 @@
                 line-height: 1.7;
             }
         }
+
+/* ===== Creative 16 Sections background ===== */
+:root { --creative-bg: #050816; }
+
+body {
+    background:
+        radial-gradient(circle at 10% 10%, rgba(34,211,238,.10), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(167,139,250,.12), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(244,114,182,.08), transparent 28%),
+        var(--creative-bg) !important;
+}
+
+/* subtle grid from creative_16_sections */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .18;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, black, transparent 90%);
+    -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
+    z-index: -2;
+}
+
+/* show the creative background through the sections */
+#about,
+#publications,
+#projects,
+#experiences,
+#skills,
+#seminars,
+#contact {
+    background: transparent !important;
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+/* slightly different darkness between sections */
+#about,
+#projects,
+#contact {
+    background: rgba(2, 6, 23, .16) !important;
+}
+
+#publications,
+#experiences,
+#skills,
+#seminars {
+    background: rgba(5, 8, 22, .04) !important;
+}
+
+/* remove visible section divider lines */
+section {
+    border-top: none !important;
+    border-bottom: none !important;
+}
         
     </style>
 </head>
