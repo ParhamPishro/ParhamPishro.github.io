@@ -1,1 +1,0 @@
-The gifs of Seminars
