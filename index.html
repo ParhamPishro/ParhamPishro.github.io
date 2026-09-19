@@ -848,7 +848,7 @@
         align-items: center;
         justify-content: center;
     
-        padding: 24px;
+        padding: 80px 24px 30px;
     
         background: rgba(2, 8, 23, 0.82);
         backdrop-filter: blur(8px);
@@ -874,7 +874,8 @@
     .section5-lightbox-content {
         position: relative;
     
-        width: min(90vw, 1100px);
+        width: min(78vw, 850px);
+        max-height: calc(100vh - 120px);
         aspect-ratio: 4 / 3;
     
         overflow: hidden;
@@ -975,7 +976,52 @@
             font-size: 24px;
         }
     }
-        
+
+    /* =========================================
+       Section 4 — Commit History
+       ========================================= */
+    
+    .commit-list {
+        display: grid;
+        gap: 12px;
+        max-width: 950px;
+        margin: auto;
+    }
+    
+    .commit {
+        display: grid;
+        grid-template-columns: 105px 1fr auto;
+        gap: 18px;
+        align-items: center;
+        padding: 18px 20px;
+        border-radius: 17px;
+        transition: .3s;
+    }
+    
+    .commit:hover {
+        transform: translateX(7px);
+        border-color: rgba(167,139,250,.4);
+    }
+    
+    .hash {
+        color: var(--purple);
+        font-size: .75rem;
+    }
+    
+    .commit-tag {
+        font-size: .68rem;
+        padding: 5px 8px;
+        border-radius: 999px;
+        background: rgba(52,211,153,.1);
+        color: #86efac;
+    }
+    
+    @media (max-width: 640px) {
+        .commit {
+            grid-template-columns: 1fr;
+            gap: 7px;
+        }
+    }
     </style>
     
 </head>
@@ -998,6 +1044,7 @@
                     <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Skills</a>
                     <a href="#seminars" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Seminars</a>
                     <a href="#certifications" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Certifications</a>
+                    <a href="#awards" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Awards</a>
                     <a href="#contact" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-accent to-accentSec text-sm font-semibold text-white hover:shadow-lg hover:shadow-accent/50 transition-all">Contact</a>
                 </div>
 
@@ -1017,6 +1064,7 @@
                 <a href="#skills" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Skills</a>
                 <a href="#seminars" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Seminars</a>
                 <a href="#certifications" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Certifications</a>
+                <a href="#awards" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Awards</a>
                 <a href="#contact" class="block px-3 py-3 text-base font-medium text-accent hover:bg-slate-800/50 rounded-md transition-colors">Contact</a>
             </div>
         </div>
@@ -2031,7 +2079,7 @@
             </div>
 
             <!-- View All Seminars Button -->
-            <div class="text-center reveal" mt-4>
+            <div class="text-center reveal" mt-6>
                 <a href="https://github.com/ParhamPishro/Presentations" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-accentSec hover:shadow-2xl hover:shadow-accent/40 text-white text-lg font-bold transition-all transform hover:-translate-y-1">
                     <i class="fas fa-th-large text-2xl group-hover:rotate-12 transition-transform"></i>
                     <span>View All Seminars & Workshops</span>
@@ -2095,6 +2143,69 @@
                     </p>
                 </div>
             </article>
+
+            <!-- Bottom Note -->
+            <div class="text-center mt-6 reveal">
+                <p class="text-slate-500 text-sm">
+                    <i class="fas fa-mouse-pointer text-accent mr-2"></i>
+                    Click an image to zoom in.
+                </p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Awards & Honors -->
+    <section id="awards" class="py-24 bg-darker/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
+                    <i class="fas fa-scroll text-accent"></i>
+                    Awards &
+                    <span class="text-gradient-stat">
+                        Honors
+                    </span>
+                </h2>
+                <p class="text-slate-400">A showcase of awards, honors, and achievements I have received throughout my academic journey</p>
+            </div>
+    
+        <div class="commit-list">
+            <div class="commit glass reveal">
+                <div class="hash mono">01.</div>
+                <div>
+                    Awarded full scholarships for both undergraduate and graduate studies.
+                </div>
+                <span class="commit-tag">
+                    Bachelor
+                </span>
+                <span class="commit-tag">
+                    Master
+                </span>
+            </div>
+    
+    
+            <div class="commit glass reveal delay-1">
+                <div class="hash mono">02.</div>
+                <div>
+                    <b>Ranked 1<sup>st</sup></b>
+                    among 7 graduates of the Master’s program in Data Science.
+                </div>
+                <span class="commit-tag">
+                    Master
+                </span>
+            </div>
+    
+    
+            <div class="commit glass reveal delay-2">
+                <div class="hash mono">03.</div>
+                <div>
+                    <b>Ranked 10<sup>th</sup></b>
+                    out of 45 bachelor’s students (top 25%).
+                </div>
+                <span class="commit-tag">
+                    Bachelor
+                </span>
+            </div>    
         </div>
     </section>
     
