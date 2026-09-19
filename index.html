@@ -646,65 +646,67 @@
             }
         }
 
-/* ===== Creative 16 Sections background ===== */
-:root { --creative-bg: #050816; }
-
-body {
-    background:
-        radial-gradient(circle at 10% 10%, rgba(34,211,238,.10), transparent 28%),
-        radial-gradient(circle at 90% 20%, rgba(167,139,250,.12), transparent 30%),
-        radial-gradient(circle at 50% 90%, rgba(244,114,182,.08), transparent 28%),
-        var(--creative-bg) !important;
-}
-
-/* subtle grid from creative_16_sections */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    opacity: .18;
-    background-image:
-        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
-    background-size: 42px 42px;
-    mask-image: linear-gradient(to bottom, black, transparent 90%);
-    -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
-    z-index: -2;
-}
-
-/* show the creative background through the sections */
-#about,
-#publications,
-#projects,
-#experiences,
-#skills,
-#seminars,
-#contact {
-    background: transparent !important;
-    border-top: none !important;
-    border-bottom: none !important;
-}
-
-/* slightly different darkness between sections */
-#about,
-#projects,
-#contact {
-    background: rgba(2, 6, 23, .16) !important;
-}
-
-#publications,
-#experiences,
-#skills,
-#seminars {
-    background: rgba(5, 8, 22, .04) !important;
-}
-
-/* remove visible section divider lines */
-section {
-    border-top: none !important;
-    border-bottom: none !important;
-}
+        /* ===== Creative 16 Sections background ===== */
+        :root { --creative-bg: #050816; }
+        
+        body {
+            background:
+                radial-gradient(circle at 10% 10%, rgba(34,211,238,.10), transparent 28%),
+                radial-gradient(circle at 90% 20%, rgba(167,139,250,.12), transparent 30%),
+                radial-gradient(circle at 50% 90%, rgba(244,114,182,.08), transparent 28%),
+                var(--creative-bg) !important;
+        }
+        
+        /* subtle grid from creative_16_sections */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .18;
+            background-image:
+                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, black, transparent 90%);
+            -webkit-mask-image: linear-gradient(to bottom, black, transparent 90%);
+            z-index: -2;
+        }
+        
+        /* show the creative background through the sections */
+        #about,
+        #publications,
+        #projects,
+        #experiences,
+        #skills,
+        #seminars,
+        #certifications,
+        #contact {
+            background: transparent !important;
+            border-top: none !important;
+            border-bottom: none !important;
+        }
+        
+        /* slightly different darkness between sections */
+        #about,
+        #projects,
+        #certifications,
+        #contact {
+            background: rgba(2, 6, 23, .16) !important;
+        }
+        
+        #publications,
+        #experiences,
+        #skills,
+        #seminars {
+            background: rgba(5, 8, 22, .04) !important;
+        }
+        
+        /* remove visible section divider lines */
+        section {
+            border-top: none !important;
+            border-bottom: none !important;
+        }
         
         /* ================================
        Section 5 — Image Hover Cards
@@ -831,6 +833,147 @@ section {
     
     .section5-image-overlay {
         transform-style: preserve-3d;
+    }
+        
+    /* =========================================
+       Certifications — Fullscreen Lightbox
+       ========================================= */
+    
+    .section5-lightbox {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        padding: 24px;
+    
+        background: rgba(2, 8, 23, 0.82);
+        backdrop-filter: blur(8px);
+    
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    
+        transition:
+            opacity .35s ease,
+            visibility .35s ease;
+    }
+    
+    .section5-lightbox.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+    
+    
+    /* خود باکس تصویر — نسبت 4:3 */
+    
+    .section5-lightbox-content {
+        position: relative;
+    
+        width: min(90vw, 1100px);
+        aspect-ratio: 4 / 3;
+    
+        overflow: hidden;
+    
+        border-radius: 22px;
+    
+        background: #07152f;
+    
+        box-shadow:
+            0 30px 100px rgba(0, 0, 0, .55);
+    
+        transform: scale(.82);
+    
+        transition:
+            transform .4s cubic-bezier(.2,.8,.2,1);
+    }
+    
+    .section5-lightbox.active .section5-lightbox-content {
+        transform: scale(1);
+    }
+    
+    
+    /* تصویر بزرگ */
+    
+    .section5-lightbox-content img {
+        width: 100%;
+        height: 100%;
+    
+        display: block;
+    
+        object-fit: cover;
+    
+        transform: none !important;
+    }
+    
+    
+    /* دکمه بستن */
+    
+    .section5-lightbox-close {
+        position: absolute;
+    
+        top: 14px;
+        right: 14px;
+    
+        z-index: 2;
+    
+        width: 42px;
+        height: 42px;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+        border: 1px solid rgba(255,255,255,.18);
+        border-radius: 50%;
+    
+        background: rgba(7, 21, 47, .75);
+        color: white;
+    
+        font-size: 28px;
+        line-height: 1;
+    
+        cursor: pointer;
+    
+        backdrop-filter: blur(8px);
+    
+        transition:
+            background .25s ease,
+            transform .25s ease;
+    }
+    
+    .section5-lightbox-close:hover {
+        background: rgba(7, 21, 47, .95);
+        transform: scale(1.08);
+    }
+    
+    
+    /* موبایل */
+    
+    @media (max-width: 640px) {
+    
+        .section5-lightbox {
+            padding: 14px;
+        }
+    
+        .section5-lightbox-content {
+            width: 94vw;
+            border-radius: 16px;
+        }
+    
+        .section5-lightbox-close {
+            top: 10px;
+            right: 10px;
+    
+            width: 38px;
+            height: 38px;
+    
+            font-size: 24px;
+        }
     }
         
     </style>
@@ -1099,7 +1242,7 @@ section {
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     
             <!-- Section Header -->
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-12 reveal">
                 <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
                     <i class="fas fa-file-alt text-accent"></i>
                     <span>
@@ -1224,7 +1367,7 @@ section {
         <div class="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent pointer-events-none"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-12 reveal">
                 <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
                     <i class="fab fa-github text-accent"></i>
                     <span>Professional Projects</span>
@@ -1724,7 +1867,7 @@ section {
             </div>
     
             <!-- Bottom Note -->
-            <div class="text-center mt-8 reveal">
+            <div class="text-center mt-6 reveal">
                 <p class="text-slate-500 text-sm">
                     <i class="fas fa-lightbulb text-accent mr-2"></i>
                     More experiences can be added over time.
@@ -1737,7 +1880,7 @@ section {
     <!-- Technical Skills Section -->
     <section id="skills" class="py-24 relative bg-dark">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-12 reveal">
                 <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
                     <i class="fas fa-code text-accent"></i>
                     <span>Technical Skills</span>
@@ -1837,7 +1980,7 @@ section {
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">Digital Game-Based Learning (DGBL)</h3>
                           <a  href="https://github.com/ParhamPishro/Presentations/tree/main/2023-04-29%20DGBL" target="_blank" rel="noopener noreferrer"
-                              class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
+                              class="inline-flex items-center gap-2 mt-2 text-sm font-semibold text-cyan-300 hover:text-white transition">
                             View All Slides
                             <i class="fas fa-arrow-right"></i>
                           </a>                        
@@ -1851,7 +1994,7 @@ section {
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">Gas Forecasting Models in Iran</h3>
                           <a  href="#about" target="_blank" rel="noopener noreferrer"
-                              class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
+                              class="inline-flex items-center gap-2 mt-2 text-sm font-semibold text-cyan-300 hover:text-white transition">
                             View All Slides
                             <i class="fas fa-arrow-right"></i>
                           </a>
@@ -1865,7 +2008,7 @@ section {
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-500 transition-colors">FBI Algorithm</h3>
                           <a  href="#about" target="_blank" rel="noopener noreferrer"
-                              class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
+                              class="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-cyan-300 hover:text-white transition">
                             View All Slides
                             <i class="fas fa-arrow-right"></i>
                           </a>
@@ -1879,7 +2022,7 @@ section {
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">Gas Demand Forecasting</h3>
                           <a  href="#about" target="_blank" rel="noopener noreferrer"
-                              class="inline-flex items-center gap-2 mt-5 text-sm font-semibold text-cyan-300 hover:text-white transition">
+                              class="inline-flex items-center gap-2 mt-2 text-sm font-semibold text-cyan-300 hover:text-white transition">
                             View All Slides
                             <i class="fas fa-arrow-right"></i>
                           </a>
@@ -1888,7 +2031,7 @@ section {
             </div>
 
             <!-- View All Seminars Button -->
-            <div class="text-center reveal">
+            <div class="text-center reveal" mt-4>
                 <a href="https://github.com/ParhamPishro/Presentations" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-3 px-10 py-5 rounded-2xl bg-gradient-to-r from-accent to-accentSec hover:shadow-2xl hover:shadow-accent/40 text-white text-lg font-bold transition-all transform hover:-translate-y-1">
                     <i class="fas fa-th-large text-2xl group-hover:rotate-12 transition-transform"></i>
                     <span>View All Seminars & Workshops</span>
@@ -1898,14 +2041,12 @@ section {
         </div>
     </section>
 
-    <!-- ================================
-         SECTION 5 — PROJECTS
-         ================================ -->
+    <!-- Certifications -->
     <section id="certifications" class="py-24 bg-darker/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-12 reveal">
                 <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
-                    <i class="fas fa-chalkboard-teacher text-accent"></i>
+                    <i class="fas fa-scroll text-accent"></i>
                     Certifications &
                     <span class="text-gradient-stat">
                         Licenses
@@ -1950,7 +2091,7 @@ section {
                         Blank Page
                     </h3>
                     <p>
-                        In Progress...
+                        Coming soon...
                     </p>
                 </div>
             </article>
@@ -2021,6 +2162,18 @@ section {
         <i class="fas fa-arrow-up text-xl"></i>
     </button>
 
+    <!-- =========================================
+         Certifications — Fullscreen Lightbox
+         ========================================= -->
+    <div id="section5Lightbox" class="section5-lightbox" aria-hidden="true">
+        <div class="section5-lightbox-content">
+            <button type="button" class="section5-lightbox-close" id="section5LightboxClose" aria-label="Close image">
+                &times;
+            </button>
+            <img id="section5LightboxImage" src="" alt="">
+        </div>
+    </div>
+    
     <script>
         document.getElementById('mobile-menu-btn').addEventListener('click', () => {
             document.getElementById('mobile-menu').classList.toggle('hidden');
@@ -2368,6 +2521,119 @@ section {
             });
         
         });
+
+    document.addEventListener("DOMContentLoaded", () => {
+    
+        const cards = document.querySelectorAll(
+            "#certifications .section5-image-card"
+        );
+    
+        const lightbox = document.getElementById(
+            "section5Lightbox"
+        );
+    
+        const lightboxContent = document.querySelector(
+            ".section5-lightbox-content"
+        );
+    
+        const lightboxImage = document.getElementById(
+            "section5LightboxImage"
+        );
+    
+        const closeButton = document.getElementById(
+            "section5LightboxClose"
+        );
+    
+    
+        if (
+            !cards.length ||
+            !lightbox ||
+            !lightboxContent ||
+            !lightboxImage ||
+            !closeButton
+        ) {
+            return;
+        }
+    
+    
+        /* ================================
+           Open Lightbox
+           ================================ */
+    
+        cards.forEach(card => {
+    
+            card.addEventListener("click", () => {
+    
+                const image = card.querySelector("img");
+    
+                if (!image) return;
+    
+                lightboxImage.src = image.src;
+                lightboxImage.alt = image.alt || "";
+    
+                lightbox.classList.add("active");
+    
+                lightbox.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+    
+                document.body.style.overflow = "hidden";
+    
+            });
+    
+        });
+    
+    
+        /* ================================
+           Close Lightbox
+           ================================ */
+    
+        function closeLightbox() {
+    
+            lightbox.classList.remove("active");
+    
+            lightbox.setAttribute(
+                "aria-hidden",
+                "true"
+            );
+    
+            document.body.style.overflow = "";
+    
+        }
+    
+    
+        closeButton.addEventListener(
+            "click",
+            closeLightbox
+        );
+    
+    
+        /* کلیک روی فضای بیرون عکس */
+    
+        lightbox.addEventListener("click", (event) => {
+    
+            if (event.target === lightbox) {
+                closeLightbox();
+            }
+    
+        });
+    
+    
+        /* بستن با کلید Escape */
+    
+        document.addEventListener("keydown", (event) => {
+    
+            if (
+                event.key === "Escape" &&
+                lightbox.classList.contains("active")
+            ) {
+                closeLightbox();
+            }
+    
+        });
+    
+    });
         
     </script>
 </body>
