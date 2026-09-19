@@ -1024,6 +1024,48 @@
             gap: 7px;
         }
     }
+
+    /* Section 12 — Infinite Ticker */
+    .infinite-ticker {
+        overflow: hidden;
+        width: 100%;
+        border-block: 1px solid rgba(148, 163, 184, 0.15);
+        padding: 18px 0;
+        white-space: nowrap;
+    }
+    
+    .infinite-ticker-track {
+        display: flex;
+        width: max-content;
+        animation: infinite-marquee 22s linear infinite;
+    }
+    
+    .infinite-ticker-group {
+        display: flex;
+        align-items: center;
+        gap: 45px;
+        flex-shrink: 0;
+        padding-right: 45px;
+    }
+    
+    .infinite-ticker-item {
+        color: #64748b;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.875rem;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    
+    @keyframes infinite-marquee {
+        from {
+            transform: translateX(0);
+        }
+    
+        to {
+            transform: translateX(-50%);
+        }
+    }
+        
     </style>
     
 </head>
@@ -1277,6 +1319,57 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- 12 INFINITE TICKER -->
+    <section id="infinite-ticker" class="infinite-ticker">
+        <div class="infinite-ticker-track">
+    
+            <!-- First copy -->
+            <div class="infinite-ticker-group">
+                <span class="infinite-ticker-item">
+                    <b>✦ RESEARCH INTERESTS</b>
+                </span>
+                <span class="infinite-ticker-item">
+                    ✦ APPLIED MACHINE LEARNING
+                </span>
+                <span class="infinite-ticker-item">
+                    ✦ DATA-DRIVEN MODELING
+                </span>
+                <span class="infinite-ticker-item">
+                    ✦ REAL-WORLD PROBLEM SOLVING
+                </span>
+                <span class="infinite-ticker-item">
+                    ✦ AI-DRIVEN SCIENTIFIC RESEARCH
+                </span>
+                <span class="infinite-ticker-item">
+                    ✦ ENERGY & BIOLOGICAL ANALYTICS
+                </span>
+            </div>
+    
+            <!-- Second copy -->
+            <div class="infinite-ticker-group">
+                <span class="infinite-ticker-item">
+                    <b>✦ RESEARCH INTERESTS</b>
+                </span>
+                <span class="infinite-ticker-item">
+                    ✦ APPLIED MACHINE LEARNING
+                </span>
+                <span class="infinite-ticker-item">
+                    ✦ DATA-DRIVEN MODELING
+                </span>
+                <span class="infinite-ticker-item">
+                    ✦ REAL-WORLD PROBLEM SOLVING  
+                </span>
+                <span class="infinite-ticker-item">
+                    ✦ AI-DRIVEN SCIENTIFIC RESEARCH
+                </span>
+                <span class="infinite-ticker-item">
+                    ✦ ENERGY & BIOLOGICAL ANALYTICS
+                </span>
+            </div>
+            
         </div>
     </section>
     
