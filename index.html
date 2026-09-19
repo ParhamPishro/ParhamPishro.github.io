@@ -734,11 +734,12 @@ section {
         object-fit: cover;
         display: block;
         transition: transform .6s cubic-bezier(.2,.8,.2,1);
+        backface-visibility: hidden;
     }
     
-    .section5-image-card:hover img {
+    /*.section5-image-card:hover img {
         transform: scale(1.06);
-    }
+    }*/
     
     /* کادر سورمه‌ای که از پایین بالا می‌آید */
     .section5-image-overlay {
@@ -1817,7 +1818,7 @@ section {
     <!-- Seminars Section -->
     <section id="seminars" class="py-24 bg-darker/70">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16 reveal">
+            <div class="text-center mb-12 reveal">
                 <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
                     <i class="fas fa-chalkboard-teacher text-accent"></i>
                     Seminars &
@@ -1910,13 +1911,13 @@ section {
                         Licenses
                     </span>
                 </h2>
-                <p class="text-slate-400">A collection of professional certifications and licenses I have earned throughout my career.</p>
+                <p class="text-slate-400">A collection of professional certifications and licenses I have earned throughout my career</p>
             </div>
         
         <div class="section5-image-grid">
             
             <!-- Project 01 -->
-            <article class="section5-image-card glass reveal">
+            <article class="section5-image-card glass reveal" data-tilt>
                 <img src="/assets/certifications/TOEFL Score Report.png" alt="Project 1">
                 <div class="section5-image-overlay">
                     <h3>
@@ -1929,7 +1930,7 @@ section {
             </article>
     
             <!-- Project 02 -->
-            <article class="section5-image-card glass reveal delay-1">
+            <article class="section5-image-card glass reveal delay-1" data-tilt>
                 <img src="/assets/certifications/UT Certificate.png" alt="Project 2">
                 <div class="section5-image-overlay">
                     <h3>
@@ -1942,7 +1943,7 @@ section {
             </article>
     
             <!-- Project 03 -->
-            <article class="section5-image-card glass reveal delay-2">
+            <article class="section5-image-card glass reveal delay-2" data-tilt>
                 <img src="/assets/certifications/Blank.png" alt="Project 3">
                 <div class="section5-image-overlay">
                     <h3>
