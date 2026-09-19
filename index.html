@@ -706,6 +706,110 @@ section {
     border-bottom: none !important;
 }
         
+        /* ================================
+       Section 5 — Image Hover Cards
+       ================================ */
+    
+    .section5-image-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    
+    .section5-image-card {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        overflow: hidden;
+        border-radius: 22px;
+        background: #0f172a;
+        border: 1px solid rgba(148, 163, 184, 0.15);
+        cursor: pointer;
+    }
+    
+    .section5-image-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform .6s cubic-bezier(.2,.8,.2,1);
+    }
+    
+    .section5-image-card:hover img {
+        transform: scale(1.06);
+    }
+    
+    /* کادر سورمه‌ای که از پایین بالا می‌آید */
+    .section5-image-overlay {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    
+        padding: 24px;
+    
+        background: linear-gradient(
+            to top,
+            #07152f 0%,
+            rgba(7, 21, 47, .97) 70%,
+            rgba(7, 21, 47, .82) 100%
+        );
+    
+        color: white;
+    
+        transform: translateY(100%);
+        transition: transform .45s cubic-bezier(.2,.8,.2,1);
+    }
+    
+    .section5-image-card:hover .section5-image-overlay {
+        transform: translateY(0);
+    }
+    
+    .section5-image-overlay h3 {
+        margin: 0 0 8px;
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+    
+    .section5-image-overlay p {
+        margin: 0;
+        color: #cbd5e1;
+        font-size: .85rem;
+        line-height: 1.7;
+    }
+    
+    /* افکت نور خیلی ظریف روی عکس */
+    .section5-image-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(
+            135deg,
+            rgba(34, 211, 238, .08),
+            transparent 45%
+        );
+        opacity: 0;
+        transition: opacity .4s ease;
+    }
+    
+    .section5-image-card:hover::after {
+        opacity: 1;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+        .section5-image-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    
+    @media (max-width: 640px) {
+        .section5-image-grid {
+            grid-template-columns: 1fr;
+        }
+    }
     </style>
 </head>
 <body class="antialiased font-sans relative selection:bg-accent/30 selection:text-white">
@@ -1699,7 +1803,7 @@ section {
                 <p class="text-slate-400">Selected seminars and workshops I have delivered on academic topics</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-6">
                 <div class="reveal project-card rounded-2xl overflow-hidden border border-slate-700/50 group">
                     <div class="h-46 w-full bg-gradient-to-br from-blue-900/20 to-blue-600/20 relative overflow-hidden flex items-center justify-center border-b border-slate-700">
                         <img src="/assets/seminars/Seminar_DGBL.gif" alt="Digital Game-Based Learning" class="w-full h-full object-contain">
@@ -1765,6 +1869,67 @@ section {
                     <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
                 </a>
             </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         SECTION 5 — PROJECTS
+         ================================ -->
+    
+    <section id="section5-projects" class="section">
+        <div class="section-heading reveal">
+            <div class="eyebrow mono">
+                05 / Projects
+            </div>
+            <h2>
+                Featured
+                <span class="gradient-text">Projects</span>
+            </h2>
+            <p>
+                A selection of projects and creative work.
+            </p>
+        </div>
+    
+        <div class="section5-image-grid">
+            
+            <!-- Project 01 -->
+            <article class="section5-image-card glass reveal">
+                <img src="YOUR-IMAGE-1.jpg" alt="Project 1">
+                <div class="section5-image-overlay">
+                    <h3>
+                        Project One
+                    </h3>
+                    <p>
+                        توضیح کوتاه درباره این پروژه اینجا قرار می‌گیرد.
+                    </p>
+                </div>
+            </article>
+    
+            <!-- Project 02 -->
+            <article class="section5-image-card glass reveal delay-1">
+                <img src="YOUR-IMAGE-2.jpg" alt="Project 2">
+                <div class="section5-image-overlay">
+                    <h3>
+                        Project Two
+                    </h3>
+                    <p>
+                        توضیح کوتاه درباره این پروژه اینجا قرار می‌گیرد.
+                    </p>
+                </div>
+            </article>
+    
+            <!-- Project 03 -->
+            <article class="section5-image-card glass reveal delay-2">
+                <img src="YOUR-IMAGE-3.jpg" alt="Project 3">
+                <div class="section5-image-overlay">
+                    <h3>
+                        Project Three
+                    </h3>
+                    <p>
+                        توضیح کوتاه درباره این پروژه اینجا قرار می‌گیرد.
+                    </p>
+                </div>
+            </article>
         </div>
     </section>
     
