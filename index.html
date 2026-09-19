@@ -810,7 +810,30 @@ section {
             grid-template-columns: 1fr;
         }
     }
+        
+    .section5-image-grid {
+        perspective: 1200px;
+    }
+    
+    .section5-image-card {
+        transform-style: preserve-3d;
+        will-change: transform;
+        transition:
+            transform 0.15s ease-out,
+            box-shadow 0.3s ease;
+    }
+    
+    .section5-image-card img {
+        transform: translateZ(20px);
+        backface-visibility: hidden;
+    }
+    
+    .section5-image-overlay {
+        transform-style: preserve-3d;
+    }
+        
     </style>
+    
 </head>
 <body class="antialiased font-sans relative selection:bg-accent/30 selection:text-white">
 
@@ -830,6 +853,7 @@ section {
                     <a href="#experiences" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Experiences</a>
                     <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Skills</a>
                     <a href="#seminars" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Seminars</a>
+                    <a href="#certifications" class="text-sm font-medium text-slate-300 hover:text-accent transition-colors">Certifications</a>
                     <a href="#contact" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-accent to-accentSec text-sm font-semibold text-white hover:shadow-lg hover:shadow-accent/50 transition-all">Contact</a>
                 </div>
 
@@ -848,6 +872,7 @@ section {
                 <a href="#experiences" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Experiences</a>
                 <a href="#skills" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Skills</a>
                 <a href="#seminars" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Seminars</a>
+                <a href="#certifications" class="block px-3 py-3 text-base font-medium text-slate-300 hover:text-accent hover:bg-slate-800/50 rounded-md transition-colors">Certifications</a>
                 <a href="#contact" class="block px-3 py-3 text-base font-medium text-accent hover:bg-slate-800/50 rounded-md transition-colors">Contact</a>
             </div>
         </div>
@@ -1875,21 +1900,19 @@ section {
     <!-- ================================
          SECTION 5 — PROJECTS
          ================================ -->
-    
-    <section id="section5-projects" class="section">
-        <div class="section-heading reveal">
-            <div class="eyebrow mono">
-                05 / Projects
+    <section id="certifications" class="py-24 bg-darker/70">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
+                    <i class="fas fa-chalkboard-teacher text-accent"></i>
+                    Certifications &
+                    <span class="text-gradient-stat">
+                        Licenses
+                    </span>
+                </h2>
+                <p class="text-slate-400">A collection of professional certifications and licenses I have earned throughout my career.</p>
             </div>
-            <h2>
-                Featured
-                <span class="gradient-text">Projects</span>
-            </h2>
-            <p>
-                A selection of projects and creative work.
-            </p>
-        </div>
-    
+        
         <div class="section5-image-grid">
             
             <!-- Project 01 -->
@@ -1907,7 +1930,7 @@ section {
     
             <!-- Project 02 -->
             <article class="section5-image-card glass reveal delay-1">
-                <img src="/assets/certifications/UT Certificatr.png" alt="Project 2">
+                <img src="/assets/certifications/UT Certificate.png" alt="Project 2">
                 <div class="section5-image-overlay">
                     <h3>
                         Comprehensive Data Science Specialization
@@ -1920,7 +1943,7 @@ section {
     
             <!-- Project 03 -->
             <article class="section5-image-card glass reveal delay-2">
-                <img src="/assets/certifications/blank.png" alt="Project 3">
+                <img src="/assets/certifications/Blank.png" alt="Project 3">
                 <div class="section5-image-overlay">
                     <h3>
                         Blank Page
@@ -2309,7 +2332,42 @@ section {
         
             });
         
-        });        
+        });
+        
+        document.addEventListener("DOMContentLoaded", () => {
+        
+            document.querySelectorAll("#certifications [data-tilt]").forEach(card => {
+        
+                card.addEventListener("mousemove", (e) => {
+        
+                    const rect = card.getBoundingClientRect();
+        
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+        
+                    const rotateY = ((x / rect.width) - 0.5) * 14;
+                    const rotateX = ((y / rect.height) - 0.5) * -14;
+        
+                    card.style.transform =
+                        `perspective(900px)
+                         rotateX(${rotateX}deg)
+                         rotateY(${rotateY}deg)
+                         translateY(-5px)`;
+        
+                });
+        
+        
+                card.addEventListener("mouseleave", () => {
+        
+                    card.style.transform =
+                        "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0)";
+        
+                });
+        
+            });
+        
+        });
+        
     </script>
 </body>
 </html>
