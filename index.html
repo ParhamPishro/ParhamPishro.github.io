@@ -419,16 +419,34 @@
         @media (max-width: 640px) {
             .knowledge-question {
                 padding: 1rem;
+                align-items: flex-start;
+            }
+        
+            .knowledge-question .question-number {
+                width: 7rem;
+                min-width: 7rem;
+                max-width: 7rem;
+                white-space: normal;
+                line-height: 1.4;
+                flex-shrink: 0;
+            }
+        
+            .knowledge-question .question-text {
+                min-width: 0;
+                flex: 1;
+                font-size: 0.9rem;
+                overflow-wrap: anywhere;
+            }
+        
+            .knowledge-question .question-icon {
+                flex-shrink: 0;
+                margin-top: 0.15rem;
             }
         
             .knowledge-answer-content {
                 padding: 0 1rem 1.15rem 3.25rem;
             }
-        
-            .knowledge-question .question-text {
-                font-size: 0.9rem;
-            }
-        }
+        }        
         
         /* =========================================
            Learning Path / Publications
@@ -1322,13 +1340,13 @@
         </div>
     </section>
 
-    <!-- 12 INFINITE TICKER -->
+    <!-- INFINITE TICKER -->
     <section id="infinite-ticker" class="infinite-ticker">
         <div class="infinite-ticker-track">
     
             <!-- First copy -->
             <div class="infinite-ticker-group">
-                <span class="infinite-ticker-item">
+                <span class="infinite-ticker-item text-accent font-bold px-4 py-2 rounded-lg border border-accent/30 bg-accent/5">
                     <b>✦ RESEARCH INTERESTS</b>
                 </span>
                 <span class="infinite-ticker-item">
@@ -1350,7 +1368,7 @@
     
             <!-- Second copy -->
             <div class="infinite-ticker-group">
-                <span class="infinite-ticker-item">
+                <span class="infinite-ticker-item text-accent font-bold px-4 py-2 rounded-lg border border-accent/30 bg-accent/5">
                     <b>✦ RESEARCH INTERESTS</b>
                 </span>
                 <span class="infinite-ticker-item">
@@ -2107,9 +2125,12 @@
             <div class="text-center mb-12 reveal">
                 <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
                     <i class="fas fa-chalkboard-teacher text-accent"></i>
-                    Seminars &
-                    <span class="text-gradient-stat">
-                        Workshops
+                    <span class="min-w-0 text-center">
+                        Seminars &
+                        <br class="sm:hidden">
+                        <span class="text-gradient-stat">
+                            Workshops
+                        </span>
                     </span>
                 </h2>
                 <p class="text-slate-400">Selected seminars and workshops I have delivered on academic topics</p>
@@ -2136,7 +2157,7 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">Gas Forecasting Models in Iran</h3>
-                          <a  href="#about" target="_blank" rel="noopener noreferrer"
+                          <a  href="#seminars"
                               class="inline-flex items-center gap-2 mt-2 text-sm font-semibold text-cyan-300 hover:text-white transition">
                             View All Slides
                             <i class="fas fa-arrow-right"></i>
@@ -2149,8 +2170,8 @@
                         <img src="/assets/seminars/Seminar_FBI.gif" alt="Forensic-Based Investigation" class="w-full h-full object-contain">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-xl font-bold text-white mb-4 group-hover:text-blue-500 transition-colors">FBI Algorithm</h3>
-                          <a  href="#about" target="_blank" rel="noopener noreferrer"
+                        <h3 class="text-xl font-bold text-white mb-6 group-hover:text-blue-500 transition-colors">FBI Algorithm</h3>
+                          <a  href="#seminars"
                               class="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-cyan-300 hover:text-white transition">
                             View All Slides
                             <i class="fas fa-arrow-right"></i>
@@ -2164,7 +2185,7 @@
                     </div>
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors">Gas Demand Forecasting</h3>
-                          <a  href="#about" target="_blank" rel="noopener noreferrer"
+                          <a  href="#seminars"
                               class="inline-flex items-center gap-2 mt-2 text-sm font-semibold text-cyan-300 hover:text-white transition">
                             View All Slides
                             <i class="fas fa-arrow-right"></i>
@@ -2190,9 +2211,12 @@
             <div class="text-center mb-12 reveal">
                 <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
                     <i class="fas fa-scroll text-accent"></i>
-                    Certifications &
-                    <span class="text-gradient-stat">
-                        Licenses
+                    <span class="min-w-0 text-center">
+                        Certifications &
+                        <br class="sm:hidden">
+                        <span class="text-gradient-stat">
+                            Licenses
+                        </span>
                     </span>
                 </h2>
                 <p class="text-slate-400">A collection of professional certifications and licenses I have earned throughout my career</p>
@@ -2226,7 +2250,7 @@
                 </div>
             </article>
     
-            <!-- Project 03 -->
+            <!-- Project 03 
             <article class="section5-image-card glass reveal delay-2" data-tilt>
                 <img src="/assets/certifications/Blank.png" alt="Project 3">
                 <div class="section5-image-overlay">
@@ -2237,7 +2261,7 @@
                         Coming soon...
                     </p>
                 </div>
-            </article>
+            </article> -->
         </div>
             
             <!-- Bottom Note -->
@@ -2256,9 +2280,12 @@
             <div class="text-center mb-12 reveal">
                 <h2 class="text-4xl font-black mb-4 flex items-center justify-center gap-3">
                     <i class="fas fa-award text-accent"></i>
-                    Awards &
-                    <span class="text-gradient-stat">
-                        Honors
+                    <span class="min-w-0 text-center">
+                        Awards &
+                        <br class="sm:hidden">
+                        <span class="text-gradient-stat">
+                            Honors
+                        </span>
                     </span>
                 </h2>
                 <p class="text-slate-400">A showcase of awards, honors, and achievements I have received throughout my academic journey</p>
